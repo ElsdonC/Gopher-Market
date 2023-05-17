@@ -1,0 +1,14 @@
+const mongoose = require('mongoose')
+const User = require('./user');
+
+const itemSchema = new mongoose.Schema({
+    name: { type: String, trim: true, required: true, unique: false },
+    price: { type: Number, required: true },
+    description: { type: String, trim: true, required: true },
+    category: { type: String },
+    imagePath: { type: String, trim: true, required: true},
+    createdById: { type: String, required: true },
+    starCount: { type: Number, default: 0 }
+  });
+  
+module.exports = mongoose.model('Item', itemSchema);

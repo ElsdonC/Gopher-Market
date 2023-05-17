@@ -1,0 +1,73 @@
+<%- include('partials/header.ejs') %>
+
+<div class="d-flex flex-row justify-content-center align-items-center">
+  <form onsubmit="return validateForm()" id="form" class="p-5 mt-5 w-25 bg-dark" enctype="multipart/form-data" action="/create/post" method="POST">
+    <div class="mb-3">
+      <label for="name" class="form-label text-light">Item Name</label>
+      <input
+        type="text"
+        class="form-control "
+        id="name"
+        placeholder="item name"
+        name="name"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="category" class="form-label text-light">Item Category</label>
+      <select id="category" name="category" class="form-select" aria-label="Default select example">
+        <option value="" selected hidden disabled>Open this select menu</option>
+        <option value="textbooks">textbooks</option>
+        <option value="school-supplies">school-supplies</option>
+        <option value="electronics">electronics</option>
+        <option value="furniture-appliances">furniture/appliances</option>
+        <option value="clothing">clothing</option>
+        <option value="kitchenware">kitchenware</option>
+      </select>
+    </div>    
+    <div class="mb-3">
+      <label for="description" class="form-label text-light">Item Description <span>(characters remaining: <strong><span id="counter">50</span></strong>)</span></label>
+      <textarea
+        onkeyup="textCounter(this,'counter',50);"
+        class="form-control"
+        id="description"
+        name="description"
+        rows="3"
+        maxlength="50"
+        placeholder="description"
+        required
+      ></textarea>
+    </div>
+    <div class="input-group mb-3">
+      <label for="price" class="form-label w-100 text-light">Item Price</label>
+      <span class="input-group-text">$</span>
+      <input
+        type="number"
+        class="form-control"
+        id="price"
+        name="price"
+        min="0"
+        onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
+        aria-label="Amount (to the nearest dollar)"
+        required
+      />
+    </div>
+    <div class="input-group mb-3">
+      <label for="image" class="form-label w-100 text-light">Upload an Image</label>
+      <input
+        type="file"
+        class="form-control-file bg-light w-100"
+        id="image"
+        aria-describedby="image"
+        aria-label="Upload"
+        name="uploaded_file"
+        accept="image/apng, image/avif, image/jpeg, image/png, image/svg+xml, image/webp"
+      />
+    </div>
+    <div class="col-12">
+      <button class="btn btn-primary" type="submit">Sell Item</button>
+    </div>
+  </form>
+</div>
+<script src="../js/create.js"></script>
+<%- include('partials/footer.ejs') %>

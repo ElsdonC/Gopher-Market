@@ -1,0 +1,14 @@
+<%- include('partials/header.ejs') %>
+
+<section>
+    <p>Price: $<%= item.price.toFixed(2) %></p>
+    <p>Category: <%= item.category %></p>
+    <p>Description: <%= item.description %></p>
+    <img src="../<%= item.imagePath %>" alt="<%= item.name %> image" width="100px">
+    <p>Stars: <%= item.starCount %></p>
+    <p>Seller: <%= seller.displayName %></p>
+    <button class="btn btn-primary">contact seller!</button>
+</section>
+
+<script src="../js/index.js"></script>
+<%- include('partials/footer.ejs') %>

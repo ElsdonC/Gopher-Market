@@ -1,0 +1,46 @@
+<%- include('partials/header.ejs') %>
+<%- include('partials/searchBar.ejs') %>
+
+<section id="items" class="mt-5 d-flex flex-wrap">
+    <% items.forEach((item)=>{ %>
+    <div class="card d-inline-block mb-4">
+        <a href="/item/<%= item.name %>" class="itemLink">
+            <p class="view">View Item</p>
+            <img
+                src="../<%= item.imagePath %>"
+                class="card-img-top"
+                alt="<%= item.name %>"
+            />
+        </a>
+        <div class="card-body">
+            <h5 class="card-title"><%= item.name %></h5>
+            <p class="card-text">$<%= item.price.toFixed(2) %></p>
+            <div class="d-flex flex-row align-items-center">
+                <a href="#" class="contactSellerBtn btn btn-primary"
+                    >Contact Seller</a
+                >
+                <% if (user) { %> <% if (user.starred.includes(item.id)) { %>
+                <input
+                    id="<%= item.id %>"
+                    class="star"
+                    type="checkbox"
+                    checked
+                />
+                <span class="card-likes"><%= item.starCount %></span>
+                <% } else { %>
+                <input id="<%= item.id %>" class="star" type="checkbox" />
+                <span class="card-likes"><%= item.starCount %></span>
+                <% } %> <% } else { %>
+                <span class="card-likes"
+                    ><%= item.starCount %> <% if (item.starCount == 1) {
+                    %>like<%} else {%>likes <%}%></span
+                >
+                <% } %>
+            </div>
+        </div>
+    </div>
+    <% }) %>
+</section>
+
+<script src="../js/index.js"></script>
+<%- include('partials/footer.ejs') %>
