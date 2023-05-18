@@ -25,7 +25,8 @@ passport.deserializeUser(function(user, done) {
   User.findOne({ googleId: user.id })
     .then(existingUser => {
       if (!existingUser) {
-        User.create({googleId: user.id, email: user.email, displayName: user.displayName, image: user.picture})
+        const newUser = User.create({googleId: user.id, email: user.email, displayName: user.displayName, image: user.picture})
+        return done(null, newUser)
       }
       return done(null, existingUser);
     })

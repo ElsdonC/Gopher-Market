@@ -31,4 +31,14 @@ function validateForm() {
         categoryField.focus();
         return false;
     }
+    let location = document.getElementById("location").value;
+    if (location == "") {
+        let locationField = document.getElementById("location");
+        let locationError = document.createElement("div");
+        locationError.className = "error-message";
+        locationError.textContent = "Please fill out this field";
+        locationField.insertAdjacentElement("afterend", locationError);
+        locationField.focus();
+        return false;
+    }
 }

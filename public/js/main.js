@@ -30,25 +30,3 @@ document.querySelector(".searchInput").addEventListener("input", (e) => {
             document.querySelector("#items").innerHTML = html;
         });
 });
-
-document.querySelectorAll(".itemLink").forEach((link) => {
-    link.addEventListener("mouseover", (e) => {
-        e.currentTarget.children[0].style.display = "block";
-        console.log("making visible")
-    })
-    link.addEventListener("mouseleave", (e) => {
-        e.currentTarget.children[0].style.display = "none";
-        console.log("making invisible")
-    })
-})
-
-document.querySelectorAll(".view").forEach((view) => {
-    view.addEventListener("mouseover", (e) => {
-      e.currentTarget.parentElement.querySelector(".card-img-top").style.filter = "brightness(30%)";
-      console.log("making image normal");
-    });
-    view.addEventListener("mouseleave", (e) => {
-      e.currentTarget.parentElement.querySelector(".card-img-top").style.filter = "";
-      console.log("making image darker");
-    });
-  });

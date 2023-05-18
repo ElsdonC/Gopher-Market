@@ -14,7 +14,10 @@ module.exports = {
         let itemName = req.body.name;
         let itemPrice = req.body.price;
         let itemDescription = req.body.description;
-        if (req.file) {
+        if (req.body.location != "") {
+            var itemLocation = req.body.location
+        }
+        if (req.file && req.body.location) {
             let filePath = req.file.path.slice(7);
             const item = await ItemModel.findOne(
                 { _id: req.params.id },
@@ -28,6 +31,17 @@ module.exports = {
                     price: itemPrice,
                     description: itemDescription,
                     imagePath: filePath,
+                    location: req.body.location
+                }
+            );
+        } else if (req.body.location) {
+            await ItemModel.updateOne(
+                { _id: req.params.id },
+                {
+                    name: itemName,
+                    price: itemPrice,
+                    description: itemDescription,
+                    location: req.body.location
                 }
             );
         } else {

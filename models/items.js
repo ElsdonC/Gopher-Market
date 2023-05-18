@@ -8,7 +8,8 @@ const itemSchema = new mongoose.Schema({
     category: { type: String },
     imagePath: { type: String, trim: true, required: true},
     createdById: { type: String, required: true },
-    starCount: { type: Number, default: 0 }
+    starCount: { type: Number, default: 0 },
+    location: { type: String, required: true }
   });
   
 module.exports = mongoose.model('Item', itemSchema);

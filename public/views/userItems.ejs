@@ -1,5 +1,5 @@
 <%- include('partials/header.ejs') %>
-<%- include('partials/searchBar.ejs') %>
+
 <section id="items" class="mt-5 d-flex flex-wrap">
     <% items.forEach((item)=>{ %>
     <div class="card d-inline-block mb-4">
@@ -25,7 +25,7 @@
                     class="deleteBtn btn btn-danger"
                     onclick="showDeleteModal('<%=item.id%>')"
                 >
-                    Delete
+                    Sold/Delete
                 </button>
                 <span class="card-likes"
                     ><%= item.starCount %> <% if (item.starCount == 1) {
@@ -63,7 +63,7 @@
                                 class="btn btn-danger"
                                 onclick="deleteItem('<%=deleteLink%>')"
                             >
-                                Delete
+                                Sold/Delete
                             </button>
                         </div>
                     </div>

@@ -1,13 +1,18 @@
 <%- include('partials/header.ejs') %>
 
-<section>
-    <p>Price: $<%= item.price.toFixed(2) %></p>
-    <p>Category: <%= item.category %></p>
-    <p>Description: <%= item.description %></p>
-    <img src="../<%= item.imagePath %>" alt="<%= item.name %> image" width="100px">
-    <p>Stars: <%= item.starCount %></p>
-    <p>Seller: <%= seller.displayName %></p>
-    <button class="btn btn-primary">contact seller!</button>
+<section id="itemPage">
+    <img class="itemImage" src="../<%= item.imagePath %>" alt="<%= item.name %> image">
+    <section class="itemInfo">
+        <h4>Price: $<%= item.price.toFixed(2) %></h4>
+        <h1><%= item.name.toUpperCase() %></h1>
+        <p>Category: <%= item.category %></p>
+        <p>Description: <%= item.description %></p>
+        
+        <p>Stars: <%= item.starCount %></p>
+        <p>Seller: <%= seller.displayName %></p>
+        <p>Contact: <%= seller.email %></p>
+        <a href="mailto:<%=seller.email%>?subject=Gopher Market Message" target="_blank"><button class="contactSellerBtn btn scale-up-hor-center">Contact Seller</button></a>
+    </section>
 </section>
 
 <script src="../js/index.js"></script>

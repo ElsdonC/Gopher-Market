@@ -130,24 +130,28 @@ module.exports = {
             const html = searchItems
                 .map((item) => {
                     return `
-                    <div class="card d-inline-block mb-4">
-                        <a href="/item/${item.name}" class="itemLink">
-                            <p class="view">View Item</p>
-                            <img src="../${
-                                item.imagePath
-                            }" class="card-img-top" alt="${item.name}" />
-                        </a>
-                        <div class="card-body">
-                        <h5 class="card-title">${item.name}</h5>
-                        <p class="card-text">$${item.price.toFixed(2)}</p>
-                        <div class="d-flex flex-row align-items-center">
-                            <a href="#" class="contactSellerBtn btn btn-primary">Contact Seller</a>
-                            <span class="card-likes">
-                                ${item.starCount} ${item.starCount == 1 ? "like" : "likes"}
-                            </span>
+                    
+                        <div class="card d-inline-block mb-4">
+                            <a href="/item/${item.name}" class="itemLink">
+                                <img src="../${
+                                    item.imagePath
+                                }" class="card-img-top" alt="${item.name}" />
+                            
+                            <div class="card-body">
+                            <h5 class="card-title">${item.name}</h5>
+                            <p class="card-text">$${item.price.toFixed(2)}</p>
+                            <div class="d-flex flex-row align-items-center">
+                                <span class="location">${item.location}</span>
+                                <span class="card-likes">
+                                    ${item.starCount} ${
+                        item.starCount == 1 ? "like" : "likes"
+                    }
+                                </span>
+                            </div>
+                            </div>
+                            </a>
                         </div>
-                        </div>
-                    </div>
+                    
                 `;
                 })
                 .join("");
