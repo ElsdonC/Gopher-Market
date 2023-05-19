@@ -47,7 +47,6 @@ const loginRouter = require('./routes/login')
 const logoutRouter = require('./routes/logout')
 const userItemsRouter = require('./routes/userItems')
 const starredRouter = require('./routes/starred')
-const contactRouter = require('./routes/contact')
 
 app.use('/', indexRouter)
 app.use('/create', createRouter)
@@ -55,7 +54,6 @@ app.use('/login', loginRouter)
 app.use('/logout', logoutRouter)
 app.use('/userItems', userItemsRouter)
 app.use('/starred', starredRouter)
-app.use('/contact', contactRouter)
 
 
 // start and listen on the Express server

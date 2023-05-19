@@ -10,9 +10,6 @@ passport.use(new GoogleStrategy({
     callbackURL: "http://localhost:3000/auth/google/callback",
   },
   function(request, accessToken, refreshToken, profile, done) {
-    // User.findOrCreate({ googleId: profile.id }, function (err, user) {
-    //   return done(err, user);
-    // });
     return done(null, profile)
   }
 ));
@@ -22,6 +19,9 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(user, done) {
+  if (!user.email.includes('@umn.edu')) {
+    return done(null, null)
+  }
   User.findOne({ googleId: user.id })
     .then(existingUser => {
       if (!existingUser) {

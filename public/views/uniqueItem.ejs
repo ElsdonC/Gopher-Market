@@ -7,11 +7,15 @@
         <h1><%= item.name.toUpperCase() %></h1>
         <p>Category: <%= item.category %></p>
         <p>Description: <%= item.description %></p>
-        
         <p>Stars: <%= item.starCount %></p>
-        <p>Seller: <%= seller.displayName %></p>
-        <p>Contact: <%= seller.email %></p>
-        <a href="mailto:<%=seller.email%>?subject=Gopher Market Message" target="_blank"><button class="contactSellerBtn btn scale-up-hor-center">Contact Seller</button></a>
+        <% if (user) { %>
+            <p>Seller: <%= seller.displayName %></p>
+            <p>Contact: <%= seller.email %></p>
+            <a href="mailto:<%=seller.email%>?subject=Gopher Market Message" target="_blank"><button class="contactSellerBtn btn">Contact Seller</button></a>
+         <% } else { %>
+            <button onclick='window.location.href="/login"' class="contactSellerBtn btn">Login to contact seller</button>
+         <% } %>
+        
     </section>
 </section>
 
