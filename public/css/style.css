@@ -174,7 +174,7 @@ li {
     background-color: #fbb93c;
     color: black;
 }
-.contactSellerBtn:hover, .card:hover, img:hover {
+.contactSellerBtn:hover, img:hover {
     -webkit-animation: shadow-drop-2-center 0.4s
         cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
     animation: shadow-drop-2-center 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)
