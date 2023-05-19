@@ -2,7 +2,7 @@
 
 <section id="items" class="mt-5 d-flex flex-wrap">
     <% items.forEach((item)=>{ %>
-        <div class="card d-inline-block mb-4">
+        <div class="card d-inline-block mb-4 card-hover-scale itemCard">
             <a href="/item/<%= item.name %>" class="itemLink">
                 <img
                     src="../<%= item.imagePath %>"
@@ -38,6 +38,9 @@
             </a>
         </div>
     <% }) %>
+    <% if (items.length == 0) { %>
+       <h2>No Items Found</h2> 
+    <% } %>
 </section>
 
 <script src="../js/index.js"></script>

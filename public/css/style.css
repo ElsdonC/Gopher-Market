@@ -3,7 +3,7 @@
 body {
     box-sizing: border-box;
     font-family: "Neutraface Text", sans-serif;
-    background-color: #433d3d28;
+    background-color: #F8F3D4;
 }
 
 /* Navbar */
@@ -15,7 +15,7 @@ body {
     padding-right: 10%;
 }
 nav {
-    background-color: #433d3d28;
+    background-color: #F8F3D4;
 }
 .logo {
     height: 4.5vh;
@@ -28,7 +28,7 @@ li {
 /* Banner/Search */
 .banner {
     height: 20vh;
-    background-color: #fbb93c;
+    background-color: #FFD460;
 }
 #search {
     height: 5vh;
@@ -41,16 +41,15 @@ li {
     padding-right: 5%;
     padding-left: 5%;
     border-radius: 20px;
-    background-color: #862334;
+    background-color: #a00020e0;
     border: none;
-    color: white;
 }
 .searchInput::placeholder {
-    color: #fbb93c;
+    color: #F8F3D4;
 }
 .searchInput:focus {
-    background-color: #862334;
-    color: #fbb93c;
+    background-color: #a00020e0;
+    color: #F8F3D4;
     box-shadow: none;
 }
 .searchBtn {
@@ -83,7 +82,7 @@ li {
 }
 .logOut a {
     text-decoration: none;
-    color: black;
+    color: #2D4059;
 }
 .login {
     right: 0;
@@ -118,6 +117,12 @@ li {
     width: 22.5%;
     border: none;
 }
+.itemCard, .logOut, .signedIn {
+    transition: all 0.35s ease-in-out;
+}
+.itemCard:hover, .logOut:hover, .signedIn:hover {
+    scale: 1.1;
+}
 .itemLink {
     width: 100%;
     text-decoration: none;
@@ -132,6 +137,9 @@ li {
 .card-likes {
     color: black;
 }
+.card-likes {
+    align-self: flex-end;
+}
 .view {
     position: absolute;
     color: white;
@@ -141,7 +149,7 @@ li {
     z-index: 2;
 }
 .card-body {
-    background-color: #c0c0c03e;
+    background-color: #f8f3d4c2;
 }
 .location {
     margin-right: auto;
@@ -162,6 +170,9 @@ li {
 .deleteBtn {
     margin-right: auto;
 }
+.editDeleteButtons {
+    align-self: flex-start;
+}
 
 .contactSellerBtn {
     width: 20vw;
@@ -174,7 +185,7 @@ li {
     background-color: #fbb93c;
     color: black;
 }
-.contactSellerBtn:hover, img:hover {
+.contactSellerBtn:hover, .card {
     -webkit-animation: shadow-drop-2-center 0.4s
         cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
     animation: shadow-drop-2-center 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)
