@@ -23,7 +23,9 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light">
-            <img src="../../images/goldy.png" alt="logo" class="logo" />
+            <a class="logo" href="/"
+                ><img src="../../images/goldy.png" alt="logo" class="logo"
+            /></a>
             <button
                 class="navbar-toggler"
                 type="button"
@@ -118,34 +120,67 @@
                             </form>
                         </div>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            id="navbarDropdown"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                        >
+                            Filter by Location
+                        </a>
+                        <div
+                            class="dropdown-menu"
+                            aria-labelledby="navbarDropdown"
+                        >
+                            <a class="dropdown-item" href="/eastbank"
+                                >Eastbank</a
+                            >
+                            <a class="dropdown-item" href="/westbank"
+                                >Westbank</a
+                            >
+                            <a class="dropdown-item" href="/dinkytown"
+                                >DinkyTown</a
+                            >
+                            <a class="dropdown-item" href="/off-campus"
+                                >Off Campus</a
+                            >
+                        </div>
+                    </li>
                     <% if (user) { %>
-                    <div class="d-flex flex-row">
-                        <li class="nav-item">
+
+                    <div class="d-flex position-absolute logBtns">
+                        <li>
                             <a class="nav-link" href="/create">Create</a>
                         </li>
-                        <li class="nav-item">
+                        <li>
                             <a class="nav-link" href="/starred">Starred</a>
                         </li>
                         <li>
                             <a class="nav-link" href="/userItems">My Items</a>
                         </li>
+
+                        <form action="/logout" method="POST">
+                            <li
+                                class="logOut d-flex flex-row align-items-center p-2"
+                            >
+                                <span
+                                    ><button class="logoutBtn" type="submit">
+                                        Log Out
+                                    </button></span
+                                >
+                            </li>
+                        </form>
                     </div>
-                    <li
-                        class="signedIn d-flex flex-row align-items-center p-2 position-absolute"
-                    >
-                        <span>Logged In</span>
-                    </li>
-                    <form action="/logout" method="POST">
-                        <li
-                            class="logOut d-flex flex-row align-items-center p-2 position-absolute"
-                        >
-                            <span><button class="logoutBtn" type="submit">Log Out</button></span>
-                        </li>
-                    </form>
                     <% } else { %>
-                    <li class="login nav-item position-absolute">
-                        <a class="nav-link" href="/login">Login</a>
-                    </li>
+                    <div class="d-flex position-absolute logBtns">
+                        <li class="login">
+                            <a class="nav-link" href="/login">Login</a>
+                        </li>
+                    </div>
                     <% } %>
                 </ul>
             </div>

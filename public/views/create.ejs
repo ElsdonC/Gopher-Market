@@ -1,9 +1,10 @@
 <%- include('partials/header.ejs') %>
+<%- include('partials/banner.ejs') %>
 
 <div class="d-flex flex-row justify-content-center align-items-center">
-  <form onsubmit="return validateForm()" id="form" class="p-5 mt-5 w-25 bg-dark" enctype="multipart/form-data" action="/create/post" method="POST">
+  <form onsubmit="return validateForm()" id="form" class="p-4 createForm" enctype="multipart/form-data" action="/create/post" method="POST">
     <div class="mb-3">
-      <label for="name" class="form-label text-light">Item Name</label>
+      <label for="name" class="form-label">Item Name</label>
       <input
         type="text"
         class="form-control "
@@ -14,7 +15,7 @@
       />
     </div>
     <div class="mb-3">
-      <label for="category" class="form-label text-light">Item Category</label>
+      <label for="category" class="form-label">Item Category</label>
       <select id="category" name="category" class="form-select" aria-label="Default select example">
         <option value="" selected hidden disabled>Open this select menu</option>
         <option value="textbooks">textbooks</option>
@@ -26,17 +27,17 @@
       </select>
     </div>
     <div class="mb-3">
-      <label for="location" class="form-label text-light">Item Location</label>
+      <label for="location" class="form-label">Item Location</label>
       <select id="location" name="location" class="form-select" aria-label="Default select example">
         <option value="" selected hidden disabled>Open this select menu</option>
         <option value="westbank">westbank</option>
         <option value="eastbank">eastbank</option>
         <option value="dinkytown">dinkytown</option>
-        <option value="offcampus">off-campus</option>
+        <option value="off-campus">off-campus</option>
       </select>
     </div>    
     <div class="mb-3">
-      <label for="description" class="form-label text-light">Item Description <span>(characters remaining: <strong><span id="counter">50</span></strong>)</span></label>
+      <label for="description" class="form-label">Item Description <span>(characters remaining: <strong><span id="counter">50</span></strong>)</span></label>
       <textarea
         onkeyup="textCounter(this,'counter',50);"
         class="form-control"
@@ -49,7 +50,7 @@
       ></textarea>
     </div>
     <div class="input-group mb-3">
-      <label for="price" class="form-label w-100 text-light">Item Price</label>
+      <label for="price" class="form-label w-100">Item Price</label>
       <span class="input-group-text">$</span>
       <input
         type="number"
@@ -63,7 +64,7 @@
       />
     </div>
     <div class="input-group mb-3">
-      <label for="image" class="form-label w-100 text-light">Upload an Image</label>
+      <label for="image" class="form-label w-100">Upload an Image</label>
       <input
         type="file"
         class="form-control-file bg-light w-100"
@@ -75,7 +76,7 @@
       />
     </div>
     <div class="col-12">
-      <button class="btn btn-primary" type="submit">Sell Item</button>
+      <button class="btn btn-success" type="submit">Sell Item</button>
     </div>
   </form>
 </div>

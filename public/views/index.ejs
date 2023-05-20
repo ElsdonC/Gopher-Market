@@ -1,6 +1,6 @@
 <%- include('partials/header.ejs') %> <%- include('partials/searchBar.ejs') %>
 
-<section id="items" class="mt-5 d-flex flex-wrap">
+<section id="items" class="mt-5 pt-4 d-flex flex-wrap">
     <% items.forEach((item)=>{ %>
         <div class="card d-inline-block mb-4 card-hover-scale itemCard">
             <a href="/item/<%= item.name %>" class="itemLink">

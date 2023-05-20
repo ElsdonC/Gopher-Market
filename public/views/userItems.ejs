@@ -1,4 +1,5 @@
 <%- include('partials/header.ejs') %>
+<%- include('partials/searchBar.ejs') %>
 
 <section id="items" class="mt-5 d-flex flex-wrap">
     <% items.forEach((item)=>{ %>
@@ -12,13 +13,13 @@
             />
 
             <div class="card-body">
-                <h5 class="card-title"><%= item.name %></h5>
-                <p class="card-text">$<%= item.price.toFixed(2) %></p>
-                <p class="card-text"><%= item.description %></p>
+                <h5 class="card-title">$<%= item.price.toFixed(2) %></h5>
+                <p class="card-text"><%= item.name %></p>
+                <p class="location"><%= item.location %></p>
                 <div class="userItemFlex d-flex flex-column align-items-center justify-content-center">
                     <div class="editDeleteButtons d-flex flex-row w-100 gap-1">
                         <% let editLink = `/userItems/edit/${item.id}` %>
-                        <a href="<%= editLink %>" class="btn btn-info">Edit</a>
+                        <a href="<%= editLink %>" class="btn btn-warning">Edit</a>
                         <% let deleteLink =
                         `http://localhost:3000/userItems/delete/${item.id}` %>
                         <button

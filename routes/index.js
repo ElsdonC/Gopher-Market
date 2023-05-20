@@ -19,8 +19,13 @@ router.get('/kitchenware', homeController.getKitchenware)
 
 router.post('/filterPrice', homeController.filterPrice)
 
-router.get('/items', homeController.getAllItems)
+router.post('/items', homeController.searchItems)
 
 router.get('/item/:name', homeController.getItem)
+
+router.get('/eastbank', homeController.getEastBankItems)
+router.get('/westbank', homeController.getWestBankItems)
+router.get('/dinkytown', homeController.getDinkyTownItems)
+router.get('/off-campus', homeController.getOffCampusItems)
 
 module.exports = router

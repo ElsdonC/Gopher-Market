@@ -1,16 +1,17 @@
 <%- include('partials/header.ejs') %>
+<%- include('partials/banner.ejs') %>
 
 <div class="d-flex flex-row justify-content-center align-items-center">
   <% let postLink = `/userItems/postEdit/${item.id}` %>
   <form
     id="form"
-    class="p-5 mt-5 w-25 bg-dark"
+    class="p-4 editForm"
     enctype="multipart/form-data"
     action="<%= postLink %>"
     method="POST"
   >
     <div class="mb-3">
-      <label for="name" class="form-label text-light">Item Name</label>
+      <label for="name" class="form-label">Item Name</label>
       <input
         type="text"
         class="form-control"
@@ -22,7 +23,7 @@
       />
     </div>
     <div class="mb-3">
-      <label for="location" class="form-label text-light">Item Location</label>
+      <label for="location" class="form-label">Item Location</label>
       <select id="location" name="location" class="form-select" aria-label="Default select example">
         <option value="" selected hidden disabled>Open this select menu</option>
         <option value="westbank">westbank</option>
@@ -32,7 +33,7 @@
       </select>
     </div>  
     <div class="mb-3">
-      <label for="description" class="form-label text-light"
+      <label for="description" class="form-label"
         >Item Description
         <span
           >(characters remaining: <strong><span id="counter">50</span></strong
@@ -52,7 +53,7 @@
       >
     </div>
     <div class="input-group mb-3">
-      <label for="price" class="form-label w-100 text-light">Item Price</label>
+      <label for="price" class="form-label w-100">Item Price</label>
       <span class="input-group-text">$</span>
       <input
         type="number"
@@ -67,7 +68,7 @@
       />
     </div>
     <div class="input-group mb-3">
-      <label for="image" class="form-label w-100 text-light"
+      <label for="image" class="form-label w-100"
         >Change Image</label
       >
       <input
@@ -81,7 +82,8 @@
       />
     </div>
     <div class="col-12">
-      <button class="btn btn-primary" type="submit">Submit Edits</button>
+      <button class="btn btn-success" type="submit">Submit Edits</button>
+      <button class="btn btn-secondary" onclick="window.location.href='/userItems'">Cancel</button>
     </div>
   </form>
 </div>

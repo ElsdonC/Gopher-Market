@@ -109,7 +109,7 @@ module.exports = {
             });
         }
     },
-    getAllItems: async (req, res) => {
+    searchItems: async (req, res) => {
         const searchQuery = req.query.q;
         let items = await ItemModel.find();
         let searchItems = items;
@@ -119,7 +119,7 @@ module.exports = {
             searchItems = [];
             items.forEach((item) => {
                 if (
-                    item.name.toLowerCase().includes(searchQuery.toLowerCase())
+                    item.name.toLowerCase().includes(searchQuery.toLowerCase()) && req.body.items.includes(item.name)
                 ) {
                     searchItems.push(item);
                 }
@@ -138,8 +138,8 @@ module.exports = {
                                 }" class="card-img-top" alt="${item.name}" />
                             
                             <div class="card-body">
-                            <h5 class="card-title">${item.name}</h5>
-                            <p class="card-text">$${item.price.toFixed(2)}</p>
+                            <h5 class="card-title">$${item.price.toFixed(2)}</h5>
+                            <p class="card-text">${item.name}</p>
                             <div class="d-flex flex-row align-items-center">
                                 <span class="location">${item.location}</span>
                                 <span class="card-likes">
@@ -176,4 +176,20 @@ module.exports = {
             seller: seller[0],
         });
     },
+    getEastBankItems: async (req, res) => {
+        const items = await ItemModel.find({ location: "eastbank" });
+        res.render("index", { items: items, user: req.user, title: "East Bank Items"})
+    },
+    getWestBankItems: async (req, res) => {
+        const items = await ItemModel.find({ location: "westbank" });
+        res.render("index", { items: items, user: req.user, title: "West Bank Items"})
+    },
+    getDinkyTownItems: async (req, res) => {
+        const items = await ItemModel.find({ location: "dinkytown" });
+        res.render("index", { items: items, user: req.user, title: "Dinkytown Items"})
+    },
+    getOffCampusItems: async (req, res) => {
+        const items = await ItemModel.find({ location: "off-campus" });
+        res.render("index", { items: items, user: req.user, title: "Off Campus Items"})
+    }
 };

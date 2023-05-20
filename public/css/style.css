@@ -5,7 +5,6 @@ body {
     font-family: "Neutraface Text", sans-serif;
     background-color: #F8F3D4;
 }
-
 /* Navbar */
 .active {
     border-bottom: 1px solid black;
@@ -24,6 +23,37 @@ nav {
 li {
     list-style: none;
 }
+.login {
+    background-color: #4bb54398;
+    border-radius: 10px;
+    padding: 0 10px;
+}
+@media only screen and (max-width: 990px) {
+    .active {
+        border-bottom: 0;
+        background-color: #FFD460;
+        border-radius: 5px;
+    }
+    .navbar ul {
+        padding-top: 10px;
+    }
+    .nav-item {
+        width: 50%;
+        margin-right: 10px;
+    }
+    .nav-link {
+        margin-bottom: 10px;
+        padding-left: 10px;
+    }
+    .logBtns {
+        left: 55%;
+    }
+    .login {
+        background-color: transparent;
+        border-radius: 0;
+        padding: 0;
+    }
+}
 
 /* Banner/Search */
 .banner {
@@ -36,19 +66,20 @@ li {
 .searchBar {
     height: 5.65vh;
     bottom: -2.5vh;
+    width: 25%;
 }
 .searchInput {
     padding-right: 5%;
     padding-left: 5%;
     border-radius: 20px;
-    background-color: #a00020e0;
+    background-color: #730219ca;
     border: none;
 }
 .searchInput::placeholder {
     color: #F8F3D4;
 }
 .searchInput:focus {
-    background-color: #a00020e0;
+    background-color: #730219e7;
     color: #F8F3D4;
     box-shadow: none;
 }
@@ -61,19 +92,33 @@ li {
 .banner h1 {
     font-size: 3.5rem;
 }
+@media only screen and (max-width: 600px) {
+    .searchBar {
+        width: 70%;
+        height: 6vh;
+    }
+    .searchInput {
+        padding-left: 10%;
+    }
+    .banner h1 {
+        font-size: 2.5rem;
+    }
+}
+@media only screen and (min-width: 600px) and (max-width: 1200px) {
+    .searchBar {
+        width: 50%;
+    }
+}
 
 /* Authentication */
-.signedIn {
-    background-color: #6cb86679;
-    width: auto;
-    border-radius: 10px;
-    right: 5%;
+.logBtns {
+    right: 0;
+    
 }
 .logOut {
-    background-color: #ff000079;
+    background-color: #ff000060;
     width: auto;
     border-radius: 10px;
-    right: 0;
 }
 .logoutBtn {
     border: none;
@@ -93,6 +138,11 @@ li {
     margin-top: 2.5vh;
     font-size: 2rem;
 }
+@media only screen and (max-width: 990px) {
+    .logBtns {
+        flex-direction: column;
+    }
+}
 
 /* Item Page */
 #itemPage {
@@ -107,73 +157,6 @@ li {
 .itemImage {
     width: 25vw;
 }
-
-/* Item Posts */
-#items {
-    padding: 0 10%;
-    gap: 3.3333%;
-}
-.card {
-    width: 22.5%;
-    border: none;
-}
-.itemCard, .logOut, .signedIn {
-    transition: all 0.35s ease-in-out;
-}
-.itemCard:hover, .logOut:hover, .signedIn:hover {
-    scale: 1.1;
-}
-.itemLink {
-    width: 100%;
-    text-decoration: none;
-    color: black;
-}
-.card-img-top {
-    height: 20vh;
-    object-fit: cover;
-}
-.card-title,
-.card-text,
-.card-likes {
-    color: black;
-}
-.card-likes {
-    align-self: flex-end;
-}
-.view {
-    position: absolute;
-    color: white;
-    font-size: 2rem;
-    font-weight: 500;
-    display: none;
-    z-index: 2;
-}
-.card-body {
-    background-color: #f8f3d4c2;
-}
-.location {
-    margin-right: auto;
-}
-
-/* Forms */
-.error-message {
-    color: red;
-    font-size: 12px;
-    margin-top: 5px;
-}
-#form {
-    border-radius: 5%;
-}
-
-/* User Items */
-.contactSellerBtn,
-.deleteBtn {
-    margin-right: auto;
-}
-.editDeleteButtons {
-    align-self: flex-start;
-}
-
 .contactSellerBtn {
     width: 20vw;
     background-color: #fbb93c;
@@ -185,7 +168,7 @@ li {
     background-color: #fbb93c;
     color: black;
 }
-.contactSellerBtn:hover, .card {
+.contactSellerBtn:hover, .card, .login:hover, .logOut:hover, .btn:hover {
     -webkit-animation: shadow-drop-2-center 0.4s
         cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
     animation: shadow-drop-2-center 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)
@@ -220,8 +203,124 @@ li {
     }
 }
 
-.userItemFlex {
-    gap: 3%;
+@media only screen and (max-width: 600px) {
+    #itemPage {
+        flex-direction: column;
+        text-align: center;
+        gap: 1%;
+    }
+    .itemImage {
+        width: 80%;
+    }
+    .contactSellerBtn {
+        width: 100%;
+        margin-bottom: 5%;
+    }
+}
+
+/* Item Posts */
+#items {
+    padding: 0 10%;
+    gap: 3.3333%;
+}
+.card {
+    width: 22.5%;
+    border: none;
+}
+.itemCard, .logOut, .signedIn {
+    transition: all 0.35s ease-in-out;
+}
+.itemCard:hover {
+    scale: 1.1;
+}
+.itemLink {
+    width: 100%;
+    text-decoration: none;
+    color: black;
+    margin-bottom: 1vh;
+}
+.card-img-top {
+    height: 20vh;
+    object-fit: cover;
+}
+.card-title,
+.card-text,
+.card-likes {
+    color: black;
+}
+.card-text {
+    margin-bottom: 0;
+}
+.card-likes {
+    align-self: flex-end;
+}
+.view {
+    position: absolute;
+    color: white;
+    font-size: 2rem;
+    font-weight: 500;
+    display: none;
+    z-index: 2;
+}
+.card-body {
+    background-color: #f8f3d4c2;
+}
+.location {
+    margin-right: auto;
+}
+
+@media only screen and (max-width: 600px) {
+    .card {
+        width: 100%;
+    }
+}
+@media only screen and (min-width: 600px) and (max-width: 1200px) {
+    .card {
+        width: 48%;
+    }
+}
+
+/* Forms */
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+#form {
+    border-radius: 10px;
+}
+.createForm, .editForm {
+    width: 30%;
+    margin-top: 5vh;
+    background-color: #b8ac6618;
+}
+.createForm label, .editForm label {
+    color: black;
+}
+@media only screen and (max-width: 600px) {
+    .createForm, .editForm {
+        width: 100%;
+        background-color: #b8ac6618;
+        margin-top: 0;
+    }
+    #form {
+        border-radius: 0;
+    }
+}
+@media only screen and (min-width: 600px) and (max-width: 1200px) {
+    .createForm, .editForm {
+        width: 60%;
+    }
+}
+
+/* User Items */
+.contactSellerBtn,
+.deleteBtn {
+    margin-right: auto;
+}
+.editDeleteButtons {
+    position: relative;
+    width: auto;
 }
 
 /* Star */
