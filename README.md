@@ -6,9 +6,11 @@ Users are able to browse and filter through items as well as sell their own item
 
 **Link to project:** [https://gophermarket.onrender.com](https://gophermarket.onrender.com)
 
-![image](https://github.com/ElsdonC/gopher-market/assets/67447710/50bdb6cf-4cd5-413c-b7b9-76ecdb8ed353)
+## Preview
 
-## How It's Made:
+![gopher-market](https://github.com/ElsdonC/gopher-market/assets/67447710/69f92bb9-e3c3-4b82-997b-b415768e4be7)
+
+## How It's Made
 
 **Tech used:** JavaScript, Node.js, Express.js, MongoDB, EJS
 
@@ -24,7 +26,7 @@ Some future tweaks if time allows:
 - Implement pagination for displaying large result sets, allowing users to navigate through pages rather than loading all data at once. This can improve performance and reduce the load on the server.
 - Utilize client-side rendering frameworks like React or Vue.js to shift some of the rendering responsibilities to the client-side, reducing the load on the server and improving perceived performance.
 
-## Lessons Learned:
+## Lessons Learned
 
 I discovered the power of building a scalable MVC architecture with Node.js, Express.js, and MongoDB, and the satisfaction of implementing features like user authentication, search and filtering functionality, and asynchronous operations using JavaScript.
 Through the countless hours of reading through documentation, I learned that patience is key when learning new languages and technologies.
