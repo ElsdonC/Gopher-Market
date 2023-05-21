@@ -1,7 +1,7 @@
 document.querySelectorAll("input[type=checkbox]").forEach((checkbox) => {
   checkbox.addEventListener("change", async function () {
     if (this.checked) {
-      await fetch(`http://localhost:3000/starred/add/${id}`)
+      await fetch(`https://gophermarket.onrender.com/starred/add/${id}`)
       window.location.reload();
     } else {
       $(`#unstarModal_${this.id}`).modal("show");
@@ -15,6 +15,6 @@ function keepChecked(id) {
 }
 
 async function unstar(id) {
-  await fetch(`http://localhost:3000/starred/remove/${id}`);
+  await fetch(`https://gophermarket.onrender.com/starred/remove/${id}`);
   window.location.reload();
 }

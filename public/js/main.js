@@ -30,7 +30,7 @@ document.querySelector(".searchInput").addEventListener("input", (e) => {
         window.location.reload()
     }
     // Fetch items with search query
-    fetch(`http://localhost:3000/items?q=${searchQuery}`, {
+    fetch(`https://gophermarket.onrender.com/items?q=${searchQuery}`, {
         method: "POST",
         headers: {
             Accept: 'application/json',
