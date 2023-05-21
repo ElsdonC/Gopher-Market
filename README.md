@@ -6,7 +6,7 @@ Users are able to browse and filter through items as well as sell their own item
 
 **Link to project:** [https://gophermarket.onrender.com](https://gophermarket.onrender.com)
 
-[![image](https://github.com/ElsdonC/gopher-market/assets/67447710/50bdb6cf-4cd5-413c-b7b9-76ecdb8ed353)](https://gophermarket.onrender.com)
+<a href="https://gophermarket.onrender.com" target="_blank">![image](https://github.com/ElsdonC/gopher-market/assets/67447710/50bdb6cf-4cd5-413c-b7b9-76ecdb8ed353)</a>
 
 ## How It's Made:
 
