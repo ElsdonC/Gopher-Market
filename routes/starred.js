@@ -3,10 +3,10 @@ const router = express.Router()
 const starredController = require('../controllers/starred')
 const { ensureAuth } = require('../middleware/ensureAuth')
 
-router.get("/", ensureAuth, starredController.getStarred)
+router.get("/", ensureAuth, starredController.getBookmarked)
 
-router.get("/add/:id", ensureAuth, starredController.addStar)
+router.post("/add/:id", ensureAuth, starredController.add)
 
-router.get("/remove/:id", ensureAuth, starredController.removeStar)
+router.post("/remove/:id", ensureAuth, starredController.remove)
 
 module.exports = router

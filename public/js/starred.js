@@ -1,20 +1,41 @@
-document.querySelectorAll("input[type=checkbox]").forEach((checkbox) => {
-  checkbox.addEventListener("change", async function () {
-    if (this.checked) {
-      await fetch(`https://gophermarket.onrender.com/starred/add/${id}`)
-      window.location.reload();
-    } else {
-      $(`#unstarModal_${this.id}`).modal("show");
-    }
-  });
-});
+// document.querySelectorAll(".bookmark").forEach((element) => {
+//     element.addEventListener("click", async function () {
+//         if (this.classList.contains("bi-bookmark-fill")) {
+//             $(`#unstarModal_${this.id}`).modal("show");
+//         } else {
+//             await fetch(`http://localhost:3000/starred/add`, {
+//                 method: "POST",
+//                 headers: {
+//                     "Content-Type": "application/json",
+//                 },
+//                 body: JSON.stringify({ id: this.id }),
+//             })
+//                 .then((res) => res.json())
+//                 .then((data) => {
+//                     console.log(data.message);
+//                 })
+//                 .catch((err) => {
+//                     console.error(err);
+//                 });
+//                 window.location.reload();
+//         }
+//     });
+// });
 
-function keepChecked(id) {
-  document.getElementById(id).checked = true;
-  window.location.reload();
-}
-
-async function unstar(id) {
-  await fetch(`https://gophermarket.onrender.com/starred/remove/${id}`);
-  window.location.reload();
-}
+// async function unstar(id) {
+//     await fetch(`http://localhost:3000/starred/remove`, {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({ id: id }),
+//     })
+//         .then((res) => res.json())
+//         .then((data) => {
+//             console.log(data.message);
+//         })
+//         .catch((err) => {
+//             console.error(err);
+//         });
+//     window.location.reload();
+// }

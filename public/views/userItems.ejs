@@ -1,11 +1,9 @@
-<%- include('partials/header.ejs') %>
-<%- include('partials/searchBar.ejs') %>
+<%- include('partials/header.ejs') %> <%- include('partials/banner.ejs') %>
 
 <section id="items" class="mt-5 d-flex flex-wrap">
     <% items.forEach((item)=>{ %>
-    <div class="card d-inline-block mb-4 itemCard">
+    <div class="card d-inline-block mb-4 card-hover-scale itemCard">
         <a href="/item/<%= item.name %>" class="itemLink">
-            <p class="view">View Item</p>
             <img
                 src="../<%= item.imagePath %>"
                 class="card-img-top"
@@ -13,24 +11,27 @@
             />
 
             <div class="card-body">
-                <h5 class="card-title">$<%= item.price.toFixed(2) %></h5>
-                <p class="card-text"><%= item.name %></p>
-                <p class="location"><%= item.location %></p>
-                <div class="userItemFlex d-flex flex-column align-items-center justify-content-center">
-                    <div class="editDeleteButtons d-flex flex-row w-100 gap-1">
-                        <% let editLink = `/userItems/edit/${item.id}` %>
-                        <a href="<%= editLink %>" class="btn btn-warning">Edit</a>
-                        <% let deleteLink =
-                        `https://gophermarket.onrender.com/userItems/delete/${item.id}` %>
-                        <button
-                            type="button"
-                            class="deleteBtn btn btn-danger"
-                            onclick="showDeleteModal('<%=item.id%>')"
-                        >
-                            Sold/Delete
-                        </button>
-                    </div>
+                <span class="card-text item-name"><%= item.name %></span>
+
+                <br />
+                <span class="card-title item-price"
+                    >$<%= item.price.toFixed(2) %></span
+                >
+                <div class="d-flex flex-row align-items-center mb-1">
+                    <i class="fa-solid fa-location-dot"></i
+                    ><span class="location"><%=item.location%></span>
                 </div>
+                <% let editLink = `/userItems/edit/${item.id}` %>
+                <a href="<%= editLink %>" class="btn btn-warning">Edit</a>
+                <% let deleteLink =
+                `http://localhost:3000/userItems/delete/${item.id}` %>
+                <button
+                    type="button"
+                    class="deleteBtn btn btn-danger"
+                    onclick="showDeleteModal('<%=item.id%>')"
+                >
+                    Sold/Delete
+                </button>
             </div>
         </a>
     </div>
@@ -71,6 +72,7 @@
             </div>
         </div>
     </div>
+
     <% }) %> <% if (items.length == 0) { %>
     <h2>No Items Found</h2>
     <% } %>

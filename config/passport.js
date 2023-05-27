@@ -1,36 +1,66 @@
-require('dotenv').config()
-const { use } = require('passport');
-const passport = require('passport')
-const User = require('../models/user');
-const GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
+require("dotenv").config();
+const { use } = require("passport");
+const passport = require("passport");
+const User = require("../models/user");
+const GoogleStrategy = require("passport-google-oauth2").Strategy;
+const LocalStrategy = require("passport-local");
 
-passport.use(new GoogleStrategy({
-    clientID: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "https://gophermarket.onrender.com/auth/google/callback",
-  },
-  function(request, accessToken, refreshToken, profile, done) {
-    return done(null, profile)
-  }
-));
+var strategy = new LocalStrategy(async function (username, password, cb) {
+    try {
+        const user = await User.findOne({ googleId: "demo" });
+        return cb(null, user);
+    } catch (err) {
+        return cb(err);
+    }
+});
+passport.use(strategy);
 
-passport.serializeUser(function(user, done) {
-  done(null, user); 
+passport.use(
+    new GoogleStrategy(
+        {
+            clientID: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+            callbackURL: `http://localhost:3000/auth/google/callback`,
+        },
+        function (request, accessToken, refreshToken, profile, done) {
+            return done(null, profile);
+        }
+    )
+);
+
+passport.serializeUser(function (user, done) {
+    if (user.googleId == "demo") {
+      process.nextTick(function() {
+        return done(null, user);
+      });
+    } else {
+      done(null, user);
+    } 
 });
 
-passport.deserializeUser(function(user, done) {
-  if (!user.email.includes('@umn.edu')) {
-    return done(null, null)
-  }
-  User.findOne({ googleId: user.id })
-    .then(existingUser => {
-      if (!existingUser) {
-        const newUser = User.create({googleId: user.id, email: user.email, displayName: user.displayName, image: user.picture})
-        return done(null, newUser)
-      }
-      return done(null, existingUser);
-    })
-    .catch(err => {
-      return done(err, null);
-    });
+passport.deserializeUser(function (user, done) {
+    if (user.googleId == "demo") {
+      process.nextTick(function() {
+        return done(null, user);
+      });
+    } else if (user.email.includes("@umn.edu")) {
+      User.findOne({ googleId: user.id })
+        .then((existingUser) => {
+            if (!existingUser) {
+                const newUser = User.create({
+                    googleId: user.id,
+                    email: user.email,
+                    displayName: user.displayName,
+                    starred: []
+                });
+                return done(null, newUser);
+            }
+            return done(null, existingUser);
+        })
+        .catch((err) => {
+            return done(err, null);
+        });
+    } else {
+      return done(null, null);
+    }
 });

@@ -1,10 +1,19 @@
 async function deleteItem(link) {
-    const res = await fetch(link, {
-        method: "DELETE"
+    await fetch(link, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
     })
-    window.location.reload()
+        .then((res) => res.json())
+        .then((data) => {
+            if (data.message) {
+                alert(data.message)
+            }
+        });
+    window.location.reload();
 }
 
 function showDeleteModal(id) {
-    $(`#deleteModal_${id}`).modal('show');
+    $(`#deleteModal_${id}`).modal("show");
 }

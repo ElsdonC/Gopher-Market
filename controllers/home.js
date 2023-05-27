@@ -7,7 +7,7 @@ module.exports = {
         res.render("index.ejs", {
             items: items,
             user: req.user,
-            title: "Gopher Market",
+            title: null,
         });
     },
     getTextbooks: async (req, res) => {
@@ -83,13 +83,7 @@ module.exports = {
         }
 
         // render the index.ejs file with the filtered items
-        if (items.length == 0) {
-            res.render("index", {
-                items: items,
-                user: req.user,
-                title: "No Items Found!",
-            });
-        } else if (minPrice && maxPrice) {
+        if (minPrice && maxPrice) {
             res.render("index", {
                 items: items,
                 user: req.user,
@@ -168,7 +162,9 @@ module.exports = {
     getItem: async (req, res) => {
         const name = req.params.name;
         const item = await ItemModel.find({ name: name });
-        const seller = await UserModel.find({ googleId: item[0].createdById });
+        var seller = await UserModel.find({ googleId: item[0].createdById });
+        
+        
         res.render("uniqueItem", {
             item: item[0],
             user: req.user,
