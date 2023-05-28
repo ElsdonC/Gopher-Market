@@ -16,8 +16,12 @@ module.exports = {
         await UserModel.updateOne(
             { googleId: req.user.googleId },
             { $push: { starred: id } }
-        ).then(()=>{
-            res.json({"message": "added to bookmarks"})
+        ).then(async ()=>{
+            let starred = await UserModel.find({
+                googleId: req.user.googleId
+            }, {starred: 1, _id: 0})
+            req.user.starred = starred[0].starred
+            res.json({"list": req.user.starred})
         }).catch(err=>{
             console.log(err)
         })
@@ -28,8 +32,12 @@ module.exports = {
         await UserModel.updateOne(
             { googleId: req.user.googleId },
             { $pull: { starred: id } }
-        ).then(()=>{
-            res.json({"message": "removed from bookmarks"})
+        ).then(async ()=>{
+            let starred = await UserModel.find({
+                googleId: req.user.googleId
+            }, {starred: 1,  _id: 0})
+            req.user.starred = starred[0].starred
+            res.json({"list": req.user.starred})
         }).catch(err=>{
             console.log(err)
         })
