@@ -1,0 +1,48 @@
+:root {
+    --lightmaroon: #900021;
+    --maroon: #7a0019;
+    --darkmaroon: #5b0013;
+    --lightgold: #ffde7a;
+    --gold: #ffcc33;
+    --darkgold: #ffb71e;
+    --lightgray: #d5d6d2;
+    --gray: #777677;
+    --darkgray: #5a5a5a;
+    --offwhite: #f9f7f6;
+}
+.index {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    border-top: 2px solid black;
+}
+/* Filter */
+.filter {
+    position: fixed;
+    top: 80px;
+    width: 20vw;
+    height: 100%;
+    background-color: var(--lightgray);
+}
+.filter * {
+    overflow: hidden;
+}
+.filtersContainer {
+    background-color: white;
+    width: 90%;
+    margin: 30px auto;
+    border-radius: 10px;
+}
+.filtersContainer li a {
+    text-decoration: none;
+    color: black;
+}
+
+
+/* Results */
+.results {
+    position: absolute;
+    left: 20vw;
+    top: 80px;
+    z-index: -1;
+}

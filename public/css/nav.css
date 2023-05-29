@@ -1,0 +1,151 @@
+:root {
+    --lightmaroon: #900021;
+    --maroon: #7a0019;
+    --darkmaroon: #5b0013;
+    --lightgold: #ffde7a;
+    --gold: #ffcc33;
+    --darkgold: #ffb71e;
+    --lightgray: #d5d6d2;
+    --gray: #777677;
+    --darkgray: #5a5a5a;
+    --offwhite: #f9f7f6;
+}
+.active {
+    border-bottom: 1px solid black;
+}
+.navbar {
+    width: 100vw;
+    margin: 0 auto;
+    padding: 20px 10vw;
+    height: 80px;
+    background-color: white;
+    position: fixed;
+    overflow: hidden;
+    border-bottom: 1px solid black;
+}
+nav ul {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 2rem;
+    font-weight: 600;
+}
+li {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+/* Logo */
+.logoContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+.logo {
+    height: 50px;;
+}
+/* Search Bar */
+.searchBar {
+    height: 45px;
+    width: 30vw;
+    position: relative;
+}
+.searchIcon {
+    color: var(--gray);
+    position: absolute;
+    height: 20px;
+    left: 15px;
+    top: 14px;
+}
+.searchInput {
+    padding: 0 15px 0 35px;
+    border-radius: 25px;
+    border: 2px solid black;
+}
+.searchInput::placeholder {
+    color: var(--gray);
+}
+.searchInput:focus {
+    color: black;
+    box-shadow: none;
+}
+/* Navigation links */
+.shopping-cart, .nav-bookmark, .profile {
+    height: 25px;
+}
+.profileNav {
+    height: 40px;
+    position: relative;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+.profileNav li a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.logoutBtn {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+}
+.logoutBtn:hover {
+    color: var(--lightmaroon);
+}
+
+@media only screen and (max-width: 600px) {
+    .searchBar {
+        width: 70%;
+        height: 6vh;
+    }
+    .searchInput {
+        padding-left: 10%;
+    }
+    .bannerResults {
+        width: 90vw;
+    }
+}
+@media only screen and (min-width: 600px) and (max-width: 1200px) {
+    .searchBar {
+        width: 50%;
+    }
+    .bannerResults {
+        width: 90vw;
+    }
+}
+@media only screen and (max-width: 990px) {
+    .active {
+        border-bottom: 0;
+        background-color: var(--gold);
+        border-radius: 5px;
+    }
+    .navbar ul {
+        padding-top: 10px;
+    }
+    .nav-item {
+        width: 50%;
+        margin-right: 10px;
+    }
+    .nav-link {
+        margin-bottom: 10px;
+        padding-left: 10px;
+    }
+    .logBtns {
+        left: 55%;
+    }
+    .login {
+        background-color: transparent;
+        border-radius: 0;
+        padding: 0;
+    }
+}

@@ -1,46 +1,12 @@
-<%- include('partials/header.ejs') %> <%- include('partials/banner.ejs') %>
-
-<section id="items" class="mt-4 d-flex flex-wrap">
-    
-    <% items.forEach((item)=>{ %>
-        <div class="card d-inline-block mb-4 card-hover-scale itemCard">
-            <a href="/item/<%= item.name %>" class="itemLink">
-                <img
-                    src="../<%= item.imagePath %>"
-                    class="card-img-top"
-                    alt="<%= item.name %>"
-                />
-
-                <div class="card-body">
-                    <div class="d-flex flex-row align-items-center justify-content-between">
-                        <span class="card-text item-name"><%= item.name %></span>
-                        <span class="card-title item-price">$<%= item.price.toFixed(2) %></span>
-                    </div>
-                    <div class="d-flex flex-row align-items-center justify-content-between">
-                        <div><i class="fa-solid fa-location-dot"></i><span class="location"><%=item.location%></span></div>
-                        <% if (user) { %> <% if (user.starred.includes(item.id)) { %>
-                        <a class="bookmarkAnchor" href="javascript:void(0)">
-                            <svg id="<%= item.id %>" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-fill bookmark" viewBox="0 0 16 16">
-                                <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/>
-                            </svg>
-                        </a>
-                        <% } else { %>
-                        <a class="bookmarkAnchor" href="javascript:void(0)">
-                            <svg id="<%= item.id %>" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark bookmark" viewBox="0 0 16 16">
-                                <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
-                            </svg>
-                        </a>
-                        <% }} %>
-                        <img src="../images/add-to-cart.png" class="add-to-cart" alt="Shopping cart icon">
-                    </div>
-                    
-                </div>
-            </a>
-        </div>
-    <% }) %>
-    <% if (items.length == 0) { %>
-       <h2>No Items Found</h2> 
-    <% } %>
+<%- include('partials/header.ejs') %>
+<section class="index">
+    <section class="filter">
+        <%- include('partials/filter.ejs') %>
+    </section>
+    <section class="results">
+        <%- include('partials/title.ejs') %>
+        <%- include('partials/items.ejs') %>
+    </section>
 </section>
 
 <script src="../js/index.js"></script>

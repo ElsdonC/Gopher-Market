@@ -1,0 +1,74 @@
+<ul class="filtersContainer">
+    <h3>Filter</h3>
+    <h4>Category</h4>
+    <input type="radio" id="all">
+    <label for="all">All Items</label><br>
+    <input type="radio" id="textbooks">
+    <label for="textbooks">Textbooks</label><br>
+    <input type="radio" id="school-supplies">
+    <label for="school-supplies">School Supplies</label><br>
+    <input type="radio" id="electronics">
+    <label for="electronics">Electronics</label><br>
+    <input type="radio" id="furniture-applicances">
+    <label for="furniture-applicances">Furniture/Appliances</label><br>
+    <input type="radio" id="clothing">
+    <label for="clothing">Clothing</label><br>
+    <input type="radio" id="kitchenware">
+    <label for="kitchenware">Kitchenware</label><br>
+    
+    <h4>Location</h4>
+    <input type="radio" id="eastbank">
+    <label for="eastbank">East Bank</label><br>
+    <input type="radio" id="westbank">
+    <label for="westbank">West Bank</label><br>
+    <input type="radio" id="dinkytwon">
+    <label for="dinkytwon">DinkyTown</label><br>
+    <input type="radio" id="off-campus">
+    <label for="off-campus">Off Campus</label><br>
+
+    <h4>Price</h4>
+    <label for="min">Minimum</label>
+    <input type="text" id="min"><br>
+    <label for="max">Maximum</label>
+    <input type="text" id="max">
+    <li class="dropdown">
+        
+        <a
+            class="dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+        >
+            Filter by Price
+        </a>
+        <div
+            class="dropdown-menu"
+        >
+            <form method="POST" action="/filterPrice">
+                <input
+                    type="number"
+                    class="form-control"
+                    name="min"
+                    onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
+                    placeholder="Min price"
+                    aria-label="Min price"
+                    aria-describedby="filter-price-addon"
+                />
+                <input
+                    type="number"
+                    class="form-control"
+                    name="max"
+                    onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
+                    placeholder="Max price"
+                    aria-label="Max price"
+                    aria-describedby="filter-price-addon"
+                />
+                <button type="submit" class="btn btn-primary">
+                    Filter
+                </button>
+            </form>
+        </div>
+    </li>
+</ul>

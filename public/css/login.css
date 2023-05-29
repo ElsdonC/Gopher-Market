@@ -1,0 +1,79 @@
+:root {
+    --lightmaroon: #900021;
+    --maroon: #7a0019;
+    --darkmaroon: #5b0013;
+    --lightgold: #ffde7a;
+    --gold: #ffcc33;
+    --darkgold: #ffb71e;
+    --lightgray: #d5d6d2;
+    --gray: #777677;
+    --darkgray: #5a5a5a;
+    --offwhite: #f9f7f6;
+}
+.g-sign-in-button, .demo-sign-in-button {
+    margin: 10px;
+    display: inline-block;
+    width: 240px;
+    height: 50px;
+    background-color: #4285f4;
+    color: #fff;
+    border-radius: 1px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+    transition: background-color .218s, border-color .218s, box-shadow .218s;
+}
+.g-sign-in-button:hover {
+    cursor: pointer;
+    -webkit-box-shadow: 0 0 3px 3px rgba(66, 133, 244, 0.3);
+    box-shadow: 0 0 3px 3px rgba(66, 133, 244, 0.3);
+}
+.demo-sign-in-button {
+    background-color: var(--darkgold);
+}
+.demo-sign-in-button:hover {
+    cursor: pointer;
+    -webkit-box-shadow: 0 0 3px 3px rgba(52, 59, 70, 0.3);
+    box-shadow: 0 0 3px 3px rgba(52, 59, 70, 0.3);
+}
+.g-sign-in-button:active {
+    background-color: #3367D6;
+    transition: background-color 0.2s;
+}
+.g-sign-in-button .content-wrapper, .demo-sign-in-button .content-wrapper {
+    height: 100%;
+    width: 100%;
+    border: 1px solid transparent;
+    display: flex;
+    flex-direction: row;
+}
+.g-sign-in-button img, .demo-sign-in-button img {
+    width: 18px;
+    height: 18px;
+}
+.g-sign-in-button .logo-wrapper, .demo-sign-in-button .logo-wrapper {
+    background: #fff;
+    width: 48px;
+    height: 100%;
+    border-radius: 1px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.g-sign-in-button .text-container, .demo-sign-in-button .text-container {
+    line-height: 48px;
+    border: none;
+    display: inline-block;
+    text-align: center;
+    width: 180px;
+}
+.emailInfo {
+    width: 100%;
+    text-align: center;
+    margin-top: 2.5vh;
+    font-size: 2rem;
+}
+@media only screen and (max-width: 990px) {
+    .logBtns {
+        flex-direction: column;
+    }
+}

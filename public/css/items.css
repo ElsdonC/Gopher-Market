@@ -1,0 +1,72 @@
+:root {
+    --lightmaroon: #900021;
+    --maroon: #7a0019;
+    --darkmaroon: #5b0013;
+    --lightgold: #ffde7a;
+    --gold: #ffcc33;
+    --darkgold: #ffb71e;
+    --lightgray: #d5d6d2;
+    --gray: #777677;
+    --darkgray: #5a5a5a;
+    --offwhite: #f9f7f6;
+}
+#items {
+    width: 100%;
+    padding: 0 30px;
+    margin-top: 100px;
+    gap: 2vw;
+}
+.card {
+    width: 17vw;
+    border: 1px solid #0000006c;
+    border-radius: 10px;
+    background-color: var(--offwhite)
+}
+.itemLink {
+    width: 100%;
+    text-decoration: none;
+    color: black;
+    margin-bottom: 1vh;
+}
+.card-img-top {
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+.card-body {
+    padding: 5px 15px;
+}
+.card-text, .item-price {
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+.view {
+    position: absolute;
+    color: white;
+    font-size: 2rem;
+    font-weight: 500;
+    display: none;
+    z-index: 2;
+}
+.location {
+    position: relative;
+    padding-left: 5px;
+}
+.bookmarkAnchor {
+    color: black;
+    padding: 0 5px 2.5px 0;
+}
+.bi-bookmark-fill {
+    color: #ffcc33;
+}
+.bi-bookmark {
+    color: rgba(128, 128, 128, 0.384);
+}
+.add-to-cart {
+    width: 22.5px;
+    height: 22.5px;
+}
+.add-to-cart:hover {
+    cursor: pointer;
+}

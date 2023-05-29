@@ -1,0 +1,86 @@
+:root {
+    --lightmaroon: #900021;
+    --maroon: #7a0019;
+    --darkmaroon: #5b0013;
+    --lightgold: #ffde7a;
+    --gold: #ffcc33;
+    --darkgold: #ffb71e;
+    --lightgray: #d5d6d2;
+    --gray: #777677;
+    --darkgray: #5a5a5a;
+    --offwhite: #f9f7f6;
+}
+#itemPage {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5vw;
+}
+.itemImage {
+    width: 25vw;
+    -webkit-box-shadow: 0 0 100px rgb(0, 0, 0);
+    box-shadow: 0 0 50px #0000001a;
+}
+.contactSellerBtn {
+    width: 20vw;
+    background-color: var(--gold);
+    border: none;
+    color: black;
+    font-size: 1.25rem;
+}
+.contactSellerBtn:hover {
+    background-color: var(--gold);
+    color: black;
+}
+.contactSellerBtn:hover, .btn:hover {
+    -webkit-animation: shadow-drop-2-center 0.4s
+        cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: shadow-drop-2-center 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+        both;
+}
+@-webkit-keyframes shadow-drop-2-center {
+    0% {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+    100% {
+        -webkit-transform: translateZ(50px);
+        transform: translateZ(50px);
+        -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+        box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+    }
+}
+@keyframes shadow-drop-2-center {
+    0% {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+    100% {
+        -webkit-transform: translateZ(50px);
+        transform: translateZ(50px);
+        -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+        box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #itemPage {
+        flex-direction: column;
+        text-align: center;
+        gap: 1%;
+    }
+    .itemImage {
+        width: 80%;
+    }
+    .contactSellerBtn {
+        width: 100%;
+        margin-bottom: 5%;
+    }
+}

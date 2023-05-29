@@ -5,6 +5,9 @@ module.exports = {
         res.render('create.ejs', {user:req.user, title: "Sell Item"})
     },
     createItem: (req,res)=>{
+        if (req.user.googleId == "demo") {
+            res.json({"message": "Selling an item is restricted for Demo users"})
+        }
         let itemName = req.body.name
         let itemPrice = req.body.price
         let itemDescription = req.body.description

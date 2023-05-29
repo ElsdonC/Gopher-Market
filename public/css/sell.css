@@ -1,0 +1,46 @@
+:root {
+    --lightmaroon: #900021;
+    --maroon: #7a0019;
+    --darkmaroon: #5b0013;
+    --lightgold: #ffde7a;
+    --gold: #ffcc33;
+    --darkgold: #ffb71e;
+    --lightgray: #d5d6d2;
+    --gray: #777677;
+    --darkgray: #5a5a5a;
+    --offwhite: #f9f7f6;
+}
+.demoAlert {
+    color: var(--gold);
+}
+.error-message {
+    color: var(--lightmaroon);
+    font-size: 12px;
+    margin-top: 5px;
+}
+#form {
+    border-radius: 10px;
+}
+.createForm, .editForm {
+    width: 30%;
+    margin-top: 5vh;
+    background-color: #b8ac6618;
+}
+.createForm label, .editForm label {
+    color: black;
+}
+@media only screen and (max-width: 600px) {
+    .createForm, .editForm {
+        width: 100%;
+        background-color: #b8ac6618;
+        margin-top: 0;
+    }
+    #form {
+        border-radius: 0;
+    }
+}
+@media only screen and (min-width: 600px) and (max-width: 1200px) {
+    .createForm, .editForm {
+        width: 60%;
+    }
+}

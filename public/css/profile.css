@@ -1,0 +1,20 @@
+:root {
+    --lightmaroon: #900021;
+    --maroon: #7a0019;
+    --darkmaroon: #5b0013;
+    --lightgold: #ffde7a;
+    --gold: #ffcc33;
+    --darkgold: #ffb71e;
+    --lightgray: #d5d6d2;
+    --gray: #777677;
+    --darkgray: #5a5a5a;
+    --offwhite: #f9f7f6;
+}
+.contactSellerBtn,
+.deleteBtn {
+    margin-right: auto;
+}
+.editDeleteButtons {
+    position: relative;
+    width: auto;
+}
