@@ -1,6 +1,6 @@
 <section id="items" class="d-flex flex-wrap">
     <% items.forEach((item)=>{ %>
-    <div class="card d-inline-block mb-4 card-hover-scale itemCard">
+    <div id="<%=item.id%>" class="card d-inline-block mb-4 card-hover-scale itemCard">
         <a href="/item/<%= item.name %>" class="itemLink">
             <img
                 src="../<%= item.imagePath %>"
@@ -53,10 +53,12 @@
                         </svg>
                     </a>
                     <% }} %>
+                    <% if (page != "userItems") { %>
                     <img
                         src="../images/add-to-cart.png"
                         class="add-to-cart"
                         alt="Shopping cart icon" />
+                    <%}%>
                 </div>
             </div>
         </a>

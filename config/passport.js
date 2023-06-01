@@ -50,6 +50,7 @@ passport.deserializeUser(function (user, done) {
                 const newUser = User.create({
                     googleId: user.id,
                     email: user.email,
+                    pfp: user.picture,
                     displayName: user.displayName,
                     starred: []
                 });

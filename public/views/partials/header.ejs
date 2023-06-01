@@ -50,15 +50,17 @@
                     </button>
                     <!-- Search Bar -->
                     <div class="searchBar">
-                        <i class="fa-solid fa-magnifying-glass searchIcon"></i> 
+                        <i class="fa-solid fa-magnifying-glass searchIcon"></i>
                         <input
                             class="searchInput form-control mr-sm-2 h-100"
                             type="search"
                             placeholder="What are you looking for today?"
                             aria-label="Search" />
+                        <button class="searchBtn">Search</button>
                     </div>
 
-                    <div class="d-flex flex-row justify-content-center align-items-center">
+                    <div
+                        class="d-flex flex-row justify-content-center align-items-center">
                         <div
                             class="modal fade"
                             id="sellModal"
@@ -248,7 +250,8 @@
                                             </form>
                                         </div>
                                         <div class="modal-footer">
-                                        <% if (user && user.googleId != "demo") { %>
+                                            <% if (user && user.googleId !=
+                                            "demo") { %>
                                             <button
                                                 type="button"
                                                 class="btn btn-secondary"
@@ -261,9 +264,14 @@
                                                 class="btn btn-primary">
                                                 Sell Item
                                             </button>
-                                        <% } else { %>
-                                            <span><i class="fa-solid fa-circle-exclamation demoAlert"></i> Demo users are restricted from selling items</span>
-                                        <% } %>
+                                            <% } else { %>
+                                            <span
+                                                ><i
+                                                    class="fa-solid fa-circle-exclamation demoAlert"></i>
+                                                Demo users are restricted from
+                                                selling items</span
+                                            >
+                                            <% } %>
                                         </div>
                                     </div>
                                 </div>
@@ -272,25 +280,21 @@
                         <!-- Navigation Links -->
                         <div class="profileNav">
                             <% if (user) { %>
-                                <li>
-                                    <a
-                                        href="javascript:void(0)"
-                                        data-bs-toggle="modal"
-                                        class="nav-link"
-                                        data-bs-target="#sellModal"
-                                        >Sell</a
-                                    >
-                                </li>
+                            <li>
+                                <a
+                                    href="javascript:void(0)"
+                                    data-bs-toggle="modal"
+                                    class="nav-link"
+                                    data-bs-target="#sellModal"
+                                    >Sell</a
+                                >
+                            </li>
                             <% } else { %>
-                                <li>
-                                    <a
-                                        href="/login"
-                                        class="nav-link"
-                                        >Sell</a
-                                    >
-                                </li>
+                            <li>
+                                <a href="/login" class="nav-link">Sell</a>
+                            </li>
                             <% } %>
-                            
+
                             <li>
                                 <a href="/starred"
                                     ><img
@@ -309,16 +313,22 @@
                             </li>
                             <% if (user) { %>
                             <li>
-                                <a href="/userItems"
-                                    ><img
+                                <a href="/userItems">
+                                    <% if (user.pfp) { %>
+                                    <img
+                                        src="<%=user.pfp%>"
+                                        class="profile"
+                                        alt="profile icon" />
+                                    <% } else { %>
+                                    <img
                                         src="../../images/profile.png"
                                         class="profile"
-                                        alt="profile icon"
-                                /></a>
+                                        alt="profile icon" />
+                                    <% } %>
+                                </a>
                             </li>
                             <form action="/logout" method="POST">
-                                <li
-                                    class="d-flex flex-row align-items-center">
+                                <li class="d-flex flex-row align-items-center">
                                     <span
                                         ><button
                                             class="logoutBtn"

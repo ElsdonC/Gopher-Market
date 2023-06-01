@@ -1,6 +1,10 @@
-<%- include('partials/header.ejs') %> <%- include('partials/banner.ejs') %>
+<%- include('partials/header.ejs') %>
+<div class="results">
+    <%- include('partials/title.ejs') %>
+    <%- include('partials/items.ejs') %>
+</div>
 
-<section id="items" class="mt-5 d-flex flex-wrap">
+<!-- <section id="items" class="mt-5 d-flex flex-wrap">
     <% items.forEach((item)=>{ %>
     <div class="card d-inline-block mb-4 card-hover-scale itemCard">
         <a href="/item/<%= item.name %>" class="itemLink">
@@ -76,6 +80,6 @@
     <% }) %> <% if (items.length == 0) { %>
     <h2>No Items Found</h2>
     <% } %>
-</section>
+</section> -->
 <script src="../js/userItems.js"></script>
 <%- include('partials/footer.ejs') %>

@@ -8,6 +8,7 @@ module.exports = {
         res.render("starred.ejs", {
             user: req.user,
             items: items,
+            page: "bookmarked",
             title: "Bookmarked Items",
         });
     },

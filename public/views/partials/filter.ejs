@@ -1,74 +1,43 @@
-<ul class="filtersContainer">
+<section class="filtersContainer">
     <h3>Filter</h3>
     <h4>Category</h4>
-    <input type="radio" id="all">
-    <label for="all">All Items</label><br>
-    <input type="radio" id="textbooks">
-    <label for="textbooks">Textbooks</label><br>
-    <input type="radio" id="school-supplies">
-    <label for="school-supplies">School Supplies</label><br>
-    <input type="radio" id="electronics">
-    <label for="electronics">Electronics</label><br>
-    <input type="radio" id="furniture-applicances">
-    <label for="furniture-applicances">Furniture/Appliances</label><br>
-    <input type="radio" id="clothing">
-    <label for="clothing">Clothing</label><br>
-    <input type="radio" id="kitchenware">
-    <label for="kitchenware">Kitchenware</label><br>
+    <form id="categoryFilter">
+        <input type="radio" id="all_items" name="category" value="all">
+        <label for="all_items">All Items</label><br>
+        <input type="radio" id="textbooks" name="category" value="textbooks">
+        <label for="textbooks">Textbooks</label><br>
+        <input type="radio" id="school-supplies" name="category" value="school-supplies">
+        <label for="school-supplies">School Supplies</label><br>
+        <input type="radio" id="electronics" name="category" value="electronics">
+        <label for="electronics">Electronics</label><br>
+        <input type="radio" id="furniture-appliances" name="category" value="furniture-appliances">
+        <label for="furniture-appliances" name="category">Furniture/Appliances</label><br>
+        <input type="radio" id="clothing" name="category" value="clothing">
+        <label for="clothing">Clothing</label><br>
+        <input type="radio" id="kitchenware" name="category" value="kitchenware">
+        <label for="kitchenware">Kitchenware</label><br>
+    </form>
     
     <h4>Location</h4>
-    <input type="radio" id="eastbank">
-    <label for="eastbank">East Bank</label><br>
-    <input type="radio" id="westbank">
-    <label for="westbank">West Bank</label><br>
-    <input type="radio" id="dinkytwon">
-    <label for="dinkytwon">DinkyTown</label><br>
-    <input type="radio" id="off-campus">
-    <label for="off-campus">Off Campus</label><br>
+    <form id="locationFilter">
+        <input type="radio" id="all_locations" value="all" name="location">
+        <label for="all_locations">All locations</label><br>
+        <input type="radio" id="eastbank" value="eastbank" name="location">
+        <label for="eastbank">East Bank</label><br>
+        <input type="radio" id="westbank" value="westbank" name="location">
+        <label for="westbank">West Bank</label><br>
+        <input type="radio" id="dinkytown" value="dinkytown" name="location">
+        <label for="dinkytwon">DinkyTown</label><br>
+        <input type="radio" id="off-campus" value="off-campus" name="location">
+        <label for="off-campus">Off Campus</label><br>
+    </form>
 
     <h4>Price</h4>
-    <label for="min">Minimum</label>
-    <input type="text" id="min"><br>
-    <label for="max">Maximum</label>
-    <input type="text" id="max">
-    <li class="dropdown">
-        
-        <a
-            class="dropdown-toggle"
-            href="#"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-        >
-            Filter by Price
-        </a>
-        <div
-            class="dropdown-menu"
-        >
-            <form method="POST" action="/filterPrice">
-                <input
-                    type="number"
-                    class="form-control"
-                    name="min"
-                    onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
-                    placeholder="Min price"
-                    aria-label="Min price"
-                    aria-describedby="filter-price-addon"
-                />
-                <input
-                    type="number"
-                    class="form-control"
-                    name="max"
-                    onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
-                    placeholder="Max price"
-                    aria-label="Max price"
-                    aria-describedby="filter-price-addon"
-                />
-                <button type="submit" class="btn btn-primary">
-                    Filter
-                </button>
-            </form>
-        </div>
-    </li>
-</ul>
+    <label for="min_input">Min</label>
+    <input id="min_input" type="range" min="0" max="500" value="0" step="1" />
+    <output>$<span id="min_value"></span></output><br/>
+    <label for="max_input">Max</label>
+    <input id="max_input" type="range" min="0" max="500" value="500" step="1" />
+    <output>$<span id="max_value"></span></output>
+    <button id="filterBtn">Apply Filters</button>
+</section>

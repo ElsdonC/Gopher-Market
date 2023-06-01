@@ -10,9 +10,6 @@
     --darkgray: #5a5a5a;
     --offwhite: #f9f7f6;
 }
-.active {
-    border-bottom: 1px solid black;
-}
 .navbar {
     width: 100vw;
     margin: 0 auto;
@@ -22,6 +19,9 @@
     position: fixed;
     overflow: hidden;
     border-bottom: 1px solid black;
+}
+.navbar * {
+    overflow: hidden;
 }
 nav ul {
     width: 100%;
@@ -56,6 +56,17 @@ li {
     height: 45px;
     width: 30vw;
     position: relative;
+}
+.searchBtn {
+    height: 41px;
+    width: 5vw;
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    border: none;
+    border-radius: 25px;
+    background-color: var(--lightgold);
+    color: var(--lightmaroon);
 }
 .searchIcon {
     color: var(--gray);
