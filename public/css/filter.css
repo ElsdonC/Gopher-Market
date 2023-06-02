@@ -1,0 +1,79 @@
+:root {
+    --lightmaroon: #900021;
+    --maroon: #7a0019;
+    --darkmaroon: #5b0013;
+    --lightgold: #ffde7a;
+    --gold: #ffcc33;
+    --darkgold: #ffb71e;
+    --lightgray: #d5d6d2;
+    --gray: #777677;
+    --darkgray: #5a5a5a;
+    --offwhite: #f9f7f6;
+}
+
+.filter {
+    position: fixed;
+    top: 80px;
+    width: 20vw;
+    height: 100%;
+}
+.filter * {
+    overflow: hidden;
+}
+.filtersContainer {
+    background-color: white;
+    width: 90%;
+    margin: 30px 30px;
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid var(--gray);
+}
+.filtersContainer li a {
+    text-decoration: none;
+    color: black;
+}
+.filterLabel, .filterTitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+    padding-bottom: 20px;
+}
+.filterTitle {
+    font-size: 1.15rem;
+    font-weight: 600;
+    padding-bottom: 0;
+}
+.option {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+input[type='radio'] {
+    accent-color: var(--maroon);
+}
+.input-field {
+    padding-bottom: 15px;
+}
+.filterLocIcon {
+    height: 17px;
+    width: 17px;
+    color: var(--gold);
+}
+.filterCatIcon {
+    height: 17px;
+    width: 20px;
+    color: var(--gold);
+}
+.space-left {
+    padding-left: 2px;
+}
+#filterBtn {
+    background-color: var(--darkgold);
+}
+#resetFilterBtn {
+    background-color: var(--lightgray);
+}
+
+input[type="range"] {
+    accent-color: var(--lightmaroon);
+}

@@ -1,43 +1,95 @@
 <section class="filtersContainer">
-    <h3>Filter</h3>
-    <h4>Category</h4>
-    <form id="categoryFilter">
-        <input type="radio" id="all_items" name="category" value="all">
-        <label for="all_items">All Items</label><br>
-        <input type="radio" id="textbooks" name="category" value="textbooks">
-        <label for="textbooks">Textbooks</label><br>
-        <input type="radio" id="school-supplies" name="category" value="school-supplies">
-        <label for="school-supplies">School Supplies</label><br>
-        <input type="radio" id="electronics" name="category" value="electronics">
-        <label for="electronics">Electronics</label><br>
-        <input type="radio" id="furniture-appliances" name="category" value="furniture-appliances">
-        <label for="furniture-appliances" name="category">Furniture/Appliances</label><br>
-        <input type="radio" id="clothing" name="category" value="clothing">
-        <label for="clothing">Clothing</label><br>
-        <input type="radio" id="kitchenware" name="category" value="kitchenware">
-        <label for="kitchenware">Kitchenware</label><br>
-    </form>
+    <h3 class="filterLabel">Filter</h3>
+    <h4 class="filterTitle">Category</h4>
+    <section class="input-field">
+        <div class="option">
+            <input type="radio" id="all_items" name="category" value="all">
+            <i class="fa-solid fa-house filterCatIcon"></i>
+            <label for="all_items">All Items</label>
+            <br>
+        </div>
+        <div class="option">
+            <input type="radio" id="textbooks" name="category" value="textbooks">
+            <i class="fa-solid fa-book filterCatIcon space-left"></i>
+            <label for="textbooks">Textbooks</label>
+            <br>
+        </div>
+        <div class="option">
+            <input type="radio" id="school-supplies" name="category" value="school-supplies">
+            <i class="fa-solid fa-pencil filterCatIcon space-left"></i>
+            <label for="school-supplies">School Supplies</label>
+            <br>
+        </div>
+        <div class="option">
+            <input type="radio" id="electronics" name="category" value="electronics">
+            <i class="fa-solid fa-laptop filterCatIcon"></i>
+            <label for="electronics">Electronics</label>
+            <br>
+        </div>
+        <div class="option">
+            <input type="radio" id="furniture-appliances" name="category" value="furniture-appliances">
+            <i class="fa-solid fa-couch filterCatIcon"></i>
+            <label for="furniture-appliances" name="category">Furniture/Appliances</label>
+            <br>
+        </div>
+        <div class="option">
+            <input type="radio" id="clothing" name="category" value="clothing">
+            <i class="fa-solid fa-shirt filterCatIcon"></i>
+            <label for="clothing">Clothing</label>
+            <br>
+        </div>
+        <div class="option">
+            <input type="radio" id="kitchenware" name="category" value="kitchenware">
+            <i class="fa-solid fa-utensils filterCatIcon space-left"></i>
+            <label for="kitchenware">Kitchenware</label>
+            <br>
+        </div>
+    </section>
     
-    <h4>Location</h4>
-    <form id="locationFilter">
-        <input type="radio" id="all_locations" value="all" name="location">
-        <label for="all_locations">All locations</label><br>
-        <input type="radio" id="eastbank" value="eastbank" name="location">
-        <label for="eastbank">East Bank</label><br>
-        <input type="radio" id="westbank" value="westbank" name="location">
-        <label for="westbank">West Bank</label><br>
-        <input type="radio" id="dinkytown" value="dinkytown" name="location">
-        <label for="dinkytwon">DinkyTown</label><br>
-        <input type="radio" id="off-campus" value="off-campus" name="location">
-        <label for="off-campus">Off Campus</label><br>
-    </form>
+    <h4 class="filterTitle">Location</h4>
+    <section class="input-field">
+        <div class="option">
+            <input type="radio" id="all_locations" value="all" name="location">
+            <i class="fa-solid fa-location-dot filterLocIcon space-left"></i>
+            <label for="all_locations">All locations</label>
+            <br>
+        </div>
+        <div class="option">
+            <input type="radio" id="eastbank" value="eastbank" name="location">
+            <i class="fa-solid fa-circle-arrow-right filterLocIcon"></i>
+            <label for="eastbank">East Bank</label>
+            <br>
+        </div>
+        <div class="option">
+            <input type="radio" id="westbank" value="westbank" name="location">
+            <i class="fa-solid fa-circle-arrow-left filterLocIcon"></i>
+            <label for="westbank">West Bank</label>
+            <br>
+        </div>
+        <div class="option">
+            <input type="radio" id="dinkytown" value="dinkytown" name="location">
+            <i class="fa-solid fa-city filterLocIcon"></i>
+            <label for="dinkytwon">DinkyTown</label>
+            <br>
+        </div>
+        <div class="option">
+            <input type="radio" id="off-campus" value="off-campus" name="location">
+            <i class="fa-solid fa-globe filterLocIcon"></i>
+            <label for="off-campus">Off Campus</label>
+            <br>
+        </div>
+    </section>
 
-    <h4>Price</h4>
-    <label for="min_input">Min</label>
-    <input id="min_input" type="range" min="0" max="500" value="0" step="1" />
-    <output>$<span id="min_value"></span></output><br/>
-    <label for="max_input">Max</label>
-    <input id="max_input" type="range" min="0" max="500" value="500" step="1" />
-    <output>$<span id="max_value"></span></output>
-    <button id="filterBtn">Apply Filters</button>
+    <h4 class="filterTitle">Price</h4>
+    <section class="input-field">
+        <label for="min_input">Min</label>
+        <input id="min_input" type="range" min="0" max="500" value="0" step="1" />
+        <output>$<span id="min_value"></span></output><br/>
+        <label for="max_input">Max</label>
+        <input id="max_input" type="range" min="0" max="500" value="500" step="1" />
+        <output>$<span id="max_value"></span></output>
+        <br/>
+    </section>
+    <button id="filterBtn" class="btn">Apply Filters</button>
+    <button id="resetFilterBtn" class="btn">Reset Filters</button>
 </section>

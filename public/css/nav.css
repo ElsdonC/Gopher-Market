@@ -59,14 +59,13 @@ li {
 }
 .searchBtn {
     height: 41px;
-    width: 5vw;
+    width: 30%;
     position: absolute;
     right: 2px;
     top: 2px;
     border: none;
     border-radius: 25px;
     background-color: var(--lightgold);
-    color: var(--lightmaroon);
 }
 .searchIcon {
     color: var(--gray);

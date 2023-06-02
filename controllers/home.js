@@ -3,17 +3,8 @@ const UserModel = require("../models/user");
 
 module.exports = {
     getIndex: async (req, res) => {
-        const items = await ItemModel.find();
-        res.render("index.ejs", {
-            items: items,
-            user: req.user,
-            page: "home",
-            title: null,
-        });
-    },
-    filter: async (req, res) => {
-        let minPrice = req.query.minPrice;
-        let maxPrice = req.query.maxPrice;
+        let min;
+        let max;
         let category;
         let location;
         let searchQuery;
@@ -26,7 +17,10 @@ module.exports = {
         if (req.query.q) {
             searchQuery = req.query.q;
         }
-
+        if (req.query.minPrice && req.query.maxPrice) {
+            min = req.query.minPrice;
+            max = req.query.maxPrice
+        }
         let filteredItems = [];
         let items = await ItemModel.find();
 
@@ -35,12 +29,16 @@ module.exports = {
 
             // Apply filters
             if (category && item.category !== category) {
-                shouldAddItem = false;
+                if (category != "all") {
+                    shouldAddItem = false;
+                }
             }
             if (location && item.location !== location) {
-                shouldAddItem = false;
+                if (location != "all") {
+                    shouldAddItem = false;
+                }
             }
-            if (item.price < minPrice || item.price > maxPrice) {
+            if ((min && max) && (item.price < Number(min) || item.price > Number(max))) {
                 shouldAddItem = false;
             }
             if (searchQuery && !item.name.toLowerCase().includes(searchQuery.toLowerCase())) {
@@ -52,13 +50,23 @@ module.exports = {
             }
            
         });
-        console.log(filteredItems)
-        res.render("index.ejs", {
-            items: filteredItems,
-            user: req.user,
-            page: "filter",
-            title: "filter"
-        })
+        if (filteredItems.length > 0) {
+            res.render("filtered.ejs", {
+                items: filteredItems,
+                user: req.user,
+                page: "no items found",
+                title: null,
+            });
+        } else {
+            res.render("noItemsFound.ejs", {
+                page: "No items found",
+                title: "No items found",
+                user: req.user
+            })
+        }
+    },
+    getFilter: async (req, res) => {
+        
     },
     getItem: async (req, res) => {
         const name = req.params.name;

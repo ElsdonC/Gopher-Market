@@ -16,7 +16,7 @@
             integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
             crossorigin="anonymous" />
         <link rel="stylesheet" href="../../css/style.css" />
-        <link rel="stylesheet" href="../../css/index.css" />
+        <link rel="stylesheet" href="../../css/filter.css">
         <link rel="stylesheet" href="../../css/nav.css" />
         <link rel="stylesheet" href="../../css/sell.css" />
         <link rel="stylesheet" href="../../css/login.css" />
@@ -58,297 +58,112 @@
                             aria-label="Search" />
                         <button class="searchBtn">Search</button>
                     </div>
-
-                    <div
-                        class="d-flex flex-row justify-content-center align-items-center">
-                        <div
-                            class="modal fade"
-                            id="sellModal"
-                            tabindex="-1"
-                            aria-labelledby="sellModalLabel"
-                            aria-hidden="true">
-                            <form
-                                onsubmit="return validateForm()"
-                                id="form"
-                                class="p-4 createForm m-auto"
-                                enctype="multipart/form-data"
-                                action="/create/post"
-                                method="POST">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1
-                                                class="modal-title fs-5"
-                                                id="sellModalLabel">
-                                                Sell Item
-                                            </h1>
-                                            <button
-                                                type="button"
-                                                class="btn-close"
-                                                data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form>
-                                                <div class="mb-3">
-                                                    <label
-                                                        for="name"
-                                                        class="form-label"
-                                                        >Item Name</label
-                                                    >
-                                                    <input
-                                                        type="text"
-                                                        class="form-control"
-                                                        id="name"
-                                                        placeholder="item name"
-                                                        name="name"
-                                                        required />
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label
-                                                        for="category"
-                                                        class="form-label"
-                                                        >Item Category</label
-                                                    >
-                                                    <select
-                                                        id="category"
-                                                        name="category"
-                                                        class="form-select"
-                                                        aria-label="Default select example">
-                                                        <option
-                                                            value=""
-                                                            selected
-                                                            hidden
-                                                            disabled>
-                                                            Open this select
-                                                            menu
-                                                        </option>
-                                                        <option
-                                                            value="textbooks">
-                                                            textbooks
-                                                        </option>
-                                                        <option
-                                                            value="school-supplies">
-                                                            school-supplies
-                                                        </option>
-                                                        <option
-                                                            value="electronics">
-                                                            electronics
-                                                        </option>
-                                                        <option
-                                                            value="furniture-appliances">
-                                                            furniture/appliances
-                                                        </option>
-                                                        <option
-                                                            value="clothing">
-                                                            clothing
-                                                        </option>
-                                                        <option
-                                                            value="kitchenware">
-                                                            kitchenware
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label
-                                                        for="location"
-                                                        class="form-label"
-                                                        >Item Location</label
-                                                    >
-                                                    <select
-                                                        id="location"
-                                                        name="location"
-                                                        class="form-select"
-                                                        aria-label="Default select example">
-                                                        <option
-                                                            value=""
-                                                            selected
-                                                            hidden
-                                                            disabled>
-                                                            Open this select
-                                                            menu
-                                                        </option>
-                                                        <option
-                                                            value="westbank">
-                                                            westbank
-                                                        </option>
-                                                        <option
-                                                            value="eastbank">
-                                                            eastbank
-                                                        </option>
-                                                        <option
-                                                            value="dinkytown">
-                                                            dinkytown
-                                                        </option>
-                                                        <option
-                                                            value="off-campus">
-                                                            off-campus
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label
-                                                        for="description"
-                                                        class="form-label"
-                                                        >Item Description
-                                                        <span
-                                                            >(characters
-                                                            remaining:
-                                                            <strong
-                                                                ><span
-                                                                    id="counter"
-                                                                    >50</span
-                                                                ></strong
-                                                            >)</span
-                                                        ></label
-                                                    >
-                                                    <textarea
-                                                        onkeyup="textCounter(this,'counter',50);"
-                                                        class="form-control"
-                                                        id="description"
-                                                        name="description"
-                                                        rows="3"
-                                                        maxlength="50"
-                                                        placeholder="description"
-                                                        required></textarea>
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <label
-                                                        for="price"
-                                                        class="form-label w-100"
-                                                        >Item Price</label
-                                                    >
-                                                    <span
-                                                        class="input-group-text"
-                                                        >$</span
-                                                    >
-                                                    <input
-                                                        type="number"
-                                                        class="form-control"
-                                                        id="price"
-                                                        name="price"
-                                                        min="0"
-                                                        onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57"
-                                                        aria-label="Amount (to the nearest dollar)"
-                                                        required />
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <label
-                                                        for="image"
-                                                        class="form-label w-100"
-                                                        >Upload an Image</label
-                                                    >
-                                                    <input
-                                                        type="file"
-                                                        class="form-control-file bg-light w-100"
-                                                        id="image"
-                                                        aria-describedby="image"
-                                                        aria-label="Upload"
-                                                        name="uploaded_file"
-                                                        accept="image/apng, image/avif, image/jpeg, image/png, image/svg+xml, image/webp" />
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <% if (user && user.googleId !=
-                                            "demo") { %>
-                                            <button
-                                                type="button"
-                                                class="btn btn-secondary"
-                                                data-bs-dismiss="modal">
-                                                Close
-                                            </button>
-                                            <button
-                                                type="submit"
-                                                id="sellBtn"
-                                                class="btn btn-primary">
-                                                Sell Item
-                                            </button>
-                                            <% } else { %>
-                                            <span
-                                                ><i
-                                                    class="fa-solid fa-circle-exclamation demoAlert"></i>
-                                                Demo users are restricted from
-                                                selling items</span
-                                            >
-                                            <% } %>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <!-- Navigation Links -->
-                        <div class="profileNav">
-                            <% if (user) { %>
-                            <li>
-                                <a
-                                    href="javascript:void(0)"
-                                    data-bs-toggle="modal"
-                                    class="nav-link"
-                                    data-bs-target="#sellModal"
-                                    >Sell</a
-                                >
+                    <!-- Navigation Links -->
+                    <div class="profileNav">
+                        <% if (user) { %>
+                        <li>
+                            <a href="javascript:void(0)" data-bs-toggle="modal" class="nav-link" data-bs-target="#sellModal">Sell</a>
+                        </li>
+                        
+                        <% } else { %>
+                        <li>
+                            <a href="/login" class="nav-link">Sell</a>
+                        </li>
+                        <% } %>
+                        <li>
+                            <a href="/starred"><img src="../../images/bookmark.png" class="nav-bookmark" alt="Bookmark icon"/></a>
+                        </li>
+                        <li>
+                            <a href="/cart"><img src="../../images/shopping-cart.png" class="shopping-cart" alt="Shopping cart icon"/></a>
+                        </li>
+                        <% if (user) { %>
+                        <li>
+                            <a href="/userItems">
+                                <% if (user.pfp) { %>
+                                <img src="<%=user.pfp%>" class="profile" alt="profile icon" />
+                                <% } else { %>
+                                <img src="../../images/profile.png" class="profile" alt="profile icon" />
+                                <% } %>
+                            </a>
+                        </li>
+                        <form action="/logout" method="POST">
+                            <li class="d-flex flex-row align-items-center">
+                                <span><button class="logoutBtn" type="submit">Log Out</button></span>
                             </li>
-                            <% } else { %>
-                            <li>
-                                <a href="/login" class="nav-link">Sell</a>
-                            </li>
-                            <% } %>
-
-                            <li>
-                                <a href="/starred"
-                                    ><img
-                                        src="../../images/bookmark.png"
-                                        class="nav-bookmark"
-                                        alt="Bookmark icon"
-                                /></a>
-                            </li>
-                            <li>
-                                <a href="/cart"
-                                    ><img
-                                        src="../../images/shopping-cart.png"
-                                        class="shopping-cart"
-                                        alt="Shopping cart icon"
-                                /></a>
-                            </li>
-                            <% if (user) { %>
-                            <li>
-                                <a href="/userItems">
-                                    <% if (user.pfp) { %>
-                                    <img
-                                        src="<%=user.pfp%>"
-                                        class="profile"
-                                        alt="profile icon" />
-                                    <% } else { %>
-                                    <img
-                                        src="../../images/profile.png"
-                                        class="profile"
-                                        alt="profile icon" />
-                                    <% } %>
-                                </a>
-                            </li>
-                            <form action="/logout" method="POST">
-                                <li class="d-flex flex-row align-items-center">
-                                    <span
-                                        ><button
-                                            class="logoutBtn"
-                                            type="submit">
-                                            Log Out
-                                        </button></span
-                                    >
-                                </li>
-                            </form>
-                            <% } else { %>
-                            <li class="login">
-                                <a class="nav-link" href="/login"
-                                    >Login/Signup</a
-                                >
-                            </li>
-                            <% } %>
-                        </div>
+                        </form>
+                        <% } else { %>
+                        <li class="login">
+                            <a class="nav-link" href="/login">Login/Signup</a>
+                        </li>
+                        <% } %>
                     </div>
                 </ul>
             </div>
         </nav>
-    </body>
-</html>
+        <!-- Sell Modal -->
+        <div class="d-flex flex-row justify-content-center align-items-center">
+            <div class="modal fade" id="sellModal" aria-labelledby="sellModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="sellModalLabel">Sell Item</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form onsubmit="return validateForm()" id="form" class="m-auto" enctype="multipart/form-data" action="/create/post" method="POST">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Item Name</label>
+                                    <input type="text" class="form-control" id="name" placeholder="item name" name="name" required />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="category" class="form-label">Item Category</label>
+                                    <select id="category" name="category" class="form-select" aria-label="Default select example">
+                                        <option value="" selected hidden disabled>Open this select menu</option>
+                                        <option value="textbooks">textbooks</option>
+                                        <option value="school-supplies">school-supplies</option>
+                                        <option value="electronics">electronics</option>
+                                        <option value="furniture-appliances">furniture/appliances</option>
+                                        <option value="clothing">clothing</option>
+                                        <option value="kitchenware">kitchenware</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="location" class="form-label">Item Location</label>
+                                    <select id="location" name="location" class="form-select" aria-label="Default select example">
+                                        <option value="" selected hidden disabled>Open this select menu</option>
+                                        <option value="westbank">westbank</option>
+                                        <option value="eastbank">eastbank</option>
+                                        <option value="dinkytown">dinkytown</option>
+                                        <option value="off-campus">off-campus</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="description" class="form-label">Item Description
+                                        <span>(characters remaining:<strong><span id="counter">50</span></strong>)</span>
+                                    </label>
+                                    <textarea onkeyup="textCounter(this,'counter',50);" class="form-control" id="description" name="description" rows="3" maxlength="50" placeholder="description" required></textarea>
+                                </div>
+                                <div class="input-group mb-3 space-left">
+                                    <label for="price" class="form-label w-100">Item Price</label>
+                                    <span class="input-group-text">$</span>
+                                    <input type="number"
+                                        class="form-control" id="price" name="price" min="0" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" aria-label="Amount (to the nearest dollar)" required />
+                                </div>
+                                <div class="input-group mb-3 space-left">
+                                    <label for="image" class="form-label w-100">Upload an Image</label>
+                                    <input type="file" class="form-control-file bg-light w-100" id="image" aria-describedby="image" aria-label="Upload" name="uploaded_file" accept="image/apng, image/avif, image/jpeg, image/png, image/svg+xml, image/webp" />
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <% if (user && user.googleId != "demo") { %>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" id="sellBtn" class="btn btn-primary">Sell Item</button>
+                                <% } else { %>
+                                <span class="d-flex flex-row align-items-center gap-1"><i class="fa-solid fa-circle-exclamation demoAlert"></i>Demo users are restricted from selling items</span>
+                                <% } %>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>

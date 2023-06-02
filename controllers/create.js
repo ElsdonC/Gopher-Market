@@ -5,6 +5,7 @@ module.exports = {
         if (req.user.googleId == "demo") {
             res.json({"message": "Selling an item is restricted for Demo users"})
         }
+        console.log("This is from create controller")
         let itemName = req.body.name
         let itemPrice = req.body.price
         let itemDescription = req.body.description

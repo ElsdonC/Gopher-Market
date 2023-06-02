@@ -1,3 +1,67 @@
+// Search
+$(".searchInput").on("keyup", function (e) {
+    if (e.key === "Enter" || e.keyCode === 13) {
+        const searchQuery = e.target.value;
+        let items = [];
+        $(".card-text").forEach((text) => {
+            items.push(text.innerText);
+        });
+        if (searchQuery == "") {
+            window.location.reload();
+        }
+        fetch(`http://localhost:3000/filter?q=${searchQuery}`)
+        window.location = `http://localhost:3000?q=${searchQuery}`;
+    }
+});
+$(".searchInput").on("input", function (e) {
+    if ($(".searchInput").val() == "") {
+        window.location.reload()
+    }
+})
+$(".searchBtn").on("click", function (e) {
+    const searchQuery = $(".searchInput").val();
+    let items = [];
+    $(".card-text").forEach((text) => {
+        items.push(text.innerText);
+    });
+    if (searchQuery == "") {
+        window.location.reload();
+    }
+    fetch(`http://localhost:3000/filter?q=${searchQuery}`)
+    window.location = `http://localhost:3000?q=${searchQuery}`;
+});
+
+// Filter
+const minValue = $("#min_value");
+const maxValue = $("#max_value");
+minValue.textContent = $("#min_input").value;
+maxValue.textContent = $("#max_input").value;
+$("#min_input").addEventListener("input", async (event) => {
+    minValue.textContent = event.target.value;
+});
+$("#max_input").addEventListener("input", async (event) => {
+    maxValue.textContent = event.target.value;
+});
+$("#filterBtn").addEventListener("click", async () => {
+    let url = 'http://localhost:3000?'
+    let filters = []
+    if ($('input[name="category"]:checked').val()) {
+        filters.push(`category=${$('input[name="category"]:checked').val()}`)
+    }
+    if ($('input[name="location"]:checked').val()) {
+        filters.push(`location=${$('input[name="location"]:checked').val()}`)
+    }
+    if ($(".searchInput").val() != "") {
+        filters.push(`q=${$(".searchInput").val()}`)
+    }
+    console.log(minValue.textContent)
+    filters.push(`minPrice=${minValue.textContent}`)
+    filters.push(`maxPrice=${maxValue.textContent}`)
+    const newUrl = url + filters.join('&')
+    window.location = newUrl
+});
+
+// Sell
 function textCounter(field, field2, maxlimit) {
     var countfield = document.getElementById(field2);
     if (field.value.length > maxlimit) {
@@ -7,64 +71,6 @@ function textCounter(field, field2, maxlimit) {
         countfield.innerText = maxlimit - field.value.length;
     }
 }
-
-$(".searchInput").on("keyup", function (e) {
-    if (e.key === "Enter" || e.keyCode === 13) {
-        const searchQuery = e.target.value;
-        let items = [];
-        document.querySelectorAll(".card-text").forEach((text) => {
-            items.push(text.innerText);
-        });
-        if (searchQuery == "") {
-            window.location.reload();
-        }
-        fetch(`http://localhost:3000/filter?q=${searchQuery}`, {
-            method: "POST",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                items: items,
-            }),
-        })
-            .then((response) => response.text()) // convert response to text
-            .then((html) => {
-                document.querySelector("#items").innerHTML = html;
-            });
-    }
-});
-
-document.querySelector(".searchInput").addEventListener("input", function (e) {
-    if ($(".searchInput").val() == "") {
-        window.location.reload()
-    }
-})
-
-$(".searchBtn").on("click", function (e) {
-    const searchQuery = $(".searchInput").val();
-    let items = [];
-    document.querySelectorAll(".card-text").forEach((text) => {
-        items.push(text.innerText);
-    });
-    if (searchQuery == "") {
-        window.location.reload();
-    }
-    fetch(`http://localhost:3000/filter?q=${searchQuery}`, {
-        method: "POST",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            items: items,
-        }),
-    })
-        .then((response) => response.text()) // convert response to text
-        .then((html) => {
-            document.querySelector("#items").innerHTML = html;
-        });
-});
 
 function validateForm() {
     let name = document.getElementById("name").value.replace(/\s/g, "");
@@ -122,15 +128,7 @@ function validateForm() {
 
 let imgFileName = "";
 let imgInput = document.getElementById("image");
-let allowedExtensions = [
-    ".apng",
-    ".avif",
-    ".jpeg",
-    ".jpg",
-    ".png",
-    ".svg+xml",
-    ".webp",
-];
+let allowedExtensions = [".apng",".avif",".jpeg",".jpg",".png",".svg+xml",".webp"];
 
 imgInput.addEventListener("change", function () {
     let file = this.files[0];

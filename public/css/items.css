@@ -12,12 +12,12 @@
 }
 #items {
     width: 100%;
-    padding: 0 30px;
-    margin-top: 120px;
-    gap: 2vw;
+    padding: 15px 30px;
+    margin-top: 100px;
+    gap: 1vw;
 }
 .card {
-    width: 17vw;
+    width: 14vw;
     border: 1px solid #0000006c;
     border-radius: 10px;
     background-color: var(--offwhite)
@@ -26,7 +26,6 @@
     width: 100%;
     text-decoration: none;
     color: black;
-    margin-bottom: 1vh;
 }
 .card-img-top {
     height: 250px;
@@ -69,4 +68,9 @@
 }
 .add-to-cart:hover {
     cursor: pointer;
+}
+.itemIconContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }

@@ -21,14 +21,7 @@
 #form {
     border-radius: 10px;
 }
-.createForm, .editForm {
-    width: 30%;
-    margin-top: 5vh;
-    background-color: #b8ac6618;
-}
-.createForm label, .editForm label {
-    color: black;
-}
+
 @media only screen and (max-width: 600px) {
     .createForm, .editForm {
         width: 100%;
