@@ -62,13 +62,6 @@
 .bi-bookmark {
     color: rgba(128, 128, 128, 0.384);
 }
-.add-to-cart {
-    width: 22.5px;
-    height: 22.5px;
-}
-.add-to-cart:hover {
-    cursor: pointer;
-}
 .itemIconContainer {
     display: flex;
     flex-direction: row;

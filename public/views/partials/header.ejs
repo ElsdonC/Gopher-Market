@@ -29,7 +29,7 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto position-relative">
+                <ul class="navbar-nav mr-auto position-relative align-items-center">
                     <!-- Logo -->
                     <a class="logoContainer" href="/"
                         ><img
@@ -71,16 +71,13 @@
                         </li>
                         <% } %>
                         <li>
-                            <a href="/starred"><img src="../../images/bookmark.png" class="nav-bookmark" alt="Bookmark icon"/></a>
-                        </li>
-                        <li>
-                            <a href="/cart"><img src="../../images/shopping-cart.png" class="shopping-cart" alt="Shopping cart icon"/></a>
+                            <a href="/starred"><svg class="nav-bookmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"/></svg></a>
                         </li>
                         <% if (user) { %>
                         <li>
                             <a href="/userItems">
-                                <% if (user.pfp) { %>
-                                <img src="<%=user.pfp%>" class="profile" alt="profile icon" />
+                                <% if (user.pfp) { console.log(user.pfp) %>
+                                <img src="<%=user.pfp%>" class="profile" alt="profile icon" referrerpolicy="no-referrer"/>
                                 <% } else { %>
                                 <img src="../../images/profile.png" class="profile" alt="profile icon" />
                                 <% } %>

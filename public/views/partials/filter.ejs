@@ -69,7 +69,7 @@
         <div class="option">
             <input type="radio" id="dinkytown" value="dinkytown" name="location">
             <i class="fa-solid fa-city filterLocIcon"></i>
-            <label for="dinkytwon">DinkyTown</label>
+            <label for="dinkytown">DinkyTown</label>
             <br>
         </div>
         <div class="option">
@@ -82,13 +82,16 @@
 
     <h4 class="filterTitle">Price</h4>
     <section class="input-field">
-        <label for="min_input">Min</label>
-        <input id="min_input" type="range" min="0" max="500" value="0" step="1" />
-        <output>$<span id="min_value"></span></output><br/>
-        <label for="max_input">Max</label>
-        <input id="max_input" type="range" min="0" max="500" value="500" step="1" />
-        <output>$<span id="max_value"></span></output>
-        <br/>
+        <div class="d-flex flex-row align-items-center w-100 justify-content-between mb-1">
+            <label for="min_input">Min</label>
+            <input id="min_input" class="w-50" type="range" min="0" max="500" value="0" step="1" />
+            <input id="min_value" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" class="d-inline w-25" type="text" maxlength="4"/>
+        </div>
+        <div class="d-flex flex-row align-items-center w-100 justify-content-between mb-1">
+            <label for="max_input">Max</label>
+            <input id="max_input" class="w-50" type="range" min="0" max="1000" value="1000" step="1" />
+            <input id="max_value" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" class="d-inline w-25" type="text" maxlength="4"/>
+        </div>
     </section>
     <button id="filterBtn" class="btn">Apply Filters</button>
     <button id="resetFilterBtn" class="btn">Reset Filters</button>

@@ -1,9 +1,9 @@
 // Search
-$(".searchInput").on("keyup", function (e) {
+document.querySelector(".searchInput").addEventListener("keyup", function (e) {
     if (e.key === "Enter" || e.keyCode === 13) {
         const searchQuery = e.target.value;
         let items = [];
-        $(".card-text").forEach((text) => {
+        document.querySelectorAll(".card-text").forEach((text) => {
             items.push(text.innerText);
         });
         if (searchQuery == "") {
@@ -13,15 +13,15 @@ $(".searchInput").on("keyup", function (e) {
         window.location = `http://localhost:3000?q=${searchQuery}`;
     }
 });
-$(".searchInput").on("input", function (e) {
-    if ($(".searchInput").val() == "") {
+document.querySelector(".searchInput").addEventListener("input", function (e) {
+    if (document.querySelector(".searchInput").value == "") {
         window.location.reload()
     }
 })
-$(".searchBtn").on("click", function (e) {
-    const searchQuery = $(".searchInput").val();
+document.querySelector(".searchBtn").addEventListener("click", function (e) {
+    const searchQuery = document.querySelector(".searchInput").value;
     let items = [];
-    $(".card-text").forEach((text) => {
+    document.querySelectorAll(".card-text").forEach((text) => {
         items.push(text.innerText);
     });
     if (searchQuery == "") {
@@ -32,34 +32,47 @@ $(".searchBtn").on("click", function (e) {
 });
 
 // Filter
-const minValue = $("#min_value");
-const maxValue = $("#max_value");
-minValue.textContent = $("#min_input").value;
-maxValue.textContent = $("#max_input").value;
-$("#min_input").addEventListener("input", async (event) => {
-    minValue.textContent = event.target.value;
+document.getElementById("min_value").value = document.getElementById("min_input").value;
+document.getElementById("max_value").value = document.getElementById("max_input").value;
+document.getElementById("min_input").addEventListener("input", (event) => {
+  document.getElementById("min_value").value = event.target.value;
 });
-$("#max_input").addEventListener("input", async (event) => {
-    maxValue.textContent = event.target.value;
+document.getElementById("max_input").addEventListener("input", (event) => {
+  document.getElementById("max_value").value = event.target.value;
 });
-$("#filterBtn").addEventListener("click", async () => {
-    let url = 'http://localhost:3000?'
+document.getElementById("filterBtn").addEventListener("click", async () => {
+    let url = 'http://localhost:3000/?'
     let filters = []
-    if ($('input[name="category"]:checked').val()) {
-        filters.push(`category=${$('input[name="category"]:checked').val()}`)
+    if (document.querySelector('input[name="category"]:checked')) {
+        filters.push(`category=${document.querySelector('input[name="category"]:checked').value}`)
     }
-    if ($('input[name="location"]:checked').val()) {
-        filters.push(`location=${$('input[name="location"]:checked').val()}`)
+    if (document.querySelector('input[name="location"]:checked')) {
+        filters.push(`location=${document.querySelector('input[name="location"]:checked').value}`)
     }
-    if ($(".searchInput").val() != "") {
-        filters.push(`q=${$(".searchInput").val()}`)
+    if (document.querySelector(".searchInput").value != "") {
+        filters.push(`q=${document.querySelector(".searchInput").value}`)
     }
-    console.log(minValue.textContent)
-    filters.push(`minPrice=${minValue.textContent}`)
-    filters.push(`maxPrice=${maxValue.textContent}`)
+    console.log(document.getElementById("min_value").textContent)
+    filters.push(`minPrice=${document.getElementById("min_value").value}`)
+    filters.push(`maxPrice=${document.getElementById("max_value").value}`)
     const newUrl = url + filters.join('&')
     window.location = newUrl
 });
+document.getElementById("min_value").addEventListener("input", (event) => {
+    if (event.target.value == '') {
+        document.getElementById("min_input").value = 0
+    } else {
+        document.getElementById("min_input").value = event.target.value;
+    }
+});
+document.getElementById("max_value").addEventListener("input", (event) => {
+    if (event.target.value == '') {
+        document.getElementById("max_input").value = 0
+    } else {
+        document.getElementById("max_input").value = event.target.value;
+    }
+});
+document.getElementById("resetFilterBtn").addEventListener("click", () => window.location = "/");
 
 // Sell
 function textCounter(field, field2, maxlimit) {
@@ -69,6 +82,53 @@ function textCounter(field, field2, maxlimit) {
         return false;
     } else {
         countfield.innerText = maxlimit - field.value.length;
+    }
+}
+
+let imgFileName = "";
+let imgInput = document.getElementById("image");
+let allowedExtensions = [".apng",".avif",".jpeg",".jpg",".png",".svg+xml",".webp"];
+
+imgInput.addEventListener("change", function () {
+    let file = this.files[0];
+    let fileReader = new FileReader();
+    fileReader.onloadend = function () {
+        let arrayBuffer = new Uint8Array(fileReader.result).subarray(0, 4);
+        let header = "";
+        for (let i = 0; i < arrayBuffer.length; i++) {
+            header += arrayBuffer[i].toString(16);
+        }
+        let fileType = getFileType(header);
+        console.log(fileType);
+        if (fileType && allowedExtensions.includes(fileType)) {
+            imgFileName = file.name;
+        } else {
+            imgInput.value = "";
+            alert("unsupported image uploaded, try again");
+        }
+    };
+    fileReader.readAsArrayBuffer(file);
+});
+// Check File Type
+function getFileType(header) {
+    switch (header) {
+        case "89504e47":
+            return ".png";
+        case "ffd8ffe0":
+        case "ffd8ffe1":
+        case "ffd8ffe2":
+            return ".jpg";
+        case "47494638":
+            return ".gif";
+        case "25504446":
+            return ".pdf";
+        case "49492a00":
+        case "4d4d002a":
+            return ".tiff";
+        case "52494646":
+            return ".webp";
+        default:
+            return null;
     }
 }
 
@@ -126,50 +186,3 @@ function validateForm() {
     }
 }
 
-let imgFileName = "";
-let imgInput = document.getElementById("image");
-let allowedExtensions = [".apng",".avif",".jpeg",".jpg",".png",".svg+xml",".webp"];
-
-imgInput.addEventListener("change", function () {
-    let file = this.files[0];
-
-    let fileReader = new FileReader();
-    fileReader.onloadend = function () {
-        let arrayBuffer = new Uint8Array(fileReader.result).subarray(0, 4);
-        let header = "";
-        for (let i = 0; i < arrayBuffer.length; i++) {
-            header += arrayBuffer[i].toString(16);
-        }
-        let fileType = getFileType(header);
-        console.log(fileType);
-        if (fileType && allowedExtensions.includes(fileType)) {
-            imgFileName = file.name;
-        } else {
-            imgInput.value = "";
-            alert("unsupported image uploaded, try again");
-        }
-    };
-    fileReader.readAsArrayBuffer(file);
-});
-
-function getFileType(header) {
-    switch (header) {
-        case "89504e47":
-            return ".png";
-        case "ffd8ffe0":
-        case "ffd8ffe1":
-        case "ffd8ffe2":
-            return ".jpg";
-        case "47494638":
-            return ".gif";
-        case "25504446":
-            return ".pdf";
-        case "49492a00":
-        case "4d4d002a":
-            return ".tiff";
-        case "52494646":
-            return ".webp";
-        default:
-            return null;
-    }
-}

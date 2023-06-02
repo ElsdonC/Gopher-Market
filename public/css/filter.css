@@ -10,7 +10,7 @@
     --darkgray: #5a5a5a;
     --offwhite: #f9f7f6;
 }
-
+/* Filter */
 .filter {
     position: fixed;
     top: 80px;
@@ -23,7 +23,7 @@
 .filtersContainer {
     background-color: white;
     width: 90%;
-    margin: 30px 30px;
+    margin: 30px;
     border-radius: 10px;
     padding: 20px;
     border: 1px solid var(--gray);
@@ -74,6 +74,12 @@ input[type='radio'] {
     background-color: var(--lightgray);
 }
 
+/* Price */
 input[type="range"] {
     accent-color: var(--lightmaroon);
+}
+#min_value, #max_value {
+    border: 1px solid var(--lightgray);
+    padding: 5px 10px;
+    border-radius: 6px;
 }
