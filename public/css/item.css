@@ -24,6 +24,9 @@
     -webkit-box-shadow: 0 0 100px rgb(0, 0, 0);
     box-shadow: 0 0 50px #0000001a;
 }
+.itemInfo {
+    padding: 10px;
+}
 .contactSellerBtn {
     width: 20vw;
     background-color: var(--gold);

@@ -10,6 +10,7 @@ module.exports = {
         res.render("userItems.ejs", {
             items: items,
             user: req.user,
+            tags: false,
             page: "userItems",
             title: "My Items",
         });

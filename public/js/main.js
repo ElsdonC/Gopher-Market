@@ -53,8 +53,10 @@ document.getElementById("filterBtn").addEventListener("click", async () => {
         filters.push(`q=${document.querySelector(".searchInput").value}`)
     }
     console.log(document.getElementById("min_value").textContent)
-    filters.push(`minPrice=${document.getElementById("min_value").value}`)
-    filters.push(`maxPrice=${document.getElementById("max_value").value}`)
+    if (document.getElementById("min_value").value != "0" || document.getElementById("max_value").value != "1000") {
+        filters.push(`minPrice=${document.getElementById("min_value").value}`)
+        filters.push(`maxPrice=${document.getElementById("max_value").value}`)
+    }
     const newUrl = url + filters.join('&')
     window.location = newUrl
 });
@@ -73,6 +75,18 @@ document.getElementById("max_value").addEventListener("input", (event) => {
     }
 });
 document.getElementById("resetFilterBtn").addEventListener("click", () => window.location = "/");
+
+// Title
+document.querySelectorAll(".fa-circle-xmark").forEach((element) => {
+    element.addEventListener("mouseover", (e) => {
+        e.target.classList.replace("fa-regular", "fa-solid")
+    })
+})
+document.querySelectorAll(".fa-circle-xmark").forEach((element) => {
+    element.addEventListener("mouseout", (e) => {
+        e.target.classList.replace("fa-solid", "fa-regular")
+    })
+})
 
 // Sell
 function textCounter(field, field2, maxlimit) {

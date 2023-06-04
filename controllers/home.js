@@ -8,18 +8,25 @@ module.exports = {
         let category;
         let location;
         let searchQuery;
+        let filterTags = [];
+        if (req.query.minPrice && req.query.maxPrice) {
+            if (req.query.minPrice != 0 || req.query.maxPrice != 1000) {
+                let min = req.query.minPrice;
+                let max = req.query.maxPrice;
+                filterTags.push(`$${min}-$${max}`)
+            }
+        }
         if (req.query.category) {
             category = req.query.category;
+            filterTags.push(`Category: ${category}`)
         }
         if (req.query.location) {
             location = req.query.location;
+            filterTags.push(`Location: ${location}`)
         }
         if (req.query.q) {
             searchQuery = req.query.q;
-        }
-        if (req.query.minPrice && req.query.maxPrice) {
-            min = req.query.minPrice;
-            max = req.query.maxPrice
+            filterTags.push(`Search: "${searchQuery}"`)
         }
         let filteredItems = [];
         let items = await ItemModel.find();
@@ -55,18 +62,17 @@ module.exports = {
                 items: filteredItems,
                 user: req.user,
                 page: "no items found",
+                tags: filterTags,
                 title: null,
             });
         } else {
             res.render("noItemsFound.ejs", {
                 page: "No items found",
                 title: "No items found",
+                tags: filterTags,
                 user: req.user
             })
         }
-    },
-    getFilter: async (req, res) => {
-        
     },
     getItem: async (req, res) => {
         const name = req.params.name;

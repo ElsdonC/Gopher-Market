@@ -1,10 +1,14 @@
+<section class="title">
 <% if (title != null) { %>
-<section class="title">
     <h2><%= title %></h2>
-</section>
-
 <% } else { %>
-<section class="title">
     <h2>Browse Items</h2>
-</section>
 <% } %>
+<% if (tags && tags.length > 0) { %>
+<ul class="d-flex flex-row filterTags">
+    <% tags.forEach((tag) => { %>
+        <li><span><%=tag%></span><i class="fa-regular fa-circle-xmark"></i></li>
+    <% }) %>
+</ul>
+<%}%>
+</section>

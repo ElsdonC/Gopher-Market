@@ -43,7 +43,7 @@ passport.deserializeUser(function (user, done) {
       process.nextTick(function () {
           return done(null, user);
       });
-  } else if (user.email) {
+  } else if (user.email.includes("@umn.edu")) {
       User.findOne({ googleId: user.id })
           .then((existingUser) => {
               if (!existingUser) {
@@ -57,15 +57,10 @@ passport.deserializeUser(function (user, done) {
                   return done(null, newUser);
               } else if (existingUser.pfp !== user.picture) {
                   User.updateOne(
-                      { googleId: user.id },
-                      { $set: { pfp: user.picture } },
-                      (err, result) => {
-                          if (err) {
-                              return done(err, null);
-                          }
-                          return done(null, existingUser);
-                      }
-                  );
+                    { googleId: user.id },
+                    { $set: { pfp: user.picture } }
+                )
+                    return done(null, existingUser);
               } else {
                   return done(null, existingUser);
               }

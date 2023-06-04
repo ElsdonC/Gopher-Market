@@ -36,7 +36,7 @@ nav a {
     font-size: 2rem;
     font-weight: 600;
 }
-li {
+nav li {
     list-style: none;
     display: flex;
     flex-direction: column;
@@ -59,11 +59,11 @@ li {
     position: relative;
 }
 .searchBtn {
-    height: 41px;
+    height: 43px;
     width: 25%;
     position: absolute;
-    right: 2px;
-    top: 2px;
+    right: 1px;
+    top: 1px;
     border: none;
     border-radius: 25px;
     background-color: var(--lightgold);
@@ -78,7 +78,7 @@ li {
 .searchInput {
     padding: 0 15px 0 35px;
     border-radius: 25px;
-    border: 2px solid black;
+    border: 1px solid black;
 }
 .searchInput::placeholder {
     color: var(--gray);
@@ -91,8 +91,12 @@ li {
 .nav-bookmark {
     fill: var(--maroon);
 }
-.nav-bookmark, .profile {
-    height: 20px;
+.nav-bookmark {
+    height: 25px;
+}
+.profile {
+    height: 30px;
+    border-radius: 50%;
 }
 .profileNav {
     height: 40px;

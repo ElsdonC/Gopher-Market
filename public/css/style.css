@@ -21,22 +21,51 @@ body {
 }
 
 /* Page Title */
+.title * {
+    overflow: hidden;
+}
 .title {
     position: fixed;
-    overflow: hidden;
     width: 80vw;    
     padding-left: 30px;
     font-size: 3rem;
     color: black;
+    border-bottom: 1px solid var(--lightgray);
     background-color: white;
     z-index: 2;
+    padding: 30px 30px 7.5px;
 }
 
 .title h2 {
-    margin-bottom: 0;
-    border-bottom: 1px solid var(--lightgray);
-    padding: 30px 0;
+    margin-bottom: 5px;
     width: 94.5%;
+}
+
+.title ul {
+    height: 30px;
+    margin: 0;
+    padding: 0;
+    gap: 10px;
+}
+
+.title ul li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    background-color: var(--lightgray);
+    padding: 0 10px;
+    border-radius: 15px;
+    width: auto;
+}
+
+.fa-circle-xmark {
+    padding-left: 10px;
+}
+
+.fa-circle-xmark:hover {
+    cursor: pointer;
 }
 
 /* Results */
