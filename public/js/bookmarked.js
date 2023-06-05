@@ -3,7 +3,7 @@ document.querySelectorAll(".bookmark").forEach((element) => {
         if (this.classList.contains("bi-bookmark-fill")) {
             $(`#unstarModal_${this.id}`).modal("show");
         } else {
-            await fetch(`http://localhost:3000/starred/add/${this.id}`, {
+            await fetch(`http://localhost:3000/bookmarked/add/${this.id}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -17,7 +17,7 @@ document.querySelectorAll(".bookmark").forEach((element) => {
 });
 
 async function unstar(id) {
-    await fetch(`http://localhost:3000/starred/remove/${id}`, {
+    await fetch(`http://localhost:3000/bookmarked/remove/${id}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

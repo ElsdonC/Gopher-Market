@@ -29,7 +29,7 @@
                         </a>
                         <% }} %>
                     </div>
-                        <% if (page == "userItems") { %>
+                        <% if (title == "My Items") { %>
                             <% let editLink = `/userItems/edit/${item.id}` %>
                             <a href="<%= editLink %>" class="btn btn-warning">Edit</a>
                             <% let deleteLink = `http://localhost:3000/userItems/delete/${item.id}` %>
@@ -52,7 +52,7 @@
                                     </div>
                                 </div>
                             </div>
-                    <% } else if (page == "bookmarked") { %>
+                    <% } else if (title == "Bookmarked Items") { %>
                         <div class="modal fade" id="unstarModal_<%= item.id %>" role="dialog" aria-labelledby="unstarModalLabel" aria-hidden="true" data-bs-backdrop="static">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">

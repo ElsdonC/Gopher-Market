@@ -1,10 +1,11 @@
 const express = require('express')
 const router = express.Router()
 const userItemsController = require('../controllers/userItems')
+const mainController = require('../controllers/main')
 const upload = require('../middleware/uploadImage')
 const { ensureAuth } = require('../middleware/ensureAuth')
 
-router.get('/', ensureAuth, userItemsController.getItems)
+router.get('/', ensureAuth, mainController.get)
 
 router.get('/edit/:id', ensureAuth, userItemsController.editItem)
 

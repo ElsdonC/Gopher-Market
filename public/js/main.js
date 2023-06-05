@@ -1,3 +1,16 @@
+let baseURL = 'http://localhost:3000/'
+let bookmarkURL = 'http://localhost:3000/bookmarked/'
+let profileURL = 'http://localhost:3000/userItems/'
+
+function redirect(url, query) {
+    if (url.includes("bookmarked")) {
+        window.location = `${bookmarkURL}?${query}`
+    } else if (url.includes("userItems")) {
+        window.location = `${profileURL}?${query}`
+    } else {
+        window.location = `${baseURL}?${query}`
+    }
+}
 // Search
 document.querySelector(".searchInput").addEventListener("keyup", function (e) {
     if (e.key === "Enter" || e.keyCode === 13) {
@@ -9,8 +22,7 @@ document.querySelector(".searchInput").addEventListener("keyup", function (e) {
         if (searchQuery == "") {
             window.location.reload();
         }
-        fetch(`http://localhost:3000/filter?q=${searchQuery}`)
-        window.location = `http://localhost:3000?q=${searchQuery}`;
+        redirect(window.location.href, `q=${searchQuery}`)
     }
 });
 document.querySelector(".searchInput").addEventListener("input", function (e) {
@@ -27,8 +39,7 @@ document.querySelector(".searchBtn").addEventListener("click", function (e) {
     if (searchQuery == "") {
         window.location.reload();
     }
-    fetch(`http://localhost:3000/filter?q=${searchQuery}`)
-    window.location = `http://localhost:3000?q=${searchQuery}`;
+    redirect(window.location.href, `q=${searchQuery}`)
 });
 
 // Filter
@@ -41,7 +52,6 @@ document.getElementById("max_input").addEventListener("input", (event) => {
   document.getElementById("max_value").value = event.target.value;
 });
 document.getElementById("filterBtn").addEventListener("click", async () => {
-    let url = 'http://localhost:3000/?'
     let filters = []
     if (document.querySelector('input[name="category"]:checked')) {
         filters.push(`category=${document.querySelector('input[name="category"]:checked').value}`)
@@ -57,8 +67,7 @@ document.getElementById("filterBtn").addEventListener("click", async () => {
         filters.push(`minPrice=${document.getElementById("min_value").value}`)
         filters.push(`maxPrice=${document.getElementById("max_value").value}`)
     }
-    const newUrl = url + filters.join('&')
-    window.location = newUrl
+    redirect(window.location.href, `${filters.join('&')}`)
 });
 document.getElementById("min_value").addEventListener("input", (event) => {
     if (event.target.value == '') {
@@ -74,17 +83,28 @@ document.getElementById("max_value").addEventListener("input", (event) => {
         document.getElementById("max_input").value = event.target.value;
     }
 });
-document.getElementById("resetFilterBtn").addEventListener("click", () => window.location = "/");
+document.getElementById("resetFilterBtn").addEventListener("click", () => window.location = window.location.href.split("?")[0]);
 
-// Title
+// Filter Tags
 document.querySelectorAll(".fa-circle-xmark").forEach((element) => {
+    // Hover Effect for filter tags
     element.addEventListener("mouseover", (e) => {
         e.target.classList.replace("fa-regular", "fa-solid")
     })
-})
-document.querySelectorAll(".fa-circle-xmark").forEach((element) => {
     element.addEventListener("mouseout", (e) => {
         e.target.classList.replace("fa-solid", "fa-regular")
+    })
+    // Dismiss filters with filter tags
+    element.addEventListener("click", (e) => {
+        let currFilters = window.location.href.split('?')[1].split("&")
+        let newFilters = currFilters.filter((element) => {
+            if (!element.includes(e.target.parentNode.id)) {
+                if (!element.includes("Price=") && !element.includes("q=")) {
+                    return element
+                }
+            }
+        })
+        redirect(window.location.href, `${newFilters.join('&')}`)
     })
 })
 

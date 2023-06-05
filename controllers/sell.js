@@ -1,7 +1,7 @@
 const ItemModel = require('../models/items')
 
 module.exports = {
-    createItem: (req,res)=>{
+    sellItem: (req,res)=>{
         if (req.user.googleId == "demo") {
             res.json({"message": "Selling an item is restricted for Demo users"})
         }

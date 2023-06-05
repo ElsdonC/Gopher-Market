@@ -2,19 +2,6 @@ const ItemModel = require("../models/items");
 const fs = require("fs");
 
 module.exports = {
-    getItems: async (req, res) => {
-        var items = await ItemModel.find({
-            createdById: req.user.googleId,
-        });
-        
-        res.render("userItems.ejs", {
-            items: items,
-            user: req.user,
-            tags: false,
-            page: "userItems",
-            title: "My Items",
-        });
-    },
     editItem: async (req, res) => {
         const item = await ItemModel.findOne({ _id: req.params.id });
         res.render("edit.ejs", {

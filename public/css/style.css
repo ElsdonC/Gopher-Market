@@ -30,7 +30,6 @@ body {
     padding-left: 30px;
     font-size: 3rem;
     color: black;
-    border-bottom: 1px solid var(--lightgray);
     background-color: white;
     z-index: 2;
     padding: 30px 30px 7.5px;

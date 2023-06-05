@@ -4,11 +4,13 @@
 <% } else { %>
     <h2>Browse Items</h2>
 <% } %>
-<% if (tags && tags.length > 0) { %>
 <ul class="d-flex flex-row filterTags">
+<% if (tags && tags.length > 0) { %>
     <% tags.forEach((tag) => { %>
-        <li><span><%=tag%></span><i class="fa-regular fa-circle-xmark"></i></li>
+        <li id="<%=tag.split(':')[0]%>" class="dismissFilterBtn"><span><%=tag%></span><i class="fa-regular fa-circle-xmark"></i></li>
     <% }) %>
+<%} else { %>
+    <li class="dismissFilterBtn"><span>no filters applied</span></li>
+<% } %>
 </ul>
-<%}%>
 </section>
