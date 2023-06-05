@@ -99,8 +99,16 @@ document.querySelectorAll(".fa-circle-xmark").forEach((element) => {
         let currFilters = window.location.href.split('?')[1].split("&")
         let newFilters = currFilters.filter((element) => {
             if (!element.includes(e.target.parentNode.id)) {
-                if (!element.includes("Price=") && !element.includes("q=")) {
+                if (!e.target.parentNode.id.includes("$") && !e.target.parentNode.id.includes("search")) {
                     return element
+                } else if (e.target.parentNode.id.includes("$")){
+                    if (!element.includes("Price")) {
+                        return element
+                    }
+                } else if (e.target.parentNode.id.includes("search")) {
+                    if (!element.includes("q=")) {
+                        return element
+                    }
                 }
             }
         })
