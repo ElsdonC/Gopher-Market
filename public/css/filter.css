@@ -54,12 +54,7 @@ input[type='radio'] {
 .input-field {
     padding-bottom: 15px;
 }
-.filterLocIcon {
-    height: 17px;
-    width: 17px;
-    color: var(--gold);
-}
-.filterCatIcon {
+.icon {
     height: 17px;
     width: 20px;
     color: var(--gold);

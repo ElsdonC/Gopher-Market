@@ -30,10 +30,75 @@
                         <% }} %>
                     </div>
                         <% if (title == "My Items") { %>
-                            <% let editLink = `/userItems/edit/${item.id}` %>
-                            <a href="<%= editLink %>" class="btn btn-warning">Edit</a>
-                            <% let deleteLink = `http://localhost:3000/userItems/delete/${item.id}` %>
+                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#editModal_<%=item.id%>" class="btn btn-warning">Edit</a>
                             <button type="button" class="deleteBtn btn btn-danger" onclick="showDeleteModal('<%=item.id%>')">Sold/Delete</button>
+                            <!-- Edit Modal -->
+                            <div class="d-flex flex-row justify-content-center align-items-center">
+                                <div class="modal fade" id="editModal_<%=item.id%>" aria-labelledby="editModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="editModalLabel">Edit Item</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <form id="form" class="m-auto" enctype="multipart/form-data" action="/userItems/edit/<%=item.id%>" method="POST">
+                                                <div class="modal-body">
+                                                <!-- Name -->
+                                                <div class="mb-3">
+                                                    <label for="name" class="form-label">Item Name</label>
+                                                    <input type="text" class="form-control" id="name" placeholder="item name" name="name" value="<%= item.name %>" required/>
+                                                </div>
+                                                <!-- Category -->
+                                                <div class="mb-3">
+                                                    <label for="category" class="form-label">Item Category</label>
+                                                    <select id="category" name="category" class="form-select" aria-label="Default select example">
+                                                        <option value="" selected hidden disabled>Open this select menu</option>
+                                                        <option value="textbooks">textbooks</option>
+                                                        <option value="school-supplies">school-supplies</option>
+                                                        <option value="electronics">electronics</option>
+                                                        <option value="furniture-appliances">furniture/appliances</option>
+                                                        <option value="clothing">clothing</option>
+                                                        <option value="kitchenware">kitchenware</option>
+                                                    </select>
+                                                </div>
+                                                <!-- Location -->
+                                                <div class="mb-3">
+                                                <label for="location" class="form-label">Item Location</label>
+                                                <select id="location" name="location" class="form-select" aria-label="Default select example">
+                                                    <option value="" selected hidden disabled>Open this select menu</option>
+                                                    <option value="westbank">westbank</option>
+                                                    <option value="eastbank">eastbank</option>
+                                                    <option value="dinkytown">dinkytown</option>
+                                                    <option value="off-campus">off-campus</option>
+                                                </select>
+                                                </div>  
+                                                <!-- Description -->
+                                                <div class="mb-3">
+                                                <label for="description" class="form-label">Item Description<span>(characters remaining: <strong><span id="editCounter"><%= 50-item.description.length %></span></strong>)</span></label>
+                                                <textarea onkeyup="textCounter(this,'editCounter', 50);" class="form-control" id="description" name="description" rows="3" maxlength="50" placeholder="description" required><%= item.description %></textarea>
+                                                </div>
+                                                <!-- Price -->
+                                                <div class="input-group mb-3 space-left">
+                                                    <label for="price" class="form-label w-100">Item Price</label>
+                                                    <span class="input-group-text">$</span>
+                                                    <input type="number" value="<%=item.price%>" class="form-control" id="price" name="price" min="0" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" aria-label="Amount (to the nearest dollar)" required />
+                                                </div>
+                                                <!-- Image -->
+                                                <div class="input-group mb-3 space-left">
+                                                <label for="image" class="form-label w-100">Change Image</label>
+                                                <input type="file" class="form-control-file bg-light w-100" id="image" aria-describedby="image" aria-label="Upload" name="changed_file" accept="image/apng, image/avif, image/jpeg, image/png, image/svg+xml, image/webp"/>
+                                                </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" onclick="window.location.href='/userItems'">Cancel</button>
+                                                    <button id="editBtn" class="btn" type="submit">Apply</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Delete Modal -->
                             <div class="modal fade" id="deleteModal_<%=item.id%>" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
@@ -47,7 +112,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                            <button type="button" class="btn btn-danger" onclick="deleteItem('<%=deleteLink%>')">Sold/Delete</button>
+                                            <button type="button" class="btn btn-danger" onclick="deleteItem('<%=item.id%>')">Sold/Delete</button>
                                         </div>
                                     </div>
                                 </div>

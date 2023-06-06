@@ -3,7 +3,7 @@
 <section id="itemPage">
     <img class="itemImage" src="../<%= item.imagePath %>" alt="<%= item.name %> image">
     <section class="itemInfo">
-        <div class="d-flex flex-row justify-content-between align-items-center">
+        <div class="d-flex flex-row justify-content-between">
             <h4>Price: $<%= item.price.toFixed(2) %></h4>
             <% if (user) { if (user.starred.includes(item.id)){ %>
             <a class="bookmarkAnchor" href="javascript:void(0)">
@@ -20,16 +20,46 @@
             <% }} %>
         </div>
         <h1><%= item.name.toUpperCase() %></h1>
-        <p>Category: <%= item.category %></p>
+        <span class="d-flex flex-row align-items-center gap-2">
+            <% if (item.location == "eastbank") { %>
+                <i class="fa-solid fa-circle-arrow-right icon"></i>
+            <% } else if (item.location == "westbank") { %>
+                <i class="fa-solid fa-circle-arrow-left icon"></i>
+            <% } else if (item.location == "dinkytown") { %>
+                <i class="fa-solid fa-city icon"></i>
+            <% } else if (item.location == "off-campus") { %>
+                <i class="fa-solid fa-globe icon"></i>
+            <% } %>
+            <%= item.location %>
+            </span>
+    
+            <span class="d-flex flex-row align-items-center gap-2">
+            <% if (item.category == "textbooks") { %>
+                <i class="fa-solid fa-book icon space-left"></i>
+            <% } else if (item.category == "school-supplies") { %>
+                <i class="fa-solid fa-pencil icon space-left"></i>
+            <% } else if (item.category == "electronics") { %>
+                <i class="fa-solid fa-laptop icon"></i>
+            <% } else if (item.category == "furniture-appliances") { %>
+                <i class="fa-solid fa-couch icon"></i>
+            <% } else if (item.category == "clothing") { %>
+                <i class="fa-solid fa-shirt icon"></i>
+            <% } else if (item.category == "kitchenware") { %>
+                <i class="fa-solid fa-utensils icon space-left"></i>
+            <% } %>
+            <%= item.category %>
+            </span>
+        
         <p>Description: <%= item.description %></p>
         <% if (user) { %>
-            <p>Seller: <%= seller.displayName %></p>
-            <p>Contact: <%= seller.email %></p>
-            <a href="mailto:<%=seller.email%>?subject=Gopher Market Message" target="_blank"><button class="contactSellerBtn btn">Contact Seller</button></a>
+            <section class="d-flex flex-column">
+                <span>Seller: <%= seller.displayName %></span>
+                <span>Contact: <%= seller.email %></span>
+            </section>
+            <a href="mailto:<%=seller.email%>?subject=Gopher Market Message" target="_blank"><button class="contactSellerBtn btn w-100">Contact Seller</button></a>
          <% } else { %>
             <button onclick='window.location.href="/login"' class="contactSellerBtn btn">Login to contact seller</button>
          <% } %>
-        
     </section>
 </section>
 

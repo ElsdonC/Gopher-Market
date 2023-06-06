@@ -7,9 +7,7 @@ const { ensureAuth } = require('../middleware/ensureAuth')
 
 router.get('/', ensureAuth, mainController.get)
 
-router.get('/edit/:id', ensureAuth, userItemsController.editItem)
-
-router.post('/postEdit/:id', ensureAuth, upload.single("changed_file"), userItemsController.postEdit)
+router.post('/edit/:id', ensureAuth, upload.single("changed_file"), userItemsController.edit)
 
 router.delete('/delete/:id', ensureAuth, userItemsController.deleteItem)
 
