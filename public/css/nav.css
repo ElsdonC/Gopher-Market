@@ -13,8 +13,8 @@
 .navbar {
     width: 100vw;
     margin: 0 auto;
-    padding: 20px 10vw;
-    height: 80px;
+    padding: 15px 50px;
+    height: auto;
     background-color: white;
     position: fixed;
     top: 0;
@@ -43,43 +43,47 @@ nav li {
     flex-direction: column;
     justify-content: center;
 }
-/* Logo */
-.logoContainer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
+.logoText {
+    color: var(--lightgold);
+    font-weight: 700;
+    font-size: 2.5rem;
+    letter-spacing: -3px;
 }
-.logo {
-    height: 50px;;
+.text-maroon {
+    color: var(--maroon);
 }
 /* Search Bar */
 .searchBar {
-    height: 45px;
+    height: 55px;
     width: 30vw;
     position: relative;
+    border: 1px solid black;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 5px;
 }
 .searchBtn {
-    height: 43px;
-    width: 25%;
-    position: absolute;
-    right: 1px;
-    top: 1px;
+    height: 45px;
+    width: 50px;
+    border-radius: 50%;
+    position: relative;
     border: none;
-    border-radius: 25px;
-    background-color: var(--lightgold);
+    background-color: var(--darkgold);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 .searchIcon {
-    color: var(--gray);
-    position: absolute;
-    height: 20px;
-    left: 15px;
-    top: 14px;
+    color: var(--offwhite);
+    height: auto;
+    width: auto;
 }
 .searchInput {
-    padding: 0 15px 0 35px;
-    border-radius: 25px;
-    border: 1px solid black;
+    border: none;
+    font-size: 1.25rem;
 }
 .searchInput::placeholder {
     color: var(--gray);
@@ -88,16 +92,28 @@ nav li {
     color: black;
     box-shadow: none;
 }
-/* Navigation links */
-.nav-bookmark {
-    fill: var(--maroon);
-}
-.nav-bookmark {
+#searchInput::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: black;
+    width: 25px;
     height: 25px;
-}
-.profile {
-    height: 30px;
+    background-color: var(--lightgray);
+    color: black;
+    border: none;
     border-radius: 50%;
+    cursor: pointer;
+}
+/* Navigation links */
+.nav-link {
+    color: black;
+    font-weight: 600;
+}
+.nav-bookmark, .nav-profile {
+    height: 15px;
+}
+#profile {
+    border: none;
+    cursor: pointer;
 }
 .profileNav {
     height: 40px;
@@ -105,7 +121,6 @@ nav li {
     right: 0;
     display: flex;
     flex-direction: row;
-    gap: 10px;
     align-items: center;
 }
 .profileNav li a {
