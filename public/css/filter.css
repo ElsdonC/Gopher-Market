@@ -11,19 +11,8 @@
     --offwhite: #f9f7f6;
 }
 /* Filter */
-.filter {
-    position: fixed;
-    top: 80px;
-    width: 20vw;
-    height: 100%;
-}
-.filter * {
-    overflow: hidden;
-}
 .filtersContainer {
     background-color: white;
-    width: 90%;
-    margin: 30px;
     border-radius: 10px;
     padding: 20px;
     border: 1px solid var(--gray);
@@ -77,4 +66,10 @@ input[type="range"] {
     border: 1px solid var(--lightgray);
     padding: 5px 10px;
     border-radius: 6px;
+}
+
+/* Filter Tags */
+.filterTags {
+    z-index: 50;
+    margin-top: 50px;
 }

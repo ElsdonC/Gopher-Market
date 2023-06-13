@@ -12,15 +12,12 @@
 }
 #items {
     width: 100%;
-    padding: 0 30px 15px;
-    margin-top: 115px;
-    gap: 1vw;
+    margin-top: 110px;
+    gap: 2%;
 }
 .card {
-    width: 14vw;
-    border: 1px solid #0000006c;
-    border-radius: 10px;
-    background-color: var(--offwhite)
+    width: 18.4%;
+    border: none;
 }
 .itemLink {
     width: 100%;
@@ -30,7 +27,7 @@
 .card-img-top {
     height: 250px;
     object-fit: cover;
-    border-radius: 10px 10px 0 0;
+    border-radius: 5px;
 }
 .card-body {
     padding: 5px 15px;

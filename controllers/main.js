@@ -37,7 +37,7 @@ module.exports = {
             title = "Browse Items"
         } else if (url.split("?")[0].includes("/bookmarked")) {
             items = await ItemModel.find({ _id: { $in: req.user.starred } });
-            title = "Bookmarked Items"
+            title = "Saved Items"
         } else if (url.split("?")[0].includes("/userItems")) {
             items = await ItemModel.find({ createdById: req.user.googleId })
             title = "My Items"
