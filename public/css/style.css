@@ -19,6 +19,13 @@ body {
     font-family: "Neutraface Text", sans-serif;
 }
 
+.text-maroon {
+    color: var(--maroon);
+}
+.text-gold {
+    color: var(--gold);
+}
+
 .mainContainer {
     max-width: 1600px;
     width: 100%;
@@ -83,4 +90,11 @@ body {
 
 .fa-circle-xmark:hover {
     cursor: pointer;
+}
+
+#attribution {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 }

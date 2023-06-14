@@ -5,79 +5,97 @@
     --lightgold: #ffde7a;
     --gold: #ffcc33;
     --darkgold: #ffb71e;
+    --superlightgray: rgba(210, 210, 210, 0.518);
     --lightgray: #d5d6d2;
     --gray: #777677;
     --darkgray: #5a5a5a;
     --offwhite: #f9f7f6;
 }
-.emailInfo {
+
+.login-container {
     width: 100%;
-    text-align: center;
-    margin-top: 100px;
-    font-size: 2rem;
+    height: 100vh;
+    background-color: var(--offwhite);
 }
-.logo-bg-maroon {
-    background-color: var(--maroon);
+
+.logo-img {
+    height: 45px;
+    mix-blend-mode: multiply;
 }
-.g-sign-in-button, .demo-sign-in-button {
-    margin: 10px;
-    display: inline-block;
-    width: 240px;
-    height: 50px;
-    background-color: #4285f4;
-    color: #fff;
-    border-radius: 1px;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
-    transition: background-color .218s, border-color .218s, box-shadow .218s;
-}
-.g-sign-in-button:hover {
-    cursor: pointer;
-    -webkit-box-shadow: 0 0 3px 3px rgba(66, 133, 244, 0.3);
-    box-shadow: 0 0 3px 3px rgba(66, 133, 244, 0.3);
-}
-.demo-sign-in-button {
-    background-color: var(--darkgold);
-}
-.demo-sign-in-button:hover {
-    cursor: pointer;
-    -webkit-box-shadow: 0 0 3px 3px rgba(52, 59, 70, 0.3);
-    box-shadow: 0 0 3px 3px rgba(52, 59, 70, 0.3);
-}
-.g-sign-in-button:active {
-    background-color: #3367D6;
-    transition: background-color 0.2s;
-}
-.g-sign-in-button .content-wrapper, .demo-sign-in-button .content-wrapper {
-    height: 100%;
-    width: 100%;
-    border: 1px solid transparent;
-    display: flex;
-    flex-direction: row;
-}
-.g-sign-in-button img, .demo-sign-in-button img {
-    width: 18px;
-    height: 18px;
-}
-.g-sign-in-button .logo-wrapper, .demo-sign-in-button .logo-wrapper {
-    background: #fff;
-    width: 48px;
-    height: 100%;
-    border-radius: 1px;
+
+.loginHeading {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-}
-.g-sign-in-button .text-container, .demo-sign-in-button .text-container {
-    line-height: 48px;
-    border: none;
-    display: inline-block;
-    text-align: center;
-    width: 180px;
+    gap: 10px;
+    height: 150px;
 }
 
-@media only screen and (max-width: 990px) {
-    .logBtns {
-        flex-direction: column;
-    }
+.title-text {
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: -3px;
+}
+
+.login-card {
+    margin: auto;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 400px;
+    height: auto;
+    padding: 40px 0;
+    box-shadow: var(--superlightgray) 0 0 5px 5px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.login-description {
+    font-weight: 700;
+    color: var(--gray);
+}
+
+.login-card hr {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.login-btn {
+    height: 40px;
+    width: 80%;
+    max-width: 585px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    color: var(--darkgray);
+    border: none;
+    border-radius: 4px;
+    box-shadow: var(--lightgray) 0 0 4px 4px;
+}
+
+.google-logo, .gopher-logo {
+    height: 75%;
+    mix-blend-mode: multiply;
+}
+
+.graphic {
+    position: absolute;
+    width: 30%;
+}
+
+.graphic-1 {
+    left: 0;
+    bottom: 0;
+}
+
+.graphic-2 {
+    right: 0;
+    bottom: 0;
 }
