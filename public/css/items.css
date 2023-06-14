@@ -15,6 +15,9 @@
     margin-top: 110px;
     gap: 2%;
 }
+#items a {
+    color: black;
+}
 .card {
     width: 18.4%;
     border: none;
@@ -30,10 +33,15 @@
     border-radius: 5px;
 }
 .card-body {
-    padding: 5px 15px;
+    padding: 5px 5px;
+    line-height: 1.5rem;
 }
-.card-text, .item-price {
+.item-name, .item-price {
+    display: block;
     margin-bottom: 0;
+    width: 100%;
+}
+.item-name {
     font-weight: 600;
     font-size: 1.2rem;
 }
@@ -51,7 +59,17 @@
 }
 .bookmarkAnchor {
     color: black;
-    padding: 0 5px 2.5px 0;
+    padding: 10px;
+    background-color:white;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: 1px solid var(--gray);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
 }
 .bi-bookmark-fill {
     color: #ffcc33;
@@ -59,11 +77,8 @@
 .bi-bookmark {
     color: rgba(128, 128, 128, 0.384);
 }
-.itemIconContainer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
+
+/* No Items */
 .no-items-text {
     margin-top: 115px;
     margin-left: 30px;

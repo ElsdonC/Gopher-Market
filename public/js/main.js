@@ -11,6 +11,18 @@ function redirect(url, query) {
         window.location = `${baseURL}?${query}`
     }
 }
+document.querySelectorAll(".itemCard").forEach((card) => {
+    const imgElement = card.querySelector(".card-img-top");
+    const bookmarkAnchor = card.querySelector(".bookmarkAnchor");
+
+    card.addEventListener("mouseover", () => {
+        bookmarkAnchor.style.display = "inline-flex";
+    });
+
+    card.addEventListener("mouseout", () => {
+        bookmarkAnchor.style.display = "none";
+    });
+});
 // Search
 document.querySelector(".searchInput").addEventListener("keyup", function (e) {
     if (e.key === "Enter" || e.keyCode === 13) {
