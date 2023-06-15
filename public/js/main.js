@@ -11,18 +11,7 @@ function redirect(url, query) {
         window.location = `${baseURL}?${query}`
     }
 }
-document.querySelectorAll(".itemCard").forEach((card) => {
-    const imgElement = card.querySelector(".card-img-top");
-    const bookmarkAnchor = card.querySelector(".bookmarkAnchor");
 
-    card.addEventListener("mouseover", () => {
-        bookmarkAnchor.style.display = "inline-flex";
-    });
-
-    card.addEventListener("mouseout", () => {
-        bookmarkAnchor.style.display = "none";
-    });
-});
 // Search
 document.querySelector(".searchInput").addEventListener("keyup", function (e) {
     if (e.key === "Enter" || e.keyCode === 13) {
@@ -53,6 +42,105 @@ document.querySelector(".searchBtn").addEventListener("click", function (e) {
     }
     redirect(window.location.href, `q=${searchQuery}`)
 });
+
+// Sell
+function textCounter(field, field2, maxlimit) {
+    var countfield = document.getElementById(field2);
+    if (field.value.length > maxlimit) {
+        field.value = field.value.substring(0, maxlimit);
+        return false;
+    } else {
+        countfield.innerText = maxlimit - field.value.length;
+    }
+}
+
+let imgFileName = "";
+let imgInput = document.getElementById("image");
+let allowedExtensions = [".apng",".avif",".jpeg",".jpg",".png",".svg+xml",".webp"];
+
+imgInput.addEventListener("change", function () {
+    let file = this.files[0];
+    let fileReader = new FileReader();
+    fileReader.onloadend = function () {
+        let arrayBuffer = new Uint8Array(fileReader.result).subarray(0, 4);
+        let header = "";
+        for (let i = 0; i < arrayBuffer.length; i++) {
+            header += arrayBuffer[i].toString(16);
+        }
+        let fileType = getFileType(header);
+        console.log(fileType);
+        if (fileType && allowedExtensions.includes(fileType)) {
+            imgFileName = file.name;
+        } else {
+            imgInput.value = "";
+            alert("unsupported image uploaded, try again");
+        }
+    };
+    fileReader.readAsArrayBuffer(file);
+});
+// Check File Type
+function getFileType(header) {
+    switch (header) {
+        case "89504e47":
+            return ".png";
+        case "ffd8ffe0":
+        case "ffd8ffe1":
+        case "ffd8ffe2":
+            return ".jpg";
+        case "47494638":
+            return ".gif";
+        case "25504446":
+            return ".pdf";
+        case "49492a00":
+        case "4d4d002a":
+            return ".tiff";
+        case "52494646":
+            return ".webp";
+        default:
+            return null;
+    }
+}
+
+// Show Bookmark On Item Hover
+document.querySelectorAll(".itemCard").forEach((card) => {
+    const bookmarkAnchor = card.querySelector(".bookmarkAnchor");
+    card.addEventListener("mouseover", () => {
+        bookmarkAnchor.style.display = "inline-flex";
+    });
+    card.addEventListener("mouseout", () => {
+        bookmarkAnchor.style.display = "none";
+    });
+});
+
+// Save/Unsave items 
+document.querySelectorAll(".bookmark").forEach((element) => {
+    element.addEventListener("click", async function () {
+        if (this.classList.contains("bi-bookmark-fill")) {
+            $(`#unstarModal_${this.id}`).modal("show");
+        } else {
+            await fetch(`http://localhost:3000/bookmarked/add/${this.id}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }).catch((err) => {
+                console.error(err);
+            });
+            window.location.reload();
+        }
+    });
+});
+async function unstar(id) {
+    await fetch(`http://localhost:3000/bookmarked/remove/${id}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    }).catch((err) => {
+        console.error(err);
+    });
+    window.location.reload();
+}
 
 // Filter
 document.getElementById("min_value").value = document.getElementById("min_input").value;
@@ -128,64 +216,7 @@ document.querySelectorAll(".fa-circle-xmark").forEach((element) => {
     })
 })
 
-// Sell
-function textCounter(field, field2, maxlimit) {
-    var countfield = document.getElementById(field2);
-    if (field.value.length > maxlimit) {
-        field.value = field.value.substring(0, maxlimit);
-        return false;
-    } else {
-        countfield.innerText = maxlimit - field.value.length;
-    }
-}
-
-let imgFileName = "";
-let imgInput = document.getElementById("image");
-let allowedExtensions = [".apng",".avif",".jpeg",".jpg",".png",".svg+xml",".webp"];
-
-imgInput.addEventListener("change", function () {
-    let file = this.files[0];
-    let fileReader = new FileReader();
-    fileReader.onloadend = function () {
-        let arrayBuffer = new Uint8Array(fileReader.result).subarray(0, 4);
-        let header = "";
-        for (let i = 0; i < arrayBuffer.length; i++) {
-            header += arrayBuffer[i].toString(16);
-        }
-        let fileType = getFileType(header);
-        console.log(fileType);
-        if (fileType && allowedExtensions.includes(fileType)) {
-            imgFileName = file.name;
-        } else {
-            imgInput.value = "";
-            alert("unsupported image uploaded, try again");
-        }
-    };
-    fileReader.readAsArrayBuffer(file);
-});
-// Check File Type
-function getFileType(header) {
-    switch (header) {
-        case "89504e47":
-            return ".png";
-        case "ffd8ffe0":
-        case "ffd8ffe1":
-        case "ffd8ffe2":
-            return ".jpg";
-        case "47494638":
-            return ".gif";
-        case "25504446":
-            return ".pdf";
-        case "49492a00":
-        case "4d4d002a":
-            return ".tiff";
-        case "52494646":
-            return ".webp";
-        default:
-            return null;
-    }
-}
-
+// Validate Form Submissions
 function validateForm() {
     let name = document.getElementById("name").value.replace(/\s/g, "");
     if (name == "") {
@@ -240,3 +271,23 @@ function validateForm() {
     }
 }
 
+// Confirm Delete
+async function deleteItem(id) {
+    await fetch(`http://localhost:3000/delete/${id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    })
+        .then((res) => res.json())
+        .then((data) => {
+            if (data.message) {
+                alert(data.message)
+            }
+        });
+    window.location.reload();
+}
+
+function showDeleteModal(id) {
+    $(`#deleteModal_${id}`).modal("show");
+}

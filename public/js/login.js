@@ -1,3 +1,4 @@
+// Demo Account Login
 document.querySelector("#demo-login-btn").addEventListener("click", async () => {
     await fetch("http://localhost:3000/auth/demo", {
         method: "POST",
@@ -11,7 +12,7 @@ document.querySelector("#demo-login-btn").addEventListener("click", async () => 
     })
     window.location = '/'
 })
-
+// Google Account Login
 document.querySelector("#google-login-btn").addEventListener("click", async () => {
     window.location = "/auth/google"
 })

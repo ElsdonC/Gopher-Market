@@ -14,6 +14,7 @@
                     <button class="searchBtn"><i class="fa-solid fa-magnifying-glass searchIcon"></i></button>
                 </div>
             </div>
+            
             <!-- Navigation Links -->
             <div class="nav-link-container">
                 <% if (user) { %>
@@ -21,21 +22,23 @@
                 <li>
                     <a href="/bookmarked" class="nav-link d-flex flex-row align-items-center gap-1"><svg class="nav-bookmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"/></svg>Saved</a>
                 </li>
-                <li class="flex-row align-items-center">
+                <!-- Account -->
+                <div class="dropdown d-flex flex-row align-items-center gap-1">
                     <img class="nav-profile" src="../../images/profile.png" alt="profile icon"/>
-                    <select name="profile" id="profile">
-                        <option hidden>Hi, <%=user.displayName.split(" ")[0]%>!</option>
-                        <option value="sell-item">Sell Item</option>
-                        <option value="my-items">My Items</option>
-                        <option value="log-out">
+                    <div class="shadow-none btn dropdown-toggle p-0 d-flex flex-row align-items-center" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Hi, <%=user.displayName.split(" ")[0]%>!
+                    </div>
+                    
+                    <ul class="dropdown-menu">
+                        <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#sellModal">Sell an Item</button></li>
+                        <li><a class="dropdown-item" href="/userItems">My Items</a></li>
+                        <li>
                             <form action="/logout" method="POST">
-                                <li class="d-flex flex-row align-items-center">
-                                    <span><button class="logoutBtn" type="submit">Log out</button></span>
-                                </li>
+                                <button class="logout-btn dropdown-item" type="submit">Log out</button>
                             </form>
-                        </option>
-                    </select>
-                </li>
+                        </li>
+                    </ul>
+                </div>
                 
                 <% } else { %>
                 <!-- Login -->

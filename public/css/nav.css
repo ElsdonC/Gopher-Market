@@ -1,5 +1,6 @@
 :root {
-    --lightmaroon: #900021;
+    --superlightmaroon: #9000227c;
+    --lightmaroon: #900022;
     --maroon: #7a0019;
     --darkmaroon: #5b0013;
     --lightgold: #ffde7a;
@@ -44,6 +45,21 @@ nav li {
     font-weight: 700;
     font-size: 2.5rem;
     letter-spacing: -3px;
+}
+
+/* DropDown */
+.dropdown-menu {
+    padding: 0;
+}
+.dropdown-toggle {
+    border: none;
+}
+.dropdown-item {
+    font-size: 1rem;
+    margin: auto;
+}
+.account-dropdown-menu {
+    outline: none;   
 }
 
 /* Search Bar */
@@ -125,13 +141,12 @@ nav li {
     flex-direction: column;
     justify-content: center;
 }
-.logoutBtn {
+.logout-btn {
     border: none;
     background-color: transparent;
-    padding: 0;
 }
-.logoutBtn:hover {
-    color: var(--lightmaroon);
+.logout-btn:hover {
+    background-color: #ff00008a;
 }
 
 @media only screen and (max-width: 600px) {
