@@ -8,23 +8,34 @@ module.exports = {
         let category;
         let location;
         let searchQuery;
+        let condition;
         let filterTags = [];
+        // Filter Price
         if (req.query.minPrice && req.query.maxPrice) {
             min = Number(req.query.minPrice)
             max = Number(req.query.maxPrice)
             filterTags.push(`$${min}-$${max}`)
         }
+        // Filter Category
         if (req.query.category) {
             category = req.query.category;
             filterTags.push(`category: ${category}`)
         }
+        // Filter Location
         if (req.query.location) {
             location = req.query.location;
             filterTags.push(`location: ${location}`)
         }
+        // Filter Search Query
         if (req.query.q) {
             searchQuery = req.query.q;
             filterTags.push(`search: "${searchQuery}"`)
+        }
+        // Filter Condition
+        if (req.query.condition) {
+            const conditionValues = req.query.condition.split(",");
+            condition = conditionValues;
+            filterTags.push(`condition: ${condition.join(", ")}`);
         }
         let filteredItems = [];
 
@@ -46,23 +57,31 @@ module.exports = {
         // Loop through items and filter
         items.forEach((item) => {
             let shouldAddItem = true;
+            // Category
             if (category && item.category !== category) {
                 if (category != "all") {
                     shouldAddItem = false;
                 }
             }
+            // Location
             if (location && item.location !== location) {
                 if (location != "all") {
                     shouldAddItem = false;
                 }
             }
+            // Price
             if (min && item.price < min) {
                 shouldAddItem = false;
             }
             if (max && item.price > max) {
                 shouldAddItem = false;
             }
+            // Search Query
             if (searchQuery && !item.name.toLowerCase().includes(searchQuery.toLowerCase())) {
+                shouldAddItem = false;
+            }
+            // Condition
+            if (condition && !condition.includes(item.condition)) {
                 shouldAddItem = false;
             }
             if (shouldAddItem) {

@@ -16,7 +16,6 @@ module.exports = {
         }).catch(err=>{
             console.log(err)
         })
-        
     },
     remove: async (req, res) => {
         let id = req.params.id

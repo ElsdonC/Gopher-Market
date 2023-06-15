@@ -153,19 +153,28 @@ document.getElementById("max_input").addEventListener("input", (event) => {
 });
 document.getElementById("filterBtn").addEventListener("click", async () => {
     let filters = []
+    // Filter Category
     if (document.querySelector('input[name="category"]:checked')) {
         filters.push(`category=${document.querySelector('input[name="category"]:checked').value}`)
     }
+    // Filter Location
     if (document.querySelector('input[name="location"]:checked')) {
         filters.push(`location=${document.querySelector('input[name="location"]:checked').value}`)
     }
+    // Filter Search Query
     if (document.querySelector(".searchInput").value != "") {
         filters.push(`q=${document.querySelector(".searchInput").value}`)
     }
-    console.log(document.getElementById("min_value").textContent)
+    // Filter Price
     if (document.getElementById("min_value").value != "0" || document.getElementById("max_value").value != "1000") {
         filters.push(`minPrice=${document.getElementById("min_value").value}`)
         filters.push(`maxPrice=${document.getElementById("max_value").value}`)
+    }
+    // Filter Condition
+    const conditionCheckboxes = document.querySelectorAll('input[name="condition"]:checked');
+    if (conditionCheckboxes.length > 0) {
+        const conditions = Array.from(conditionCheckboxes).map(checkbox => checkbox.value);
+        filters.push(`condition=${conditions.join(",")}`);
     }
     redirect(window.location.href, `${filters.join('&')}`)
 });
