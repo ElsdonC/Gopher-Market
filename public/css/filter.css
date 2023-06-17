@@ -14,8 +14,10 @@
 .filtersContainer {
     background-color: white;
     border-radius: 10px;
-    padding: 20px;
+    padding: 5% 20px;
+    margin-top: 2.5%;
     border: 1px solid var(--gray);
+    height: 90%;
 }
 .filtersContainer li a {
     text-decoration: none;

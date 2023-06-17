@@ -40,13 +40,14 @@ body {
 .filter {
     width: 20%;
     height: 100%;
-    margin: 25px 0 0;
-    position: sticky;
-    top: 100px;
+    position: fixed;
+    top: 75px;
 }
 /* Results */
 .results {
     width: 80%;
+    position: fixed;
+    left: 30%;
 }
 
 
@@ -93,8 +94,14 @@ body {
 }
 
 #attribution {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
     text-align: center;
+    z-index: -1;
+}
+
+.modal-backdrop {
+    /* bug fix - no overlay */    
+    display: none;    
 }

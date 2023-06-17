@@ -10,10 +10,12 @@ module.exports = {
         let itemPrice = req.body.price
         let itemDescription = req.body.description
         let itemCategory = req.body.category
+        let itemCondition = req.body.condition
+        let itemDeliveryMethod = req.body.deliveryMethod
         let filePath = req.file.path.slice(7) //slices the "public" out of the filename
         var createdById = req.user.googleId
         let itemLocation = req.body.location
-        ItemModel.create({name: itemName, location: itemLocation, category: itemCategory, price: itemPrice, description: itemDescription, imagePath: filePath, createdById: createdById})
+        ItemModel.create({name: itemName, location: itemLocation, category: itemCategory, deliveryMethod: itemDeliveryMethod, condition: itemCondition, price: itemPrice, description: itemDescription, imagePath: filePath, createdById: createdById})
         res.redirect('/userItems')
     }
 }

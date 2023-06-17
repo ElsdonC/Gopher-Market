@@ -54,6 +54,22 @@ function textCounter(field, field2, maxlimit) {
     }
 }
 
+var loadSellImage = function(event) {
+    var output = document.getElementById('sell-form-image');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output.src) // free memory
+    }
+  };
+
+var loadEditImage = function(event) {
+    var output = document.getElementById('edit-form-image');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+        URL.revokeObjectURL(output.src)
+    }
+}
+
 let imgFileName = "";
 let imgInput = document.getElementById("image");
 let allowedExtensions = [".apng",".avif",".jpeg",".jpg",".png",".svg+xml",".webp"];
@@ -176,6 +192,12 @@ document.getElementById("filterBtn").addEventListener("click", async () => {
         const conditions = Array.from(conditionCheckboxes).map(checkbox => checkbox.value);
         filters.push(`condition=${conditions.join(",")}`);
     }
+    // Filter DeliveryMethod
+    const deliveryMethodCheckboxes = document.querySelectorAll('input[name="deliveryMethod"]:checked');
+    if (deliveryMethodCheckboxes.length > 0) {
+        const deliveryMethods = Array.from(deliveryMethodCheckboxes).map(checkbox => checkbox.value);
+        filters.push(`deliveryMethod=${deliveryMethods.join(",")}`);
+    }
     redirect(window.location.href, `${filters.join('&')}`)
 });
 document.getElementById("min_value").addEventListener("input", (event) => {
@@ -208,14 +230,14 @@ document.querySelectorAll(".fa-circle-xmark").forEach((element) => {
         let currFilters = window.location.href.split('?')[1].split("&")
         let newFilters = currFilters.filter((element) => {
             if (!element.includes(e.target.parentNode.id)) {
-                if (!e.target.parentNode.id.includes("$") && !e.target.parentNode.id.includes("search")) {
+                if (!e.target.parentNode.id.includes("$") && !e.target.parentNode.id.includes("search") && !e.target.parentNode.id.includes("delivery")) {
                     return element
-                } else if (e.target.parentNode.id.includes("$")){
-                    if (!element.includes("Price")) {
+                } else {
+                    if (e.target.parentNode.id.includes("$") && !element.includes("Price")) {
                         return element
-                    }
-                } else if (e.target.parentNode.id.includes("search")) {
-                    if (!element.includes("q=")) {
+                    } else if (e.target.parentNode.id.includes("search") && !element.includes("q=")) {
+                        return element
+                    } else if (e.target.parentNode.id.includes("delivery") && !element.includes("deliveryMethod")) {
                         return element
                     }
                 }
@@ -237,9 +259,7 @@ function validateForm() {
         nameField.focus();
         return false;
     }
-    let description = document
-        .getElementById("description")
-        .value.replace(/\s/g, "");
+    let description = document.getElementById("description").value.replace(/\s/g, "");
     if (description == "") {
         let descField = document.getElementById("description");
         let descError = document.createElement("div");
@@ -267,6 +287,26 @@ function validateForm() {
         locationError.textContent = "Please fill out this field";
         locationField.insertAdjacentElement("afterend", locationError);
         locationField.focus();
+        return false;
+    }
+    let condition = document.getElementById("condition").value;
+    if (condition == "") {
+        let conditionField = document.getElementById("condition");
+        let conditionError = document.createElement("div");
+        conditionError.className = "error-message";
+        conditionError.textContent = "Please fill out this field";
+        conditionField.insertAdjacentElement("afterend", conditionError);
+        conditionField.focus();
+        return false;
+    }
+    let deliveryMethod = document.getElementById("deliveryMethod").value;
+    if (deliveryMethod == "") {
+        let deliveryMethodField = document.getElementById("deliveryMethod");
+        let deliveryMethodError = document.createElement("div");
+        deliveryMethodError.className = "error-message";
+        deliveryMethodError.textContent = "Please fill out this field";
+        deliveryMethodField.insertAdjacentElement("afterend", deliveryMethodError);
+        deliveryMethodField.focus();
         return false;
     }
     if (imgFileName == "") {

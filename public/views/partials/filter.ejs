@@ -3,12 +3,6 @@
     <h4 class="filterTitle">Category</h4>
     <section class="input-field">
         <div class="option">
-            <input type="radio" id="all_items" name="category" value="all">
-            <i class="fa-solid fa-house icon"></i>
-            <label for="all_items">All Items</label>
-            <br>
-        </div>
-        <div class="option">
             <input type="radio" id="textbooks" name="category" value="textbooks">
             <i class="fa-solid fa-book icon space-left"></i>
             <label for="textbooks">Textbooks</label>
@@ -48,12 +42,6 @@
     
     <h4 class="filterTitle">Location</h4>
     <section class="input-field">
-        <div class="option">
-            <input type="radio" id="all_locations" value="all" name="location">
-            <i class="fa-solid fa-location-dot icon space-left"></i>
-            <label for="all_locations">All locations</label>
-            <br>
-        </div>
         <div class="option">
             <input type="radio" id="eastbank" value="eastbank" name="location">
             <i class="fa-solid fa-circle-arrow-right icon"></i>
@@ -105,6 +93,20 @@
         <div class="option">
             <input type="checkbox" id="poor" value="poor" name="condition">
             <label for="poor">Poor</label>
+            <br>
+        </div>
+    </section>
+
+    <h4 class="filterTitle">Delivery Method</h4>
+    <section class="input-field">
+        <div class="option">
+            <input type="checkbox" id="delivery" value="delivery" name="deliveryMethod">
+            <label for="delivery">Delivery</label>
+            <br>
+        </div>
+        <div class="option">
+            <input type="checkbox" id="pick-up" value="pick-up" name="deliveryMethod">
+            <label for="pick-up">Pick Up</label>
             <br>
         </div>
     </section>

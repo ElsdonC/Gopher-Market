@@ -9,6 +9,7 @@ module.exports = {
         let location;
         let searchQuery;
         let condition;
+        let deliveryMethod;
         let filterTags = [];
         // Filter Price
         if (req.query.minPrice && req.query.maxPrice) {
@@ -37,6 +38,12 @@ module.exports = {
             condition = conditionValues;
             filterTags.push(`condition: ${condition.join(", ")}`);
         }
+        // Filter Delivery Method
+        if (req.query.deliveryMethod) {
+            const deliveryMethodValues = req.query.deliveryMethod.split(",");
+            deliveryMethod = deliveryMethodValues;
+            filterTags.push(`delivery method: ${deliveryMethod.join(", ")}`);
+        }
         let filteredItems = [];
 
         // Retrieve Page Specific Items from DB
@@ -47,7 +54,7 @@ module.exports = {
             items = await ItemModel.find();
             title = "Browse Items"
         } else if (url.split("?")[0].includes("/bookmarked")) {
-            items = await ItemModel.find({ _id: { $in: req.user.starred } });
+            items = await ItemModel.find({ _id: { $in: req.user.saved } });
             title = "Saved Items"
         } else if (url.split("?")[0].includes("/userItems")) {
             items = await ItemModel.find({ createdById: req.user.googleId })
@@ -82,6 +89,10 @@ module.exports = {
             }
             // Condition
             if (condition && !condition.includes(item.condition)) {
+                shouldAddItem = false;
+            }
+            // Delivery Method
+            if (deliveryMethod && !deliveryMethod.includes(item.deliveryMethod)) {
                 shouldAddItem = false;
             }
             if (shouldAddItem) {

@@ -3,7 +3,6 @@ const fs = require("fs");
 
 module.exports = {
     edit: async (req, res) => {
-        console.log("edit")
         let update = {
             "name": req.body.name,
             "price": req.body.price,
@@ -12,13 +11,21 @@ module.exports = {
         if (req.body.location != "") {
             update["location"] = req.body.location;
         }
+        if (req.body.condition != "") {
+            update["condition"] = req.body.condition;
+        }
+        if (req.body.deliveryMethod != "") {
+            update["deliveryMethod"] = req.body.deliveryMethod
+        }
         if (req.file) {
-            req.file.path.slice(7);
             const item = await ItemModel.findOne(
                 { _id: req.params.id },
                 "imagePath"
             );
-            removeImageFile(item);
+            await fs.promises.unlink(`public/${item.imagePath}`);
+            await ItemModel.updateOne({ _id: item.id }, {
+                "imagePath": req.file.path.slice(7)
+            })
         }
         await ItemModel.updateOne(
             { _id: req.params.id },

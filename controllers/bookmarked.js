@@ -6,13 +6,13 @@ module.exports = {
         let id = req.params.id
         await UserModel.updateOne(
             { googleId: req.user.googleId },
-            { $push: { starred: id } }
+            { $push: { saved: id } }
         ).then(async ()=>{
-            let starred = await UserModel.find({
+            let saved = await UserModel.find({
                 googleId: req.user.googleId
-            }, {starred: 1, _id: 0})
-            req.user.starred = starred[0].starred
-            res.json({"list": req.user.starred})
+            }, {saved: 1, _id: 0})
+            req.user.saved = saved[0].saved
+            res.json({"list": req.user.saved})
         }).catch(err=>{
             console.log(err)
         })
@@ -21,13 +21,13 @@ module.exports = {
         let id = req.params.id
         await UserModel.updateOne(
             { googleId: req.user.googleId },
-            { $pull: { starred: id } }
+            { $pull: { saved: id } }
         ).then(async ()=>{
-            let starred = await UserModel.find({
+            let saved = await UserModel.find({
                 googleId: req.user.googleId
-            }, {starred: 1,  _id: 0})
-            req.user.starred = starred[0].starred
-            res.json({"list": req.user.starred})
+            }, {saved: 1,  _id: 0})
+            req.user.saved = saved[0].saved
+            res.json({"list": req.user.saved})
         }).catch(err=>{
             console.log(err)
         })

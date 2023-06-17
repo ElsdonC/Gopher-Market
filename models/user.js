@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
   pfp: {
     type: String
   },
-  starred: {
+  saved: {
     type: Array
   }
 });

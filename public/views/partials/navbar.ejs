@@ -18,10 +18,6 @@
             <!-- Navigation Links -->
             <div class="nav-link-container">
                 <% if (user) { %>
-                <!-- Saved -->
-                <li>
-                    <a href="/bookmarked" class="nav-link d-flex flex-row align-items-center gap-1"><svg class="nav-bookmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"/></svg>Saved</a>
-                </li>
                 <!-- Account -->
                 <div class="dropdown d-flex flex-row align-items-center gap-1">
                     <img class="nav-profile" src="../../images/profile.png" alt="profile icon"/>
@@ -39,6 +35,11 @@
                         </li>
                     </ul>
                 </div>
+                <!-- Saved -->
+                <li>
+                    <a href="/bookmarked" class="nav-link d-flex flex-row align-items-center gap-1"><svg class="nav-bookmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"/></svg>Saved</a>
+                </li>
+               
                 
                 <% } else { %>
                 <!-- Login -->
@@ -59,7 +60,7 @@
                     <h1 class="modal-title fs-5" id="sellModalLabel">Sell Item</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form onsubmit="return validateForm()" id="form" class="m-auto" enctype="multipart/form-data" action="/create/post" method="POST">
+                <form onsubmit="return validateForm()" id="form" class="m-auto" enctype="multipart/form-data" action="/sell/post" method="POST">
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="name" class="form-label">Item Name</label>
@@ -75,6 +76,25 @@
                                 <option value="furniture-appliances">furniture/appliances</option>
                                 <option value="clothing">clothing</option>
                                 <option value="kitchenware">kitchenware</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="condition" class="form-label">Item Condition</label>
+                            <select id="condition" name="condition" class="form-select" aria-label="Default select example">
+                                <option value="" selected hidden disabled>Open this select menu</option>
+                                <option value="new">New</option>
+                                <option value="like-new">Like New</option>
+                                <option value="good">Good</option>
+                                <option value="fair">Fair</option>
+                                <option value="poor">Poor</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="deliveryMethod" class="form-label">Delivery Method</label>
+                            <select id="deliveryMethod" name="deliveryMethod" class="form-select" aria-label="Default select example">
+                                <option value="" selected hidden disabled>Open this select menu</option>
+                                <option value="delivery">Delivery</option>
+                                <option value="pick-up">Pick Up</option>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -101,7 +121,8 @@
                         </div>
                         <div class="input-group mb-3 space-left">
                             <label for="image" class="form-label w-100">Upload an Image</label>
-                            <input type="file" class="form-control-file bg-light w-100" id="image" aria-describedby="image" aria-label="Upload" name="uploaded_file" accept="image/apng, image/avif, image/jpeg, image/png, image/svg+xml, image/webp" />
+                            <img id="sell-form-image" src="" width="100%" height="100%" alt="uploaded image" />
+                            <input type="file" onchange="loadSellImage(event)" class="form-control-file bg-light w-100" id="image" aria-describedby="image" aria-label="Upload" name="uploaded_file" accept="image/apng, image/avif, image/jpeg, image/png, image/svg+xml, image/webp" />
                         </div>
                     </div>
                     <div class="modal-footer">
