@@ -29,8 +29,8 @@ body {
 .mainContainer {
     max-width: 1600px;
     width: 100%;
-    height: auto;
-    margin: 0 auto;
+    height: 100%;
+    margin: 15px auto 0;
     display: flex;
     flex-direction: row;
     gap: 30px;
@@ -40,14 +40,12 @@ body {
 .filter {
     width: 20%;
     height: 100%;
-    position: fixed;
-    top: 75px;
+    position: relative;
 }
 /* Results */
 .results {
     width: 80%;
-    position: fixed;
-    left: 30%;
+    position: relative;
 }
 
 
@@ -58,7 +56,6 @@ body {
     background-color: white;
     z-index: 2;
     position: fixed;
-    padding-top: 20px;
 }
 
 .title h2 {
@@ -98,7 +95,6 @@ body {
     bottom: 0;
     width: 100%;
     text-align: center;
-    z-index: -1;
 }
 
 .modal-backdrop {
