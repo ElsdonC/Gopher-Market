@@ -3,8 +3,8 @@ const UserModel = require("../models/user");
 
 module.exports = {
     getItem: async (req, res) => {
-        const name = req.params.name;
-        const item = await ItemModel.find({ name: name });
+        const id = req.params.id;
+        const item = await ItemModel.find({ _id: id });
         var seller = await UserModel.find({ googleId: item[0].createdById });
         res.render("uniqueItem.ejs", {
             item: item[0],
