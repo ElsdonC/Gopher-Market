@@ -5,6 +5,6 @@ const mainController = require('../controllers/main')
 
 router.get('/', mainController.get)
 
-router.get('/item/:name', homeController.getItem)
+router.get('/item/:id', homeController.getItem)
 
 module.exports = router
