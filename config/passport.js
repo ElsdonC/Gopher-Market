@@ -39,36 +39,39 @@ passport.serializeUser(function (user, done) {
 });
 
 passport.deserializeUser(function (user, done) {
-  if (user.googleId == "demo") {
-      process.nextTick(function () {
-          return done(null, user);
-      });
-  } else if (user.email.includes("@umn.edu")) {
-      User.findOne({ googleId: user.id })
-          .then((existingUser) => {
-              if (!existingUser) {
-                  const newUser = User.create({
-                      googleId: user.id,
-                      email: user.email,
-                      pfp: user.picture,
-                      displayName: user.displayName,
-                      starred: [],
-                  });
-                  return done(null, newUser);
-              } else if (existingUser.pfp !== user.picture) {
-                  User.updateOne(
-                    { googleId: user.id },
-                    { $set: { pfp: user.picture } }
-                )
+    if (user.googleId == "demo") {
+        process.nextTick(function () {
+            return done(null, user);
+        });
+    } else if (user.email.includes("@umn.edu")) {
+        User.findOne({ googleId: user.id })
+            .then((existingUser) => {
+                if (!existingUser) {
+                    const newUser = User.create({
+                        googleId: user.id,
+                        email: user.email,
+                        pfp: user.picture,
+                        displayName: user.displayName,
+                        starred: [],
+                    });
+                    return done(null, newUser);
+                } else if (existingUser.pfp !== user.picture) {
+                    User.updateOne(
+                        { googleId: user.id },
+                        { $set: { pfp: user.picture } }
+                    ).then(() => {
+                        return done(null, existingUser);
+                    }).catch((err) => {
+                        return done(err, null);
+                    });
+                } else {
                     return done(null, existingUser);
-              } else {
-                  return done(null, existingUser);
-              }
-          })
-          .catch((err) => {
-              return done(err, null);
-          });
-  } else {
-      return done(null, null);
-  }
+                }
+            })
+            .catch((err) => {
+                return done(err, null);
+            });
+    } else {
+        return done(null, null);
+    }
 });
