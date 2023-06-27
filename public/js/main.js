@@ -14,8 +14,30 @@ function redirect(url, query) {
 
 // Item Cards
 document.querySelectorAll(".itemCard").forEach(card => {
-    card.addEventListener("click", (e) => {
-        window.location = `/item/${e.currentTarget.id}`
+    card.addEventListener("click", async (e) => {
+        if (e.target.tagName == "path" || e.target.tagName == "svg" || e.target.tagName == "A") {
+            let svg;
+            if (e.target.tagName == "A") {
+                svg = e.target.querySelector("svg")
+            } else {
+                svg = e.target.closest("svg")
+            }
+            if (svg.classList.contains("bi-bookmark-fill")) {
+                $(`#unSaveModal_${svg.id}`).modal("show");
+            } else {
+                await fetch(`http://localhost:3000/bookmarked/add/${svg.id}`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }).catch((err) => {
+                    console.error(err);
+                });
+                window.location.reload();
+            }
+        } else {
+            window.location = `/item/${e.currentTarget.id}`
+        }
     })
     card.style.cursor = "pointer"
 })
@@ -31,25 +53,8 @@ document.querySelectorAll(".itemCard").forEach((card) => {
     });
 });
 
-// Save/Unsave items 
-document.querySelectorAll(".bookmark").forEach((element) => {
-    element.addEventListener("click", async function () {
-        if (this.classList.contains("bi-bookmark-fill")) {
-            $(`#unstarModal_${this.id}`).modal("show");
-        } else {
-            await fetch(`http://localhost:3000/bookmarked/add/${this.id}`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            }).catch((err) => {
-                console.error(err);
-            });
-            window.location.reload();
-        }
-    });
-});
-async function unstar(id) {
+// Confirm Unsave Item
+async function unSave(id) {
     await fetch(`http://localhost:3000/bookmarked/remove/${id}`, {
         method: "POST",
         headers: {
@@ -60,8 +65,6 @@ async function unstar(id) {
     });
     window.location.reload();
 }
-
-
 
 // Validate Form Submissions
 function validateForm() {
