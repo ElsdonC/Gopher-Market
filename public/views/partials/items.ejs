@@ -35,24 +35,27 @@
                 <span class="location"><%=item.location%></span>
             </div>
             <% if (title == "My Items") { %>
-                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#editModal_<%=item.id%>" class="btn btn-warning">Edit</a>
-                <button type="button" class="deleteBtn btn btn-danger" onclick="showDeleteModal('<%=item.id%>')">Sold/Delete</button>
-            <% } else if (title == "Saved Items") { %>
-                <div class="modal fade" id="unstarModal_<%= item.id %>" role="dialog" aria-labelledby="unstarModalLabel" aria-hidden="true" data-bs-backdrop="static">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="unstarModalLabel">Remove Bookmark</h5>
-                            </div>
-                            <div class="modal-body">Are you sure you want to remove this item from your bookmarks?</div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-danger" onclick="unstar('<%=item.id%>')">Remove</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <section class="d-flex flex-row justify-content-end gap-2">
+                    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#editModal_<%=item.id%>" class="btn edit-btn">Edit</a>
+                    <button type="button" class="btn delete-btn" onclick="showDeleteModal('<%=item.id%>')">Delete</button>
+                </section>
             <% } %>
+            
+        </div>
+    </div>
+    <!-- UnSave Modal -->
+    <div class="modal fade" id="unSaveModal_<%= item.id %>" role="dialog" aria-labelledby="unSaveModalLabel" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="unSaveModalLabel">Unsave</h5>
+                </div>
+                <div class="modal-body">Are you sure you want to remove this item from your saved collection?</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" onclick="unSave('<%=item.id%>')">Remove</button>
+                </div>
+            </div>
         </div>
     </div>
     <!-- Edit Modal -->

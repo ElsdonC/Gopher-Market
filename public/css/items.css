@@ -45,19 +45,12 @@
     font-weight: 600;
     font-size: 1.2rem;
 }
-.view {
-    position: absolute;
-    color: white;
-    font-size: 2rem;
-    font-weight: 500;
-    display: none;
-    z-index: 2;
-}
 .location {
     position: relative;
     padding-left: 5px;
 }
 .bookmarkAnchor {
+    z-index: 10000;
     color: black;
     padding: 10px;
     background-color:white;
@@ -77,8 +70,11 @@
 .bi-bookmark {
     color: rgba(128, 128, 128, 0.384);
 }
-
-/* No Items */
+.edit-btn, .delete-btn {
+    border-radius: 0;
+    border-bottom: 1px solid black;
+    padding: 0;
+}
 .no-items-text {
     margin-top: 120px;
 }
