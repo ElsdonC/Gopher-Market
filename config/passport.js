@@ -52,24 +52,15 @@ passport.deserializeUser(function (user, done) {
                         email: user.email,
                         pfp: user.picture,
                         displayName: user.displayName,
-                        starred: [],
+                        saved: [],
                     });
                     return done(null, newUser);
-                } else if (existingUser.pfp !== user.picture) {
-                    User.updateOne(
-                        { googleId: user.id },
-                        { $set: { pfp: user.picture } }
-                    ).then(() => {
-                        return done(null, existingUser);
-                    }).catch((err) => {
-                        return done(err, null);
-                    });
                 } else {
                     return done(null, existingUser);
                 }
             })
             .catch((err) => {
-                return done(err, null);
+                return done(err);
             });
     } else {
         return done(null, null);
