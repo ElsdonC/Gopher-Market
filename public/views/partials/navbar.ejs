@@ -10,7 +10,9 @@
                         class="searchInput form-control mr-sm-2 h-100"
                         type="search"
                         placeholder="Search"
-                        aria-label="Search" />
+                        aria-label="Search"
+                        <% if (query.q) { %> value=<%=query.q%> <% } %>
+                        />
                     <button class="searchBtn"><i class="fa-solid fa-magnifying-glass searchIcon"></i></button>
                 </div>
             </div>
