@@ -17,7 +17,12 @@ document.querySelectorAll(".itemCard").forEach(card => {
     card.addEventListener("click", async (e) => {
         if (e.target.tagName == "path" || e.target.tagName == "svg" || e.target.tagName == "A") {
             let svg;
-            if (e.target.tagName == "A") {
+            // check if edit button is clicked
+            if (e.target.tagName == "A" && !e.target.classList.contains("bookmark")) {
+                return;
+            }
+            // check if the save button is clicked
+            if (e.target.tagName == "A" && e.target.classList.contains("bookmark")) {
                 svg = e.target.querySelector("svg")
             } else {
                 svg = e.target.closest("svg")
@@ -35,7 +40,7 @@ document.querySelectorAll(".itemCard").forEach(card => {
                 });
                 window.location.reload();
             }
-        } else {
+        } else if (e.target.tagName != "BUTTON") {
             window.location = `/item/${e.currentTarget.id}`
         }
     })
