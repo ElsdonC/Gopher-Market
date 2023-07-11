@@ -10,6 +10,7 @@ module.exports = {
             item: item[0],
             user: req.user,
             seller: seller[0],
+            query: req.query
         });
     },
 };
