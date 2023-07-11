@@ -3,37 +3,37 @@
     <h4 class="filterTitle">Category</h4>
     <section class="input-field">
         <div class="option">
-            <input type="radio" id="textbooks" name="category" value="textbooks">
+            <input type="radio" id="textbooks" name="category" value="textbooks" <% if (query.category === 'textbooks') { %>checked<% } %>/>
             <i class="fa-solid fa-book icon space-left"></i>
             <label for="textbooks">Textbooks</label>
             <br>
         </div>
         <div class="option">
-            <input type="radio" id="school-supplies" name="category" value="school-supplies">
+            <input type="radio" id="school-supplies" name="category" value="school-supplies" <% if (query.category === 'school-supplies') { %>checked<% } %>/>
             <i class="fa-solid fa-pencil icon space-left"></i>
             <label for="school-supplies">School Supplies</label>
             <br>
         </div>
         <div class="option">
-            <input type="radio" id="electronics" name="category" value="electronics">
+            <input type="radio" id="electronics" name="category" value="electronics" <% if (query.category === 'electronics') { %>checked<% } %>/>
             <i class="fa-solid fa-laptop icon"></i>
             <label for="electronics">Electronics</label>
             <br>
         </div>
         <div class="option">
-            <input type="radio" id="furniture-appliances" name="category" value="furniture-appliances">
+            <input type="radio" id="furniture-appliances" name="category" value="furniture-appliances" <% if (query.category === 'furniture-appliances') { %>checked<% } %>/>
             <i class="fa-solid fa-couch icon"></i>
             <label for="furniture-appliances" name="category">Furniture/Appliances</label>
             <br>
         </div>
         <div class="option">
-            <input type="radio" id="clothing" name="category" value="clothing">
+            <input type="radio" id="clothing" name="category" value="clothing" <% if (query.category === 'clothing') { %>checked<% } %>/>
             <i class="fa-solid fa-shirt icon"></i>
             <label for="clothing">Clothing</label>
             <br>
         </div>
         <div class="option">
-            <input type="radio" id="kitchenware" name="category" value="kitchenware">
+            <input type="radio" id="kitchenware" name="category" value="kitchenware" <% if (query.category === 'kitchenware') { %>checked<% } %>/>
             <i class="fa-solid fa-utensils icon space-left"></i>
             <label for="kitchenware">Kitchenware</label>
             <br>
@@ -43,25 +43,25 @@
     <h4 class="filterTitle">Location</h4>
     <section class="input-field">
         <div class="option">
-            <input type="radio" id="eastbank" value="eastbank" name="location">
+            <input type="radio" id="eastbank" value="eastbank" name="location" <% if (query.location === 'eastbank') { %>checked<% } %>/>
             <i class="fa-solid fa-circle-arrow-right icon"></i>
             <label for="eastbank">East Bank</label>
             <br>
         </div>
         <div class="option">
-            <input type="radio" id="westbank" value="westbank" name="location">
+            <input type="radio" id="westbank" value="westbank" name="location" <% if (query.location === 'westbank') { %>checked<% } %>/>
             <i class="fa-solid fa-circle-arrow-left icon"></i>
             <label for="westbank">West Bank</label>
             <br>
         </div>
         <div class="option">
-            <input type="radio" id="dinkytown" value="dinkytown" name="location">
+            <input type="radio" id="dinkytown" value="dinkytown" name="location" <% if (query.location === 'dinkytown') { %>checked<% } %>/>
             <i class="fa-solid fa-city icon"></i>
             <label for="dinkytown">DinkyTown</label>
             <br>
         </div>
         <div class="option">
-            <input type="radio" id="off-campus" value="off-campus" name="location">
+            <input type="radio" id="off-campus" value="off-campus" name="location" <% if (query.location === 'off-campus') { %>checked<% } %>/>
             <i class="fa-solid fa-globe icon"></i>
             <label for="off-campus">Off Campus</label>
             <br>
@@ -71,27 +71,27 @@
     <h4 class="filterTitle">Condition</h4>
     <section class="input-field">
         <div class="option">
-            <input type="checkbox" id="new" value="new" name="condition">
+            <input type="checkbox" id="new" value="new" name="condition" <% if (query.condition && query.condition.split(',').includes('new')) { %>checked<% } %>/>
             <label for="new">New</label>
             <br>
         </div>
         <div class="option">
-            <input type="checkbox" id="like-new" value="like-new" name="condition">
+            <input type="checkbox" id="like-new" value="like-new" name="condition" <% if (query.condition && query.condition.split(',').includes('like-new')) { %>checked<% } %>/>
             <label for="like-new">Like New</label>
             <br>
         </div>
         <div class="option">
-            <input type="checkbox" id="good" value="good" name="condition">
+            <input type="checkbox" id="good" value="good" name="condition" <% if (query.condition && query.condition.split(',').includes('good')) { %>checked<% } %>/>
             <label for="good">Good</label>
             <br>
         </div>
         <div class="option">
-            <input type="checkbox" id="fair" value="fair" name="condition">
+            <input type="checkbox" id="fair" value="fair" name="condition" <% if (query.condition && query.condition.split(',').includes('fair')) { %>checked<% } %>/>
             <label for="fair">Fair</label>
             <br>
         </div>
         <div class="option">
-            <input type="checkbox" id="poor" value="poor" name="condition">
+            <input type="checkbox" id="poor" value="poor" name="condition" <% if (query.condition && query.condition.split(',').includes('poor')) { %>checked<% } %>/>
             <label for="poor">Poor</label>
             <br>
         </div>
@@ -100,12 +100,12 @@
     <h4 class="filterTitle">Delivery Method</h4>
     <section class="input-field">
         <div class="option">
-            <input type="checkbox" id="delivery" value="delivery" name="deliveryMethod">
+            <input type="checkbox" id="delivery" value="delivery" name="deliveryMethod" <% if (query.deliveryMethod && query.deliveryMethod.includes('delivery')) { %>checked<% } %>/>
             <label for="delivery">Delivery</label>
             <br>
         </div>
         <div class="option">
-            <input type="checkbox" id="pick-up" value="pick-up" name="deliveryMethod">
+            <input type="checkbox" id="pick-up" value="pick-up" name="deliveryMethod" <% if (query.deliveryMethod && query.deliveryMethod.includes('pick-up')) { %>checked<% } %>/>
             <label for="pick-up">Pick Up</label>
             <br>
         </div>
@@ -115,12 +115,12 @@
     <section class="input-field">
         <div class="d-flex flex-row align-items-center w-100 justify-content-between mb-1">
             <label for="min_input">Min</label>
-            <input id="min_input" class="w-50" type="range" min="0" max="500" value="0" step="1" />
+            <input id="min_input" class="w-50" type="range" min="0" max="1000" <% if (query.minPrice) { %> value=<%=query.minPrice%> <%} else { %> value="0" <%  } %> step="1" />
             <input id="min_value" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" class="d-inline w-25" type="text" maxlength="4"/>
         </div>
         <div class="d-flex flex-row align-items-center w-100 justify-content-between mb-1">
             <label for="max_input">Max</label>
-            <input id="max_input" class="w-50" type="range" min="0" max="1000" value="1000" step="1" />
+            <input id="max_input" class="w-50" type="range" min="0" max="1000" <% if (query.maxPrice) { %> value=<%=query.maxPrice%> <%} else { %> value="1000" <%  } %> step="1" />
             <input id="max_value" onkeypress="return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57" class="d-inline w-25" type="text" maxlength="4"/>
         </div>
     </section>
