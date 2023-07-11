@@ -10,14 +10,12 @@
     --darkgray: #5a5a5a;
     --offwhite: #f9f7f6;
 }
-.contactSellerBtn,
-.deleteBtn {
+.contactSellerBtn{
     margin-right: auto;
 }
-.editDeleteButtons {
-    position: relative;
-    width: auto;
+.edit-btn, .delete-btn {
+    box-shadow: none !important;
 }
-#sellBtn, #editBtn {
+#sellBtn {
     background-color: var(--gold);
 }

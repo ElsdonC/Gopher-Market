@@ -71,9 +71,11 @@
     color: rgba(128, 128, 128, 0.384);
 }
 .edit-btn, .delete-btn {
-    border-radius: 0;
-    border-bottom: 1px solid black;
     padding: 0;
+    border-radius: 0;
+}
+.edit-btn:hover, .delete-btn:hover {
+    border-bottom: 1px solid black;
 }
 .no-items-text {
     margin-top: 120px;
