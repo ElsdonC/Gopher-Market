@@ -106,12 +106,14 @@ module.exports = {
                 user: req.user,
                 tags: filterTags,
                 title: title,
+                query: req.query
             });
         } else {
             res.render("noItemsFound.ejs", {
                 title: title,
                 tags: filterTags,
-                user: req.user
+                user: req.user,
+                query: req.query
             })
         }
         
