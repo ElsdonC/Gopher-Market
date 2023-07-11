@@ -8,40 +8,6 @@ const passport = require("passport");
 const session = require("express-session");
 require("./config/passport");
 
-const { createServer } = require("http");
-const { Server } = require("socket.io");
-
-const httpServer = createServer(app);
-const io = new Server(httpServer, { /* options */ });
-
-io.on("connection", (socket) => {
-  // ...
-});
-
-io.on('connection', (socket) => {
-    console.log('A user connected');
-  
-    // Event when a message is sent
-    socket.on('chat message', (msg) => {
-      console.log('Message:', msg);
-      // Broadcast the message to all connected clients
-      io.emit('chat message', msg);
-    });
-  
-    // Event when a user is typing
-    socket.on('typing', (username) => {
-      console.log(`${username} is typing...`);
-      // Broadcast the typing status to all connected clients except the sender
-      socket.broadcast.emit('typing', username);
-    });
-  
-    // Event when a user disconnects
-    socket.on('disconnect', () => {
-      console.log('A user disconnected');
-    });
-  });
-  
-
 app.set("view engine", "ejs");
 app.set("views", "public/views");
 app.use(express.static("public"));
@@ -61,7 +27,7 @@ app.use(
         cookie: { secure: false },
     })
 );
-app.use(passport.authenticate('session'));
+app.use(passport.authenticate("session"));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -82,6 +48,6 @@ app.use("/logout", logoutRouter);
 app.use("/userItems", userItemsRouter);
 app.use("/bookmarked", bookmarkedRouter);
 
-httpServer.listen(PORT || process.env.PORT, () => {
-    console.log(`Server started on port ${PORT}`)
+app.listen(PORT || process.env.PORT, () => {
+    console.log(`Server started on port ${PORT}`);
 });
