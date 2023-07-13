@@ -1,6 +1,6 @@
-<section id="items" class="d-flex flex-wrap">
+<section id="items">
     <% items.forEach((item)=>{ %>
-    <div id="<%=item.id%>" class="card d-inline-block itemCard">
+    <div id="<%=item.id%>" class="card itemCard col-xxl-2 col-xl-3 col-lg-4 col-md-5 col-sm-6">
         <!-- Image -->
         <img src="../<%= item.imagePath %>" class="card-img-top" alt="<%= item.name %>" />
         <!-- bookmark -->

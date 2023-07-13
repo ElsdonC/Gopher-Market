@@ -45,6 +45,7 @@ body {
     max-width: 320px;
     width: 20%;
     height: 100%;
+    margin-top: 10px;
     position: fixed; 
 }
 input[type="checkbox"] {
@@ -63,7 +64,7 @@ input[type="checkbox"] {
 
 /* Page Title */
 .title {
-    width: 70%;
+    width: 100%;
     color: black;
     background-color: white;
     z-index: 2;

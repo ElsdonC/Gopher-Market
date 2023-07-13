@@ -68,7 +68,9 @@ nav li {
 }
 .searchBar {
     height: 55px;
+    max-width: 570px;
     width: 30vw;
+    min-width: 370px;
     position: relative;
     display: flex;
     flex-direction: row;
