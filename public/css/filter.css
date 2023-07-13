@@ -16,7 +16,7 @@
     padding: 5% 20px;
     margin-top: 2.5%;
     border: 1px solid var(--lightgray);
-    height: 90%;
+    height: auto;
 }
 .filtersContainer li a {
     text-decoration: none;

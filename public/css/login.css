@@ -5,7 +5,6 @@
     --lightgold: #ffde7a;
     --gold: #ffcc33;
     --darkgold: #ffb71e;
-    --superlightgray: rgba(210, 210, 210, 0.518);
     --lightgray: #d5d6d2;
     --gray: #777677;
     --darkgray: #5a5a5a;
@@ -48,7 +47,7 @@
     width: 400px;
     height: auto;
     padding: 40px 0;
-    box-shadow: var(--superlightgray) 0 0 5px 5px;
+    box-shadow: var(--lightgray) 0 0 2px 2px;
     border-radius: 5px;
     background-color: white;
 }
@@ -77,7 +76,7 @@
     color: var(--darkgray);
     border: none;
     border-radius: 4px;
-    box-shadow: var(--lightgray) 0 0 4px 4px;
+    box-shadow: var(--lightgray) 0 0 2px 2px;
 }
 
 .google-logo, .gopher-logo {

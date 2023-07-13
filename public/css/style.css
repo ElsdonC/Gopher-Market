@@ -27,7 +27,7 @@ body {
 }
 
 .mainContainer {
-    max-width: 1600px;
+    max-width: 100%;
     width: 100%;
     height: 100%;
     margin: 0 auto;
@@ -39,6 +39,7 @@ body {
 /* Filter */
 .filter {
     width: 20%;
+    left: 8.5%;
     height: 100%;
     position: fixed; 
 }
@@ -48,8 +49,8 @@ input[type="checkbox"] {
 
 /* Results */
 .results {
-    width: 80%;
-    margin-left: 25%;
+    width: 61.5%;
+    left: 30%;
     position: relative;
 }
 
