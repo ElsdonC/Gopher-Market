@@ -13,9 +13,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  pfp: {
-    type: String
-  },
   saved: {
     type: Array
   }
