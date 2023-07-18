@@ -20,17 +20,9 @@
             </a>
             <% }} %>
         </div>
-        <h1><%= item.name.toUpperCase() %></h1>
+        <h1 class="fw-bold"><%= item.name.toUpperCase() %></h1>
         <span class="d-flex flex-row align-items-center gap-2">
-            <% if (item.location == "eastbank") { %>
-                <i class="fa-solid fa-circle-arrow-right icon"></i>
-            <% } else if (item.location == "westbank") { %>
-                <i class="fa-solid fa-circle-arrow-left icon"></i>
-            <% } else if (item.location == "dinkytown") { %>
-                <i class="fa-solid fa-city icon"></i>
-            <% } else if (item.location == "off-campus") { %>
-                <i class="fa-solid fa-globe icon"></i>
-            <% } %>
+            <i class="fa-solid fa-location-dot icon d-flex flex-row justify-content-center"></i>
             <%= item.location %>
             </span>
     
@@ -49,6 +41,10 @@
                 <i class="fa-solid fa-utensils icon space-left"></i>
             <% } %>
             <%= item.category %>
+            </span>
+
+            <span>
+                Condition: <%= item.condition %>
             </span>
         
         <p>Description: <%= item.description %></p>
