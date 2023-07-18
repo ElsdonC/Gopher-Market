@@ -1,16 +1,8 @@
-site temporarily down because I'm refactoring and redesigning it currently
-
 # Gopher Market
 This full stack web application is an online marketplace specifically designed for University of Minnesota Twin Cities students.
 Users are able to browse and filter through items as well as sell their own items on the site.
 
-
-
-**Link to project:** [https://gophermarket.onrender.com](https://gophermarket.onrender.com)
-
-## Preview
-
-![gopher-market](https://github.com/ElsdonC/gopher-market/assets/67447710/69f92bb9-e3c3-4b82-997b-b415768e4be7)
+[https://gophermarket.onrender.com](https://gophermarket.onrender.com)
 
 ## How It's Made
 
