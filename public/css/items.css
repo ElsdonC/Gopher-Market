@@ -55,16 +55,12 @@
 .bookmarkAnchor {
     z-index: 10000;
     color: black;
-    padding: 10px;
+    padding: 7.5px;
     background-color:white;
     position: absolute;
     top: 10px;
-    right: 10px;
-    border: 1px solid var(--gray);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    right: 20px;
+    border-radius: 10px;
     display: none;
 }
 .bi-bookmark-fill {

@@ -110,8 +110,3 @@ input[type="checkbox"] {
     width: 100%;
     text-align: center;
 }
-
-.modal-backdrop {
-    /* bug fix - no overlay */    
-    display: none;    
-}
