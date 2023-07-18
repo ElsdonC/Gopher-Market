@@ -38,30 +38,24 @@ passport.serializeUser(function (user, done) {
     }
 });
 
-passport.deserializeUser(function (user, done) {
+passport.deserializeUser(async function (user, done) {
     if (user.googleId == "demo") {
         process.nextTick(function () {
             return done(null, user);
         });
     } else if (user.email.includes("@umn.edu")) {
-        User.findOne({ googleId: user.id })
-            .then((existingUser) => {
-                if (!existingUser) {
-                    const newUser = User.create({
-                        googleId: user.id,
-                        email: user.email,
-                        pfp: user.picture,
-                        displayName: user.displayName,
-                        saved: [],
-                    });
-                    return done(null, newUser);
-                } else {
-                    return done(null, existingUser);
-                }
-            })
-            .catch((err) => {
-                return done(err);
+        const existingUser = await User.findOne({ googleId: user.id })
+        if (existingUser == null) {
+            const newUser = await User.create({
+                googleId: user.id,
+                email: user.email,
+                displayName: user.displayName,
+                saved: [],
             });
+            return done(null, newUser);
+        } else {
+            return done(null, existingUser);
+        }
     } else {
         return done(null, null);
     }
