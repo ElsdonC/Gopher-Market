@@ -1,6 +1,6 @@
-let baseURL = 'http://localhost:3000/'
-let bookmarkURL = 'http://localhost:3000/bookmarked/'
-let profileURL = 'http://localhost:3000/userItems/'
+let baseURL = 'https://gophermarket.onrender.com/'
+let bookmarkURL = 'https://gophermarket.onrender.com/bookmarked/'
+let profileURL = 'https://gophermarket.onrender.com/userItems/'
 
 function redirect(url, query) {
     if (url.includes("bookmarked")) {
@@ -30,7 +30,7 @@ document.querySelectorAll(".itemCard").forEach(card => {
             if (svg.classList.contains("bi-bookmark-fill")) {
                 $(`#unSaveModal_${svg.id}`).modal("show");
             } else {
-                await fetch(`http://localhost:3000/bookmarked/add/${svg.id}`, {
+                await fetch(`${bookmarkURL}add/${svg.id}`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -60,7 +60,7 @@ document.querySelectorAll(".itemCard").forEach((card) => {
 
 // Confirm Unsave Item
 async function unSave(id) {
-    await fetch(`http://localhost:3000/bookmarked/remove/${id}`, {
+    await fetch(`${bookmarkURL}remove/${id}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -146,7 +146,7 @@ function validateForm() {
 
 // Confirm Delete
 async function deleteItem(id) {
-    await fetch(`http://localhost:3000/delete/${id}`, {
+    await fetch(`${baseURL}delete/${id}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
