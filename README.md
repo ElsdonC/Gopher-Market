@@ -4,6 +4,10 @@ Users are able to browse and filter through items as well as sell their own item
 
 [https://gophermarket.onrender.com](https://gophermarket.onrender.com)
 
+## Preview
+
+<img width="1248" alt="image" src="https://github.com/ElsdonC/gopher-market/assets/67447710/1c9afa54-875c-4b94-9407-4ec97c7579b8">
+
 ## How It's Made
 
 **Tech used:** JavaScript, Node.js, Express.js, MongoDB, EJS
