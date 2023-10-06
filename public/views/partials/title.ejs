@@ -4,7 +4,7 @@
 <% } else { %>
     <h2>Browse Items</h2>
 <% } %>
-<ul class="d-flex flex-row filterTags">
+<ul class="filterTags">
 <% if (tags && tags.length > 0) { %>
     <% tags.forEach((tag) => { %>
         <li id="<%=tag.split(':')[0]%>" class="dismissFilterBtn"><span><%=tag%></span><i class="fa-regular fa-circle-xmark"></i></li>

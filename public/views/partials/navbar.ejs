@@ -1,57 +1,72 @@
-<nav class="navbar navbar-expand-lg navbar-light">
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto position-relative align-items-center">
-            <div class="d-flex flex-row gap-3 align-items-center">
-                <a href="/"><span class="logoText">Gopher <span class="text-maroon">Market</span></span></a>
-                <!-- Search Bar -->
-                <div class="searchBar">
-                    <input
-                        id="searchInput"
-                        class="searchInput form-control mr-sm-2 h-100"
-                        type="search"
-                        placeholder="Search"
-                        aria-label="Search"
-                        <% if (query.q) { %> value=<%=query.q%> <% } %>
-                        />
-                    <button class="searchBtn"><i class="fa-solid fa-magnifying-glass searchIcon"></i></button>
-                </div>
+<nav class="navbar navbar-light">
+    <ul class="position-relative">
+        <div class="d-flex flex-row gap-3 align-items-center">
+            <a href="/"><span class="logoText">Gopher <span class="text-maroon">Market</span></span></a>
+            <!-- Search Bar -->
+            <div class="searchBar">
+                <input
+                    id="searchInput"
+                    class="searchInput form-control mr-sm-2 h-100"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                    <% if (query.q) { %> value=<%=query.q%> <% } %>
+                    />
+                <button class="searchBtn"><i class="fa-solid fa-magnifying-glass searchIcon"></i></button>
             </div>
-            
-            <!-- Navigation Links -->
-            <div class="nav-link-container">
-                <% if (user) { %>
-                <!-- Account -->
-                <div class="dropdown d-flex flex-row align-items-center gap-1">
-                    <img class="nav-profile" src="../../images/profile.png" alt="profile icon"/>
-                    <div class="shadow-none btn dropdown-toggle p-0 d-flex flex-row align-items-center" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Hi, <%=user.displayName.split(" ")[0]%>!
-                    </div>
-                    
-                    <ul class="dropdown-menu">
-                        <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#sellModal">Sell an Item</button></li>
-                        <li><a class="dropdown-item" href="/userItems">My Items</a></li>
-                        <li>
-                            <form action="/logout" method="POST">
-                                <button class="logout-btn dropdown-item" type="submit">Log out</button>
-                            </form>
-                        </li>
-                    </ul>
+        </div>
+
+        <button class="mobile-dropdown-button">More</button>
+        <div class="mobile-nav-menu">
+            <% if (user) {%>
+                <div class="actions">
+                    <span>Hi, <%=user.displayName.split(" ")[0]%>!</span>
+                    <button data-bs-toggle="modal" data-bs-target="#sellModal">sell an item</button>
+                    <button onclick="window.location = '/userItems'">my items</button>
+                    <button onclick="window.location = '/bookmarked'">saved collection</button>
                 </div>
-                <!-- Saved -->
-                <li>
-                    <a href="/bookmarked" class="nav-link d-flex flex-row align-items-center gap-1"><svg class="nav-bookmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"/></svg>Saved</a>
-                </li>
-               
+                <form action="/logout" method="POST">
+                    <button class="logout-btn dropdown-item" type="submit">Log out</button>
+                </form>
+            <% } else {%>
+                <li class="login"><button onclick="window.location = '/login'">Log in</button></li>
+            <% } %>
+
+        </div>
+        <!-- Navigation Links -->
+        <div class="nav-link-container">
+            <% if (user) { %>
+            <!-- Account -->
+            <div id="account" class="dropdown d-flex flex-row align-items-center gap-1">
+                <img class="nav-profile" src="../../images/profile.png" alt="profile icon"/>
+                <div class="shadow-none btn dropdown-toggle p-0 d-flex flex-row align-items-center" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Hi, <%=user.displayName.split(" ")[0]%>!
+                </div>
                 
-                <% } else { %>
-                <!-- Login -->
-                <li class="login">
-                    <a class="nav-link" href="/login">Log in</a>
-                </li>
-                <% } %>
+                <ul class="dropdown-menu">
+                    <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#sellModal">Sell an Item</button></li>
+                    <li><a class="dropdown-item" href="/userItems">My Items</a></li>
+                    <li>
+                        <form action="/logout" method="POST">
+                            <button class="logout-btn dropdown-item" type="submit">Log out</button>
+                        </form>
+                    </li>
+                </ul>
             </div>
-        </ul>
-    </div>
+            <!-- Saved -->
+            <li id="saved">
+                <a href="/bookmarked" class="nav-link d-flex flex-row align-items-center gap-1"><svg class="nav-bookmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"/></svg>Saved</a>
+            </li>
+            
+            <% } else { %>
+            <!-- Login -->
+            <li id="login" class="login">
+                <a class="nav-link" href="/login">Log in</a>
+            </li>
+            <% } %>
+        </div>
+        
+    </ul>
 </nav>
 <!-- Sell Modal -->
 <div class="d-flex flex-row justify-content-center align-items-center">

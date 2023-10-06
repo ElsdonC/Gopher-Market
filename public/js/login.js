@@ -1,6 +1,6 @@
 // Demo Account Login
 document.querySelector("#demo-login-btn").addEventListener("click", async () => {
-    await fetch("https://gophermarket.onrender.com/auth/demo", {
+    await fetch(`${URL}auth/demo`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

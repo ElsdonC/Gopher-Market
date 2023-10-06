@@ -11,7 +11,9 @@
     --darkgray: #5a5a5a;
     --offwhite: #f9f7f6;
 }
-*, *:before, *:after {
+*,
+*:before,
+*:after {
     box-sizing: border-box;
 }
 body {
@@ -27,11 +29,12 @@ body {
 }
 
 .mainContainer {
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
 }
 
-.small-container{
+.small-container {
     width: 100%;
     max-width: 1600px;
     margin: 0 auto;
@@ -40,36 +43,23 @@ body {
     justify-content: space-between;
 }
 
-/* Filter */
-.filter {
-    max-width: 320px;
-    width: 20%;
-    height: 100%;
-    margin-top: 10px;
-    position: fixed; 
-}
-input[type="checkbox"] {
-    accent-color: var(--gold);
-}
-
 /* Results */
 .results {
     max-width: 1280px;
     width: 80%;
-    left: 20%;
-    padding-left: 20px;
+    padding-left: 22.5px;
     position: relative;
 }
-
 
 /* Page Title */
 .title {
     width: 100%;
     color: black;
     background-color: white;
-    z-index: 2;
-    position: fixed;
+    position: sticky;
+    top:75px;
     padding: 10px 0;
+    z-index: 10;
 }
 
 .title h2 {
@@ -109,4 +99,22 @@ input[type="checkbox"] {
     bottom: 0;
     width: 100%;
     text-align: center;
+}
+
+@media (max-width:768px){
+    .small-container {
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    .title {
+        top: 125px;
+        padding:0;
+        width: calc(100vw - 160px);
+        margin: 0;
+        z-index: 100;
+    }
+    .title h2 {
+        padding-top: 10px;
+        font-size: 2rem;
+    }
 }

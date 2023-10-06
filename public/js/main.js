@@ -1,14 +1,12 @@
-let baseURL = 'https://gophermarket.onrender.com/'
-let bookmarkURL = 'https://gophermarket.onrender.com/bookmarked/'
-let profileURL = 'https://gophermarket.onrender.com/userItems/'
+const URL = "https://gophermarket.onrender.com/"
 
 function redirect(url, query) {
     if (url.includes("bookmarked")) {
-        window.location = `${bookmarkURL}?${query}`
+        window.location = `${URL}bookmarked?${query}`
     } else if (url.includes("userItems")) {
-        window.location = `${profileURL}?${query}`
+        window.location = `${URL}userItems?${query}`
     } else {
-        window.location = `${baseURL}?${query}`
+        window.location = `${URL}?${query}`
     }
 }
 
@@ -30,7 +28,7 @@ document.querySelectorAll(".itemCard").forEach(card => {
             if (svg.classList.contains("bi-bookmark-fill")) {
                 $(`#unSaveModal_${svg.id}`).modal("show");
             } else {
-                await fetch(`${bookmarkURL}add/${svg.id}`, {
+                await fetch(`${URL}bookmarked/add/${svg.id}`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -60,7 +58,7 @@ document.querySelectorAll(".itemCard").forEach((card) => {
 
 // Confirm Unsave Item
 async function unSave(id) {
-    await fetch(`${bookmarkURL}remove/${id}`, {
+    await fetch(`${URL}bookmarked/remove/${id}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -146,7 +144,7 @@ function validateForm() {
 
 // Confirm Delete
 async function deleteItem(id) {
-    await fetch(`${baseURL}delete/${id}`, {
+    await fetch(`${URL}delete/${id}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
@@ -164,3 +162,12 @@ async function deleteItem(id) {
 function showDeleteModal(id) {
     $(`#deleteModal_${id}`).modal("show");
 }
+
+// Show Mobile nav menu
+const mobileMenu = document.querySelector(".mobile-nav-menu");
+const mobileDropdownButton = document.querySelector('.mobile-dropdown-button');
+
+mobileDropdownButton.addEventListener("click", () => {
+    mobileMenu.classList.toggle("show-mobile-nav-menu");
+    document.querySelector(".title").classList.toggle("send-to-back");
+})

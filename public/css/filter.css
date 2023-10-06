@@ -11,17 +11,18 @@
     --offwhite: #f9f7f6;
 }
 /* Filter */
-.filtersContainer {
-    background-color: white;
-    padding: 5% 20px;
-    margin-top: 2.5%;
+.filter {
+    width: 320px;
+    height: 100%;
+    position: sticky;
+    top: 95px;
     border: 1px solid var(--lightgray);
-    height: auto;
+    padding: 20px;
 }
-.filtersContainer li a {
-    text-decoration: none;
-    color: black;
+input[type="checkbox"] {
+    accent-color: var(--gold);
 }
+
 .filterLabel, .filterTitle {
     font-size: 1.25rem;
     font-weight: 700;
@@ -60,6 +61,14 @@ input[type='radio'] {
 }
 
 /* Price */
+.price-filter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+}
 input[type="range"] {
     accent-color: var(--lightmaroon);
 }
@@ -71,6 +80,67 @@ input[type="range"] {
 
 /* Filter Tags */
 .filterTags {
+    display: flex;
+    flex-direction: row;
     z-index: 50;
     margin-top: 50px;
+}
+
+.filter-button {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .filter {
+        position: fixed;
+        right: 0;
+        top: 130px;
+        height: 60px;
+        width: 100%;
+        overflow-y:scroll;
+        overflow-x: hidden;
+        padding-top: 0px;
+        max-width: 100%;
+        border: none;
+        z-index: 90;
+        background-color: white;
+    }
+    .filter-active {
+        z-index: 110;
+        height: 200px;
+    }
+
+    .filterTags {
+        display: none;
+    }
+    /* Add a dropdown button style */
+    .filter-button {
+        display: block;
+        position: absolute;
+        right: 30px;
+        top: 7.5px;
+        background-color: var(--darkgold);
+        color: var(--maroon);
+        padding: 5px 20px;
+        border: 1px solid var(--darkgold);
+        border-radius: 4px;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    /* Hide the filter content by default */
+    .filter-content {
+        display: none;
+    }
+
+    .show-filter-content {
+        display: block;
+        background-color: white;
+        width: 100vw;
+        padding: 10px 20px 20px 20px;
+    }
+
+    .price-filter {
+        padding-right: 30px;
+    }
 }

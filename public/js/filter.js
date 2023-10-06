@@ -86,3 +86,12 @@ document.querySelectorAll(".fa-circle-xmark").forEach((element) => {
         redirect(window.location.href, `${newFilters.join('&')}`)
     })
 })
+
+// Mobile Filter
+const filterButton = document.getElementById("filterButton");
+const filterContent = document.querySelector(".filter-content");
+
+filterButton.addEventListener("click", () => {
+    filterContent.classList.toggle("show-filter-content");
+    document.querySelector(".filter").classList.toggle("filter-active");
+})
