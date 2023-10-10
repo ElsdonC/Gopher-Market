@@ -6,7 +6,7 @@ Users are able to browse and filter through items as well as sell their own item
 
 ## Preview
 
-<img width="1248" alt="image" src="https://github.com/ElsdonC/gopher-market/assets/67447710/1c9afa54-875c-4b94-9407-4ec97c7579b8">
+<img width="1248" alt="image" src="https://github.com/ElsdonC/gopher-market/assets/67447710/aed90c89-ab9c-4489-bf18-bbdc6709329e">
 
 ## How It's Made
 
